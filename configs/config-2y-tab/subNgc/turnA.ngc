@@ -1,0 +1,69 @@
+
+
+#<TARGET_LENGTH>=#[3660+[#4300-1]]  (目标刀长)
+
+G10L2P1Z[#3613+#3720 + #<TARGET_LENGTH>]
+
+G54
+
+
+m66p3l0q0
+
+O001 if[#5399 EQ 1]
+
+    O610 if[#3680 EQ 1]
+	(debug,当前大气缸已经进到位，处于R面，退出程序)
+    O610 else if[#3680 EQ 2] 
+    (debug,The large cylinder has been put in place and is on the R side.)
+    O610 endif
+
+	M30
+
+O001 endif
+
+G53G0Z0
+G53G0Y0
+
+
+(########T转R##########)
+m66p5l0q0
+
+O002 if[#5399 EQ 1]
+
+	(########大气缸退##########)
+	M65P10
+	M64P12
+	m66p4l3q10
+	O005 if[#5399 EQ -1]
+        O610 if[#3680 EQ 1]
+		(debug,检测不到大气缸退到位信号，退出程序)
+        O610 else if[#3680 EQ 2] 
+        (debug,Cannot detect large cylinder retreat signal.)
+        O610 endif
+		M30		
+	O005 endif
+
+
+O002 endif
+
+
+(####小气缸退#####)
+M65P9
+M64P11
+G4P0.1
+
+(########大气缸进##########)
+M65P12
+M64P10
+m66p3l3q10
+O006 if[#5399 EQ -1]
+    O610 if[#3680 EQ 1]
+	(debug,检测不到大气缸进到位信号，退出程序)
+    O610 else if[#3680 EQ 2] 
+    (debug,Cannot detect large cylinder enter signal.)
+    O610 endif
+	M30		
+O006 endif
+
+
+

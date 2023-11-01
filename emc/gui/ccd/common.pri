@@ -1,0 +1,20 @@
+
+win32 {
+
+    DEFINES +=  M_PI=3.14159265358979323846 \
+                M_PI_2=1.57079632679489661923
+
+    DEFINES += USING_WINDOWS EMU_C99
+
+    DEFINES += __USING_WINDOWS__
+
+}
+
+
+unix {
+
+    DEFINES += __USING_LINUX__
+    QMAKE_CXXFLAGS_DEBUG += -std=c++0x -g
+    QMAKE_CXXFLAGS += -std=c++0x -g -pg
+
+}

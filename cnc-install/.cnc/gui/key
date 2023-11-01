@@ -1,0 +1,49 @@
+回机械原点                          Ctrl+Home
+回工件原点                          F7
+回固定点                             Ctrl+D
+主轴                                     Ctrl+S
+冷水机                                 Ctrl+C
+润滑                                     Ctrl+L
+
+切换到Z1                             Ctrl+F1
+切换到Z2                             Ctrl+F2
+切换到Z3                             Ctrl+F3
+切换到Z4                             Ctrl+F4
+切换到ZALL	                    Ctrl+F5
+
+手轮引导                             Ctrl+H
+高级开始                             Ctrl+Shift+F9
+编辑当前加工程序              Ctrl+E
+打开并装载                         Ctrl+O
+卸载                                     Ctrl+U
+核对                                     Ctrl+V
+                         
+设置IO                                Ctrl+I
+设置偏置                            Ctrl+Z
+设置参数                            Ctrl+P
+
+系统信息                            Shift+I
+历史记录                            Shift+H
+底层配置                            Shift+U
+信号跟踪                            Shift+F
+示波器                               Shift+B
+
+编辑刀具                             Ctrl+T
+循环启动                             Ctrl+R
+高级开始                             Ctrl+F9
+
+切换手动                            Ctrl+1
+切换MDI                            Ctrl+2
+切换到对刀窗口                 Ctrl+3
+
+切换到加工窗口                 ALT+1
+切换到模型窗口                 ALT+2
+切换到信息窗口                 ALT+3
+切换到输入IO窗口             ALT+4
+切换到输出IO窗口             ALT+5
+切换到阵列窗口                 ALT+6
+
+
+
+
+

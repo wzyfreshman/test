@@ -1,0 +1,33 @@
+component sig_delay;
+
+pin in bit in;
+pin out bit out;
+
+param rw u32 waitdelay = 1;
+variable double timer = 0;
+param rw u32 oldin = 0;
+param rw u32 delayflag = 0;
+function _;
+license "GPL";
+;;
+FUNCTION(_) {
+	if(oldin != in) {
+		if(0 == in) {
+			delayflag = 1;
+			timer = 0;
+		} else {
+			out = in;
+			timer = 0;
+			delayflag = 0;
+		}
+		oldin = in;
+	}
+	if(1 == delayflag) {
+		timer += fperiod;
+		if(timer > waitdelay) {
+			out = in;
+			timer = 0;
+			delayflag = 0;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/runfile">
+        <file>autolearn.ngc</file>
+        <file>locate.ngc</file>
+        <file>resource.qrc</file>
+        <file>simulateidentify.ngc</file>
+        <file>a_position.ngc</file>
+        <file>b_position.ngc</file>
+        <file>pattern.ppm</file>
+    </qresource>
+</RCC>

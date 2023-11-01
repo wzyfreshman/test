@@ -1,0 +1,1229 @@
+########################################################
+## 2014-01-12
+## by ECNC
+########################################################     
+     
+#ghf-2014/5/28
+# <<section 2>> ------ axis zero index pulse
+# connect index pulses to motion controller
+# do these when index pulsing is figured out
+
+net Xindex <= ethercat.mt.00.start_probe axis.0.0.index-enable
+net Yindex <= ethercat.mt.02.start_probe axis.0.1.index-enable
+net Zindex <= ethercat.mt.04.start_probe axis.0.2.index-enable
+#net Uindex <= ethercat.mt.01.start_probe axis.1.0.index-enable
+#net Vindex <= ethercat.mt.03.start_probe axis.1.1.index-enable
+#net Windex <= ethercat.mt.05.start_probe axis.1.2.index-enable
+
+# <<section 8>> ------ the Spindle Value
+newsig spindle_value float
+net spindle_value motion.0.spindle-da-out ethercat.master.DAVol.0
+setp ethercat.master.DAScale.0 [TRAJ]SPINDLEVEL_SCALE
+
+#newsig spindle_value1 float
+#net spindle_value1 motion.1.spindle-speed-out ethercat.master.DAVol.1
+#setp ethercat.master.DAScale.1 [TRAJ]SPINDLEVEL_SCALE
+
+
+# <<section 9>> ------ the jog-wheel(handle)
+#enable jog-wheel limit velocity
+setp axis.0.0.jog-vel-mode 1
+setp axis.0.1.jog-vel-mode 1
+setp axis.0.2.jog-vel-mode 1
+#setp axis.1.0.jog-vel-mode 1
+#setp axis.1.1.jog-vel-mode 1
+#setp axis.1.2.jog-vel-mode 1
+
+
+
+# handle
+#net jog_enable axis.0.0.jog-enable axis.1.0.jog-enable  
+#net jog_enable axis.0.1.jog-enable axis.1.1.jog-enable  
+#net jog_enable axis.0.2.jog-enable axis.1.2.jog-enable  
+net jog_enable axis.0.0.jog-enable   
+net jog_enable axis.0.1.jog-enable   
+net jog_enable axis.0.2.jog-enable 
+
+
+net handle_data ethercat.master.handleVal handlecontrol.0.ppmcin0
+net handle_count00 handlecontrol.0.handleout0 motion.0.jogVal
+#net handle_count01 handlecontrol.0.handleout1 motion.1.jogVal
+
+
+
+#hong-2014-08-29
+#net fpgastatus motion.0.fpgastatus ppmc.0.fpgastatus
+setp motion.0.fpgastatus 0xff
+#setp motion.1.fpgastatus 0xff
+#net ethready motion.0.linktoEth motion.1.linktoEth ethercat.master.ready
+net ethready motion.0.linktoEth ethercat.master.ready
+
+#################input#########################
+setp conv-io.1.io-type 0
+
+########急停###############
+setp conv-io.0.inpin-0 [IO_INPUT0]PIN
+setp conv-io.0.inpol-0 [IO_INPUT0]POLARITY
+net sig_ioin0 conv-io.0.outpin-0 => not.0.in
+#net sig_ioin0 iocontrol.0.0.emc-enable-in iocontrol.1.0.emc-enable-in 
+net sig_ioin0 iocontrol.0.0.emc-enable-in 
+net not0 not.0.out motion.0.user-define-in.00
+
+
+########左启动###############
+setp conv-io.0.inpin-1 [IO_INPUT1]PIN
+setp conv-io.0.inpol-1 [IO_INPUT1]POLARITY
+net sig_ioin1 conv-io.0.outpin-1 => motion.0.user-define-in.01
+net sig_ioin1 motion.0.digital-in-01
+
+########右启动###############
+setp conv-io.0.inpin-2 [IO_INPUT2]PIN
+setp conv-io.0.inpol-2 [IO_INPUT2]POLARITY
+net sig_ioin2 conv-io.0.outpin-2 => motion.0.user-define-in.02
+net sig_ioin2 motion.0.digital-in-02
+
+########左压料到位###############
+setp conv-io.0.inpin-3 [IO_INPUT3]PIN
+setp conv-io.0.inpol-3 [IO_INPUT3]POLARITY
+net sig_ioin3 conv-io.0.outpin-3 => motion.0.user-define-in.03
+net sig_ioin3 motion.0.digital-in-03
+
+########右压料到位###############
+setp conv-io.0.inpin-4 [IO_INPUT4]PIN
+setp conv-io.0.inpol-4 [IO_INPUT4]POLARITY
+net sig_ioin4 conv-io.0.outpin-4 => motion.0.user-define-in.04
+net sig_ioin4 motion.0.digital-in-04
+
+##########对刀杆升到#############
+setp conv-io.0.inpin-5 [IO_INPUT5]PIN
+setp conv-io.0.inpol-5 [IO_INPUT5]POLARITY
+net sig_ioin5 conv-io.0.outpin-5 => motion.0.user-define-in.05
+net sig_ioin5 motion.0.digital-in-05
+
+
+#########变频器1报警##############
+setp conv-io.0.inpin-6 [IO_INPUT6]PIN
+setp conv-io.0.inpol-6 [IO_INPUT6]POLARITY
+net sig_ioin6 conv-io.0.outpin-6 => motion.0.user-define-in.06
+net sig_ioin6 motion.0.digital-in-06 motion.0.user-define-warn.00
+
+########变频器2报警###############
+setp conv-io.0.inpin-7 [IO_INPUT7]PIN
+setp conv-io.0.inpol-7 [IO_INPUT7]POLARITY
+net sig_ioin7 conv-io.0.outpin-7 => motion.0.user-define-in.07
+net sig_ioin7 motion.0.digital-in-07 motion.0.user-define-warn.01
+
+########变频器3报警###############
+setp conv-io.0.inpin-8 [IO_INPUT8]PIN
+setp conv-io.0.inpol-8 [IO_INPUT8]POLARITY
+net sig_ioin8 conv-io.0.outpin-8 => motion.0.user-define-in.08 
+net sig_ioin8 motion.0.digital-in-08 motion.0.user-define-warn.02
+
+########变频器4报警###############
+setp conv-io.0.inpin-9 [IO_INPUT9]PIN
+setp conv-io.0.inpol-9 [IO_INPUT9]POLARITY
+net sig_ioin9 conv-io.0.outpin-9 => motion.0.user-define-in.09
+net sig_ioin9 motion.0.digital-in-09 motion.0.user-define-warn.03
+
+########变频器5报警###############
+setp conv-io.0.inpin-10 [IO_INPUT10]PIN
+setp conv-io.0.inpol-10 [IO_INPUT10]POLARITY
+net sig_ioin10 conv-io.0.outpin-10 => motion.0.user-define-in.10
+net sig_ioin10 motion.0.digital-in-10 motion.0.user-define-warn.04
+
+########变频器6报警###############
+setp conv-io.0.inpin-11 [IO_INPUT11]PIN
+setp conv-io.0.inpol-11 [IO_INPUT11]POLARITY
+net sig_ioin11 conv-io.0.outpin-11 => motion.0.user-define-in.11
+net sig_ioin11 motion.0.digital-in-11 motion.0.user-define-warn.05
+
+########变频器7报警###############
+setp conv-io.0.inpin-12 [IO_INPUT12]PIN 
+setp conv-io.0.inpol-12 [IO_INPUT12]POLARITY
+net sig_ioin12 conv-io.0.outpin-12 => motion.0.user-define-in.12 
+net sig_ioin12 motion.0.digital-in-12 motion.0.user-define-warn.06
+
+########变频器8报警##############
+setp conv-io.0.inpin-13 [IO_INPUT13]PIN
+setp conv-io.0.inpol-13 [IO_INPUT13]POLARITY
+net sig_ioin13 conv-io.0.outpin-13 => motion.0.user-define-in.13
+net sig_ioin13 motion.0.digital-in-13 motion.0.user-define-warn.07
+
+########变频器9报警##################
+setp conv-io.0.inpin-14 [IO_INPUT14]PIN
+setp conv-io.0.inpol-14 [IO_INPUT14]POLARITY
+net sig_ioin14 conv-io.0.outpin-14 => motion.0.user-define-in.14
+net sig_ioin14 motion.0.digital-in-14 motion.0.user-define-warn.08
+
+########变频器10报警##################
+setp conv-io.0.inpin-15 [IO_INPUT15]PIN
+setp conv-io.0.inpol-15 [IO_INPUT15]POLARITY
+net sig_ioin15 conv-io.0.outpin-15 => motion.0.user-define-in.15
+net sig_ioin15 motion.0.digital-in-15 motion.0.user-define-warn.09
+
+########变频器1速度到达##################
+setp conv-io.0.inpin-16 [IO_INPUT16]PIN
+setp conv-io.0.inpol-16 [IO_INPUT16]POLARITY
+net sig_ioin16 conv-io.0.outpin-16 => motion.0.user-define-in.16
+net sig_ioin16 motion.0.digital-in-16 
+
+#########变频器6速度到达##################
+setp conv-io.0.inpin-17 [IO_INPUT17]PIN
+setp conv-io.0.inpol-17 [IO_INPUT17]POLARITY
+net sig_ioin17 conv-io.0.outpin-17 => motion.0.user-define-in.17
+net sig_ioin17 motion.0.digital-in-17
+
+#########T2退到##################
+setp conv-io.0.inpin-18 [IO_INPUT18]PIN
+setp conv-io.0.inpol-18 [IO_INPUT18]POLARITY
+net sig_ioin18 conv-io.0.outpin-18 => motion.0.user-define-in.18
+net sig_ioin18 motion.0.digital-in-18
+
+#########T2进到#################
+setp conv-io.0.inpin-19 [IO_INPUT19]PIN
+setp conv-io.0.inpol-19 [IO_INPUT19]POLARITY
+net sig_ioin19 conv-io.0.outpin-19 => motion.0.user-define-in.19
+net sig_ioin19 motion.0.digital-in-19
+
+###########总压力检测##################
+setp conv-io.0.inpin-20 [IO_INPUT20]PIN
+setp conv-io.0.inpol-20 [IO_INPUT20]POLARITY
+net sig_ioin20 conv-io.0.outpin-20 => motion.0.user-define-in.20
+net sig_ioin20 motion.0.digital-in-20
+
+##########备用##################
+setp conv-io.0.inpin-21 [IO_INPUT21]PIN
+setp conv-io.0.inpol-21 [IO_INPUT21]POLARITY
+net sig_ioin21 conv-io.0.outpin-21 => motion.0.user-define-in.21
+net sig_ioin21 motion.0.digital-in-21
+
+###############备用##################
+setp conv-io.0.inpin-22 [IO_INPUT22]PIN
+setp conv-io.0.inpol-22 [IO_INPUT22]POLARITY
+net sig_ioin22 conv-io.0.outpin-22 => motion.0.user-define-in.22
+net sig_ioin22 motion.0.digital-in-22
+
+###############备用##################
+setp conv-io.0.inpin-23 [IO_INPUT23]PIN
+setp conv-io.0.inpol-23 [IO_INPUT23]POLARITY
+net sig_ioin23 conv-io.0.outpin-23 => motion.0.user-define-in.23
+net sig_ioin23 motion.0.digital-in-23
+
+########备用###############
+setp conv-io.0.inpin-24 [IO_INPUT24]PIN
+setp conv-io.0.inpol-24 [IO_INPUT24]POLARITY
+net sig_ioin24 conv-io.0.outpin-24 => motion.0.user-define-in.24
+net sig_ioin24 motion.0.digital-in-24
+
+########备用###############
+setp conv-io.0.inpin-25 [IO_INPUT25]PIN
+setp conv-io.0.inpol-25 [IO_INPUT25]POLARITY
+net sig_ioin25 conv-io.0.outpin-25 => motion.0.user-define-in.25
+net sig_ioin25 motion.0.digital-in-25
+
+########备用###############
+setp conv-io.0.inpin-26 [IO_INPUT26]PIN
+setp conv-io.0.inpol-26 [IO_INPUT26]POLARITY
+net sig_ioin26 conv-io.0.outpin-26 => motion.0.user-define-in.26
+net sig_ioin26 motion.0.digital-in-26
+
+########备用###############
+setp conv-io.0.inpin-27 [IO_INPUT27]PIN
+setp conv-io.0.inpol-27 [IO_INPUT27]POLARITY
+net sig_ioin27 conv-io.0.outpin-27 => motion.0.user-define-in.27
+net sig_ioin27 motion.0.digital-in-27
+
+########备用###############
+setp conv-io.0.inpin-28 [IO_INPUT28]PIN
+setp conv-io.0.inpol-28 [IO_INPUT28]POLARITY
+net sig_ioin28 conv-io.0.outpin-28 => motion.0.user-define-in.28
+
+########备用###############
+setp conv-io.0.inpin-29 [IO_INPUT29]PIN
+setp conv-io.0.inpol-29 [IO_INPUT29]POLARITY
+net sig_ioin29 conv-io.0.outpin-29 => motion.0.user-define-in.29
+
+########备用###############
+setp conv-io.0.inpin-30 [IO_INPUT30]PIN
+setp conv-io.0.inpol-30 [IO_INPUT30]POLARITY
+net sig_ioin30 conv-io.0.outpin-30 => motion.0.user-define-in.30
+
+########备用###############
+setp conv-io.0.inpin-31 [IO_INPUT31]PIN
+setp conv-io.0.inpol-31 [IO_INPUT31]POLARITY
+net sig_ioin31 conv-io.0.outpin-31 => motion.0.user-define-in.31
+
+########备用###############
+setp conv-io.0.inpin-32 [IO_INPUT32]PIN
+setp conv-io.0.inpol-32 [IO_INPUT32]POLARITY
+net sig_ioin32 conv-io.0.outpin-32 => motion.0.user-define-in.32
+net sig_ioin32 motion.0.digital-in-32
+
+#########备用##################
+setp conv-io.0.inpin-33 [IO_INPUT33]PIN
+setp conv-io.0.inpol-33 [IO_INPUT33]POLARITY
+net sig_ioin33 conv-io.0.outpin-33 => motion.0.user-define-in.33
+net sig_ioin33 motion.0.digital-in-33
+
+#########备用##################
+setp conv-io.0.inpin-34 [IO_INPUT34]PIN
+setp conv-io.0.inpol-34 [IO_INPUT34]POLARITY
+net sig_ioin34 conv-io.0.outpin-34 => motion.0.user-define-in.34
+net sig_ioin34 motion.0.digital-in-34
+
+########备用###############
+setp conv-io.0.inpin-35 [IO_INPUT35]PIN
+setp conv-io.0.inpol-35 [IO_INPUT35]POLARITY
+net sig_ioin35 conv-io.0.outpin-35 => motion.0.user-define-in.35
+net sig_ioin35 motion.0.digital-in-35
+
+########备用##################
+setp conv-io.0.inpin-36 [IO_INPUT36]PIN
+setp conv-io.0.inpol-36 [IO_INPUT36]POLARITY
+net sig_ioin36 conv-io.0.outpin-36 => motion.0.user-define-in.36
+
+
+########备用###############
+setp conv-io.0.inpin-37 [IO_INPUT37]PIN
+setp conv-io.0.inpol-37 [IO_INPUT37]POLARITY
+net sig_ioin37 conv-io.0.outpin-37 =>  motion.0.user-define-in.37
+
+########备用###############
+setp conv-io.0.inpin-38 [IO_INPUT38]PIN
+setp conv-io.0.inpol-38 [IO_INPUT38]POLARITY
+net sig_ioin38 conv-io.0.outpin-38 => motion.0.user-define-in.38
+
+########备用###############
+setp conv-io.0.inpin-39 [IO_INPUT39]PIN
+setp conv-io.0.inpol-39 [IO_INPUT39]POLARITY
+net sig_ioin39 conv-io.0.outpin-39 => motion.0.user-define-in.39
+
+########备用###############
+setp conv-io.0.inpin-40 [IO_INPUT40]PIN
+setp conv-io.0.inpol-40 [IO_INPUT40]POLARITY
+net sig_ioin40  conv-io.0.outpin-40 => motion.0.user-define-in.40
+
+########备用###############
+setp conv-io.0.inpin-41 [IO_INPUT41]PIN
+setp conv-io.0.inpol-41 [IO_INPUT41]POLARITY
+net sig_ioin41 conv-io.0.outpin-41 => motion.0.user-define-in.41
+
+########备用###############
+setp conv-io.0.inpin-42 [IO_INPUT42]PIN
+setp conv-io.0.inpol-42 [IO_INPUT42]POLARITY
+net sig_ioin42 conv-io.0.outpin-42 => motion.0.user-define-in.42
+
+########备用###############
+setp conv-io.0.inpin-43 [IO_INPUT43]PIN
+setp conv-io.0.inpol-43 [IO_INPUT43]POLARITY
+net sig_ioin43 conv-io.0.outpin-43 => motion.0.user-define-in.43
+
+########备用###############
+setp conv-io.0.inpin-44 [IO_INPUT44]PIN
+setp conv-io.0.inpol-44 [IO_INPUT44]POLARITY
+net sig_ioin44 conv-io.0.outpin-44 => motion.0.user-define-in.44
+
+########备用###############
+setp conv-io.0.inpin-45 [IO_INPUT45]PIN
+setp conv-io.0.inpol-45 [IO_INPUT45]POLARITY
+net sig_ioin45 conv-io.0.outpin-45 => motion.0.user-define-in.45
+
+########备用###############
+setp conv-io.0.inpin-46 [IO_INPUT46]PIN
+setp conv-io.0.inpol-46 [IO_INPUT46]POLARITY
+net sig_ioin46 conv-io.0.outpin-46 => motion.0.user-define-in.46
+
+########备用###############
+setp conv-io.0.inpin-47 [IO_INPUT47]PIN
+setp conv-io.0.inpol-47 [IO_INPUT47]POLARITY
+net sig_ioin47 conv-io.0.outpin-47 => motion.0.user-define-in.47
+net sig_ioin47 motion.0.digital-in-47
+
+########备用###############
+setp conv-io.0.inpin-48 [IO_INPUT48]PIN
+setp conv-io.0.inpol-48 [IO_INPUT48]POLARITY
+net sig_ioin48 conv-io.0.outpin-48 => motion.0.user-define-in.48
+net sig_ioin48 motion.0.digital-in-48
+
+
+########备用###############
+setp conv-io.0.inpin-49 [IO_INPUT49]PIN
+setp conv-io.0.inpol-49 [IO_INPUT49]POLARITY
+net sig_ioin49 conv-io.0.outpin-49 => motion.0.user-define-in.49
+net sig_ioin49 motion.0.digital-in-49
+
+########备用###############
+setp conv-io.0.inpin-50 [IO_INPUT50]PIN
+setp conv-io.0.inpol-50 [IO_INPUT50]POLARITY
+net sig_ioin50 conv-io.0.outpin-50 => motion.0.user-define-in.50
+net sig_ioin50 motion.0.digital-in-50
+
+########备用###############
+setp conv-io.0.inpin-51 [IO_INPUT51]PIN
+setp conv-io.0.inpol-51 [IO_INPUT51]POLARITY
+net sig_ioin51 conv-io.0.outpin-51 => motion.0.user-define-in.51
+net sig_ioin51 motion.0.digital-in-51
+
+
+########备用###############
+setp conv-io.0.inpin-52 [IO_INPUT52]PIN
+setp conv-io.0.inpol-52 [IO_INPUT52]POLARITY
+net sig_ioin52 conv-io.0.outpin-52 => motion.0.user-define-in.52
+net sig_ioin52 motion.0.digital-in-52
+
+########备用###############
+setp conv-io.0.inpin-53 [IO_INPUT53]PIN
+setp conv-io.0.inpol-53 [IO_INPUT53]POLARITY
+net sig_ioin53 conv-io.0.outpin-53 => motion.0.user-define-in.53
+net sig_ioin53 motion.0.digital-in-53
+
+########备用###############
+setp conv-io.0.inpin-54 [IO_INPUT54]PIN
+setp conv-io.0.inpol-54 [IO_INPUT54]POLARITY
+net sig_ioin54 conv-io.0.outpin-54 => motion.0.user-define-in.54
+net sig_ioin54 motion.0.digital-in-54
+
+########备用###############
+setp conv-io.0.inpin-55 [IO_INPUT55]PIN
+setp conv-io.0.inpol-55 [IO_INPUT55]POLARITY
+net sig_ioin55 conv-io.0.outpin-55 => motion.0.user-define-in.55
+net sig_ioin55 motion.0.digital-in-55
+
+########备用###############
+setp conv-io.0.inpin-56 [IO_INPUT56]PIN
+setp conv-io.0.inpol-56 [IO_INPUT56]POLARITY
+net sig_ioin56 conv-io.0.outpin-56 => motion.0.user-define-in.56
+net sig_ioin56 motion.0.digital-in-56
+
+########备用###############
+setp conv-io.0.inpin-57 [IO_INPUT57]PIN
+setp conv-io.0.inpol-57 [IO_INPUT57]POLARITY
+net sig_ioin57 conv-io.0.outpin-57 => motion.0.user-define-in.57
+net sig_ioin57 motion.0.digital-in-57
+
+########备用###############
+setp conv-io.0.inpin-58 [IO_INPUT58]PIN
+setp conv-io.0.inpol-58 [IO_INPUT58]POLARITY
+net sig_ioin58 conv-io.0.outpin-58 => motion.0.user-define-in.58
+net sig_ioin58 motion.0.digital-in-58
+
+########备用###############
+setp conv-io.0.inpin-59 [IO_INPUT59]PIN
+setp conv-io.0.inpol-59 [IO_INPUT59]POLARITY
+net sig_ioin59 conv-io.0.outpin-59 => motion.0.user-define-in.59
+net sig_ioin59 motion.0.digital-in-59
+
+########备用###############
+setp conv-io.0.inpin-60 [IO_INPUT60]PIN
+setp conv-io.0.inpol-60 [IO_INPUT60]POLARITY
+net sig_ioin60 conv-io.0.outpin-60 => motion.0.user-define-in.60
+net sig_ioin60 motion.0.digital-in-60
+
+########备用###############
+setp conv-io.0.inpin-61 [IO_INPUT61]PIN
+setp conv-io.0.inpol-61 [IO_INPUT61]POLARITY
+net sig_ioin61 conv-io.0.outpin-61 => motion.0.user-define-in.61
+net sig_ioin61 motion.0.digital-in-61
+
+########备用###############
+setp conv-io.0.inpin-62 [IO_INPUT62]PIN
+setp conv-io.0.inpol-62 [IO_INPUT62]POLARITY
+net sig_ioin62 conv-io.0.outpin-62 => motion.0.user-define-in.62
+net sig_ioin62 motion.0.digital-in-62
+
+########备用###############
+setp conv-io.0.inpin-63 [IO_INPUT63]PIN
+setp conv-io.0.inpol-63 [IO_INPUT63]POLARITY
+net sig_ioin63 conv-io.0.outpin-63 => motion.0.user-define-in.63
+net sig_ioin63 motion.0.digital-in-63
+
+########备用###############
+setp conv-io.0.inpin-64 [IO_INPUT64]PIN
+setp conv-io.0.inpol-64 [IO_INPUT64]POLARITY
+net sig_ioin64 conv-io.0.outpin-64 => motion.0.user-define-in.64
+#net sig_ioin64 motion.0.digital-in-64
+
+########备用###############
+setp conv-io.0.inpin-65 [IO_INPUT65]PIN
+setp conv-io.0.inpol-65 [IO_INPUT65]POLARITY
+net sig_ioin65 conv-io.0.outpin-65 => motion.0.user-define-in.65
+#net sig_ioin65 motion.0.digital-in-65
+
+########备用###############
+setp conv-io.0.inpin-66 [IO_INPUT66]PIN
+setp conv-io.0.inpol-66 [IO_INPUT66]POLARITY
+net sig_ioin66 conv-io.0.outpin-66 => motion.0.user-define-in.66
+#net sig_ioin66 motion.0.digital-in-66
+
+########备用###############
+setp conv-io.0.inpin-67 [IO_INPUT67]PIN
+setp conv-io.0.inpol-67 [IO_INPUT67]POLARITY
+net sig_ioin67 conv-io.0.outpin-67 => motion.0.user-define-in.67
+#net sig_ioin67 motion.0.digital-in-67
+
+########备用###############
+setp conv-io.0.inpin-68 [IO_INPUT68]PIN
+setp conv-io.0.inpol-68 [IO_INPUT68]POLARITY
+net sig_ioin68 conv-io.0.outpin-68 => motion.0.user-define-in.68
+#net sig_ioin68 motion.0.digital-in-68
+
+########备用###############
+setp conv-io.0.inpin-69 [IO_INPUT69]PIN
+setp conv-io.0.inpol-69 [IO_INPUT69]POLARITY
+net sig_ioin69 conv-io.0.outpin-69 => motion.0.user-define-in.69
+#net sig_ioin69 motion.0.digital-in-69
+
+########备用###############
+setp conv-io.0.inpin-70 [IO_INPUT70]PIN
+setp conv-io.0.inpol-70 [IO_INPUT70]POLARITY
+net sig_ioin70 conv-io.0.outpin-70 => motion.0.user-define-in.70
+#net sig_ioin70 motion.0.digital-in-70
+
+########备用###############
+setp conv-io.0.inpin-71 [IO_INPUT71]PIN
+setp conv-io.0.inpol-71 [IO_INPUT71]POLARITY
+net sig_ioin71 conv-io.0.outpin-71 => motion.0.user-define-in.71
+#net sig_ioin71 motion.0.digital-in-71
+
+########备用###############
+setp conv-io.0.inpin-72 [IO_INPUT72]PIN
+setp conv-io.0.inpol-72 [IO_INPUT72]POLARITY
+net sig_ioin72 conv-io.0.outpin-72 => motion.0.user-define-in.72
+
+########备用###############
+setp conv-io.0.inpin-73 [IO_INPUT73]PIN
+setp conv-io.0.inpol-73 [IO_INPUT73]POLARITY
+net sig_ioin73 conv-io.0.outpin-73 => motion.0.user-define-in.73
+
+########备用###############
+setp conv-io.0.inpin-74 [IO_INPUT74]PIN
+setp conv-io.0.inpol-74 [IO_INPUT74]POLARITY
+net sig_ioin74 conv-io.0.outpin-74 => motion.0.user-define-in.74
+
+########备用###############
+setp conv-io.0.inpin-75 [IO_INPUT75]PIN
+setp conv-io.0.inpol-75 [IO_INPUT75]POLARITY
+net sig_ioin75 conv-io.0.outpin-75 => motion.0.user-define-in.75
+
+########备用###############
+setp conv-io.0.inpin-76 [IO_INPUT76]PIN
+setp conv-io.0.inpol-76 [IO_INPUT76]POLARITY
+net sig_ioin76 conv-io.0.outpin-76 => motion.0.user-define-in.76
+
+########备用###############
+setp conv-io.0.inpin-77 [IO_INPUT77]PIN
+setp conv-io.0.inpol-77 [IO_INPUT77]POLARITY
+net sig_ioin77 conv-io.0.outpin-77 => motion.0.user-define-in.77
+
+########备用###############
+setp conv-io.0.inpin-78 [IO_INPUT78]PIN
+setp conv-io.0.inpol-78 [IO_INPUT78]POLARITY
+net sig_ioin78 conv-io.0.outpin-78 => motion.0.user-define-in.78
+
+########备用###############
+setp conv-io.0.inpin-79 [IO_INPUT79]PIN
+setp conv-io.0.inpol-79 [IO_INPUT79]POLARITY
+net sig_ioin79 conv-io.0.outpin-79 => motion.0.user-define-in.79
+
+
+
+#################output#########################
+
+setp conv-io.1.io-type 1
+
+
+########抱匝信号##############
+net enable <= ethercat.mt.00.enable
+net enable <= ethercat.mt.01.enable
+net enable <= ethercat.mt.02.enable 
+net enable => motion.0.motion-enabled and2.0.in0 
+
+net sigSpindle multispindle.0.spindlein motion.0.spindle-on  
+net sigSpindle0 multispindle.0.in0 motion.0.digital-out-05
+net sigSpindle1 multispindle.0.in1 motion.0.digital-out-06
+net sigSpindle2 multispindle.0.in2 motion.0.digital-out-07
+net sigSpindle3 multispindle.0.in3 motion.0.digital-out-08
+net sigSpindle4 multispindle.0.in4 motion.0.digital-out-09
+net sigSpindle5 multispindle.0.in5 motion.0.digital-out-10
+net sigSpindle6 multispindle.0.in6 motion.0.digital-out-11
+net sigSpindle7 multispindle.0.in7 motion.0.digital-out-12
+net sigSpindle8 multispindle.0.in8 motion.0.digital-out-13
+net sigSpindle9 multispindle.0.in9 motion.0.digital-out-14
+
+
+
+
+
+########Z轴抱闸###############
+setp conv-io.1.inpin-0 [IO_OUTPUT0]PIN
+setp conv-io.1.inpol-0 1
+net sig_ioout0 conv-io.1.inaux-0 => motion.0.user-define-out.00
+net sig_ioout0 <= and2.1.out  
+
+net linkready1 ethercat.mt.02.linkstate and2.0.in1 
+net choseit0 and2.0.out and2.1.in0
+#setp and2.1.in1 [EMCIO]USE_HOLD
+setp and2.1.in1 1
+
+########对刀杆降###############
+setp conv-io.1.inpin-1 [IO_OUTPUT1]PIN
+setp conv-io.1.inpol-1 1
+net sig_ioout1 conv-io.1.inaux-1 => motion.0.user-define-out.01
+net sig_ioout1 <= motion.0.digital-out-01
+
+########左启动灯###############
+setp conv-io.1.inpin-2 [IO_OUTPUT2]PIN
+setp conv-io.1.inpol-2 1
+net sig_ioout2 conv-io.1.inaux-2 => motion.0.user-define-out.02
+net sig_ioout2 <= motion.0.digital-out-02  
+
+
+########T2进到###############
+setp conv-io.1.inpin-3 [IO_OUTPUT3]PIN
+setp conv-io.1.inpol-3 1
+net sig_ioout3 conv-io.1.inaux-3 => motion.0.user-define-out.03 
+net sig_ioout3 <= motion.0.digital-out-03  
+
+
+
+########T2退到###############
+setp conv-io.1.inpin-4 [IO_OUTPUT4]PIN
+setp conv-io.1.inpol-4 1
+net sig_ioout4 conv-io.1.inaux-4 => motion.0.user-define-out.04 
+net sig_ioout4 <= motion.0.digital-out-04  
+
+
+
+########变频器1启动###############
+setp conv-io.1.inpin-5 [IO_OUTPUT5]PIN
+setp conv-io.1.inpol-5 1
+net sig_ioout5 conv-io.1.inaux-5 => motion.0.user-define-out.05 
+net sig_ioout5 <= multispindle.0.out0
+
+
+
+
+
+########变频器2启动###############
+setp conv-io.1.inpin-6 [IO_OUTPUT6]PIN
+setp conv-io.1.inpol-6 1
+net sig_ioout6 conv-io.1.inaux-6 => motion.0.user-define-out.06 
+net sig_ioout6 multispindle.0.out1
+
+########变频器3启动###############
+setp conv-io.1.inpin-7 [IO_OUTPUT7]PIN
+setp conv-io.1.inpol-7 1
+net sig_ioout7 conv-io.1.inaux-7 => motion.0.user-define-out.07
+net sig_ioout7 multispindle.0.out2
+
+#########变频器4启动###############
+setp conv-io.1.inpin-8 [IO_OUTPUT8]PIN
+setp conv-io.1.inpol-8 1
+net sig_ioout8 conv-io.1.inaux-8 => motion.0.user-define-out.08
+net sig_ioout8 multispindle.0.out3
+
+
+
+#########变频器5启动###############
+setp conv-io.1.inpin-9 [IO_OUTPUT9]PIN
+setp conv-io.1.inpol-9 1
+net sig_ioout9 conv-io.1.inaux-9 => motion.0.user-define-out.09 
+net sig_ioout9 multispindle.0.out4
+
+
+
+########变频器6启动###############
+setp conv-io.1.inpin-10 [IO_OUTPUT10]PIN
+setp conv-io.1.inpol-10 1
+net sig_ioout10 conv-io.1.inaux-10 => motion.0.user-define-out.10 
+net sig_ioout10 multispindle.0.out5
+
+
+
+########变频器7启动###############
+setp conv-io.1.inpin-11 [IO_OUTPUT11]PIN
+setp conv-io.1.inpol-11 1
+net sig_ioout11 conv-io.1.inaux-11 => motion.0.user-define-out.11 
+net sig_ioout11 multispindle.0.out6
+
+
+
+##########变频器8启动#############
+setp conv-io.1.inpin-12 [IO_OUTPUT12]PIN
+setp conv-io.1.inpol-12 1
+net sig_ioout12 conv-io.1.inaux-12 => motion.0.user-define-out.12 
+net sig_ioout12 multispindle.0.out7
+
+
+##########变频器9启动#############
+setp conv-io.1.inpin-13 [IO_OUTPUT13]PIN
+setp conv-io.1.inpol-13 1
+net sig_ioout13 conv-io.1.inaux-13 => motion.0.user-define-out.13
+net sig_ioout13 multispindle.0.out8
+
+
+##########变频器10启动#############
+setp conv-io.1.inpin-14 [IO_OUTPUT14]PIN
+setp conv-io.1.inpol-14 1
+net sig_ioout14 conv-io.1.inaux-14 => motion.0.user-define-out.14
+net sig_ioout14 multispindle.0.out9
+
+
+
+########右启动灯###############
+setp conv-io.1.inpin-15 [IO_OUTPUT15]PIN
+setp conv-io.1.inpol-15 1
+net sig_ioout15 conv-io.1.inaux-15 => motion.0.user-define-out.15
+net sig_ioout15 or2.1.out
+net or21_0 or2.1.in0 motion.0.digital-out-15
+net or21_1 or2.1.in1 iocontrol.0.0.lube 
+
+
+########备用###############
+setp conv-io.1.inpin-16 [IO_OUTPUT16]PIN
+setp conv-io.1.inpol-16 1
+net sig_ioout16 conv-io.1.inaux-16 => motion.0.user-define-out.16
+net sig_ioout16 orIn4.0.out or2.0.in0
+net sig_In40_0 orIn4.0.in0 motion.0.red-on 
+#net sig_In40_1 orIn4.0.in1 motion.1.red-on 
+
+
+########备用###############
+setp conv-io.1.inpin-17 [IO_OUTPUT17]PIN
+setp conv-io.1.inpol-17 1
+net sig_ioout17 conv-io.1.inaux-17 => motion.0.user-define-out.17 
+net sig_ioout17 orIn4.1.out or2.0.in1
+net sig_In41_0 orIn4.1.in0 motion.0.green-on  
+#net sig_In41_1 orIn4.1.in1 motion.1.green-on 
+
+
+########备用############### 
+setp conv-io.1.inpin-18 [IO_OUTPUT18]PIN
+setp conv-io.1.inpol-18 1
+net sig_ioout18 conv-io.1.inaux-18 => motion.0.user-define-out.18 
+net sig_ioout18  not.1.out
+net not1 not.1.in or2.0.out
+
+########备用###############
+setp conv-io.1.inpin-19 [IO_OUTPUT19]PIN
+setp conv-io.1.inpol-19 1
+net sig_ioout19 conv-io.1.inaux-19 => motion.0.user-define-out.19
+net sig_ioout19 motion.0.digital-out-19
+
+########备用###############
+setp conv-io.1.inpin-20 [IO_OUTPUT20]PIN
+setp conv-io.1.inpol-20 1
+net sig_ioout20 conv-io.1.inaux-20 => motion.0.user-define-out.20
+net sig_ioout20 motion.0.digital-out-20
+
+########备用############### 
+setp conv-io.1.inpin-21 [IO_OUTPUT21]PIN
+setp conv-io.1.inpol-21 1
+net sig_ioout21 conv-io.1.inaux-21 => motion.0.user-define-out.21
+
+########备用###############
+setp conv-io.1.inpin-22 [IO_OUTPUT22]PIN
+setp conv-io.1.inpol-22 1
+net sig_ioout22 conv-io.1.inaux-22 => motion.0.user-define-out.22
+net sig_ioout22 motion.0.digital-out-22
+
+########备用###############
+setp conv-io.1.inpin-23 [IO_OUTPUT23]PIN
+setp conv-io.1.inpol-23 1
+net sig_ioout23 conv-io.1.inaux-23 => motion.0.user-define-out.23
+net sig_ioout23 motion.0.digital-out-23
+
+########备用###############
+setp conv-io.1.inpin-24 [IO_OUTPUT24]PIN
+setp conv-io.1.inpol-24 1
+net sig_ioout24 conv-io.1.inaux-24 => motion.0.user-define-out.24
+net sig_ioout24 motion.0.digital-out-24
+
+########备用###############
+setp conv-io.1.inpin-25 [IO_OUTPUT25]PIN
+setp conv-io.1.inpol-25 1
+net sig_ioout25 conv-io.1.inaux-25 => motion.0.user-define-out.25
+net sig_ioout25 motion.0.digital-out-25
+
+########备用###############
+setp conv-io.1.inpin-26 [IO_OUTPUT26]PIN
+setp conv-io.1.inpol-26 1
+net sig_ioout26 conv-io.1.inaux-26 => motion.0.user-define-out.26
+net sig_ioout26 motion.0.digital-out-26
+
+########备用###############
+setp conv-io.1.inpin-27 [IO_OUTPUT27]PIN
+setp conv-io.1.inpol-27 1
+net sig_ioout27 conv-io.1.inaux-27 => motion.0.user-define-out.27
+net sig_ioout27 motion.0.digital-out-27
+
+########备用###############
+setp conv-io.1.inpin-28 [IO_OUTPUT28]PIN
+setp conv-io.1.inpol-28 1
+net sig_ioout28 conv-io.1.inaux-28 => motion.0.user-define-out.28
+net sig_ioout28 motion.0.digital-out-28
+
+
+
+########备用###############
+setp conv-io.1.inpin-29 [IO_OUTPUT29]PIN
+setp conv-io.1.inpol-29 1
+net sig_ioout29 conv-io.1.inaux-29 => motion.0.user-define-out.29
+net sig_ioout29 motion.0.digital-out-29
+
+########备用###############
+setp conv-io.1.inpin-30 [IO_OUTPUT30]PIN
+setp conv-io.1.inpol-30 1
+net sig_ioout30 conv-io.1.inaux-30 => motion.0.user-define-out.30
+net sig_ioout30 motion.0.digital-out-30
+
+########备用###############
+setp conv-io.1.inpin-31 [IO_OUTPUT31]PIN
+setp conv-io.1.inpol-31 1
+net sig_ioout31 conv-io.1.inaux-31 => motion.0.user-define-out.31
+net sig_ioout31 motion.0.digital-out-31
+
+########备用###############
+setp conv-io.1.inpin-32 [IO_OUTPUT32]PIN
+setp conv-io.1.inpol-32 1
+net sig_ioout32 conv-io.1.inaux-32 => motion.0.user-define-out.32
+net sig_ioout32 iocontrol.0.0.coolant-flood
+
+
+########备用###############
+setp conv-io.1.inpin-33 [IO_OUTPUT33]PIN
+setp conv-io.1.inpol-33 1
+net sig_ioout33 conv-io.1.inaux-33 => motion.0.user-define-out.33
+#net sig_ioout33 iocontrol.1.0.coolant-flood
+
+########备用###############
+setp conv-io.1.inpin-34 [IO_OUTPUT34]PIN
+setp conv-io.1.inpol-34 1
+net sig_ioout34 conv-io.1.inaux-34 => motion.0.user-define-out.34
+
+########备用###############
+setp conv-io.1.inpin-35 [IO_OUTPUT35]PIN
+setp conv-io.1.inpol-35 1
+net sig_ioout35 conv-io.1.inaux-35 => motion.0.user-define-out.35
+
+
+
+########备用###############
+setp conv-io.1.inpin-36 [IO_OUTPUT36]PIN
+setp conv-io.1.inpol-36 1
+net sig_ioout36 conv-io.1.inaux-36 => motion.0.user-define-out.36
+net sig_ioout36 motion.0.digital-out-36
+
+########备用###############
+setp conv-io.1.inpin-37 [IO_OUTPUT37]PIN
+setp conv-io.1.inpol-37 1
+net sig_ioout37 conv-io.1.inaux-37 => motion.0.user-define-out.37
+net sig_ioout37 motion.0.digital-out-37
+
+########备用###############
+setp conv-io.1.inpin-38 [IO_OUTPUT38]PIN
+setp conv-io.1.inpol-38 1
+net sig_ioout38 conv-io.1.inaux-38 => motion.0.user-define-out.38
+net sig_ioout38 motion.0.digital-out-38
+
+
+########备用###############
+setp conv-io.1.inpin-39 [IO_OUTPUT39]PIN
+setp conv-io.1.inpol-39 1
+net sig_ioout39 conv-io.1.inaux-39 => motion.0.user-define-out.39
+net sig_ioout39 motion.0.digital-out-39
+
+########备用###############
+setp conv-io.1.inpin-40 [IO_OUTPUT40]PIN
+setp conv-io.1.inpol-40 1
+net sig_ioout40 conv-io.1.inaux-40 => motion.0.user-define-out.40
+net sig_ioout40 motion.0.digital-out-40
+
+########备用###############
+setp conv-io.1.inpin-41 [IO_OUTPUT41]PIN
+setp conv-io.1.inpol-41 1
+net sig_ioout41 conv-io.1.inaux-41 => motion.0.user-define-out.41
+net sig_ioout41 motion.0.digital-out-41
+
+########备用###############
+setp conv-io.1.inpin-42 [IO_OUTPUT42]PIN
+setp conv-io.1.inpol-42 1
+net sig_ioout42 conv-io.1.inaux-42 => motion.0.user-define-out.42
+net sig_ioout42 motion.0.digital-out-42
+
+
+########备用###############
+setp conv-io.1.inpin-43 [IO_OUTPUT43]PIN
+setp conv-io.1.inpol-43 1
+net sig_ioout43 conv-io.1.inaux-43 => motion.0.user-define-out.43
+net sig_ioout43 motion.0.digital-out-43
+
+
+########备用###############
+setp conv-io.1.inpin-44 [IO_OUTPUT44]PIN
+setp conv-io.1.inpol-44 1
+net sig_ioout44 conv-io.1.inaux-44 => motion.0.user-define-out.44
+net sig_ioout44 motion.0.digital-out-44
+
+
+########备用###############
+setp conv-io.1.inpin-45 [IO_OUTPUT45]PIN
+setp conv-io.1.inpol-45 1
+net sig_ioout45 conv-io.1.inaux-45 => motion.0.user-define-out.45
+net sig_ioout45 motion.0.digital-out-45
+
+########备用###############
+setp conv-io.1.inpin-46 [IO_OUTPUT46]PIN
+setp conv-io.1.inpol-46 1
+net sig_ioout46 conv-io.1.inaux-46 => motion.0.user-define-out.46
+net sig_ioout46 motion.0.digital-out-46
+
+########备用###############
+setp conv-io.1.inpin-47 [IO_OUTPUT47]PIN
+setp conv-io.1.inpol-47 1
+net sig_ioout47 conv-io.1.inaux-47 => motion.0.user-define-out.47
+net sig_ioout47 motion.0.digital-out-47
+
+########备用###############
+setp conv-io.1.inpin-48 [IO_OUTPUT48]PIN
+setp conv-io.1.inpol-48 1
+net sig_ioout48 conv-io.1.inaux-48 => motion.0.user-define-out.48
+net sig_ioout48 motion.0.digital-out-48
+
+########备用###############
+setp conv-io.1.inpin-49 [IO_OUTPUT49]PIN
+setp conv-io.1.inpol-49 1
+net sig_ioout49 conv-io.1.inaux-49 => motion.0.user-define-out.49
+net sig_ioout49 motion.0.digital-out-49
+
+########备用###############
+setp conv-io.1.inpin-50 [IO_OUTPUT50]PIN
+setp conv-io.1.inpol-50 1
+net sig_ioout50 conv-io.1.inaux-50 => motion.0.user-define-out.50
+net sig_ioout50 motion.0.digital-out-50
+
+
+########备用###############
+setp conv-io.1.inpin-51 [IO_OUTPUT51]PIN
+setp conv-io.1.inpol-51 1
+net sig_ioout51 conv-io.1.inaux-51 => motion.0.user-define-out.51
+net sig_ioout51 motion.0.digital-out-51
+
+
+########备用###############
+setp conv-io.1.inpin-52 [IO_OUTPUT52]PIN
+setp conv-io.1.inpol-52 1
+net sig_ioout52 conv-io.1.inaux-52 => motion.0.user-define-out.52
+net sig_ioout52 motion.0.digital-out-52
+
+
+
+########备用###############
+setp conv-io.1.inpin-53 [IO_OUTPUT53]PIN
+setp conv-io.1.inpol-53 1
+net sig_ioout53 conv-io.1.inaux-53 => motion.0.user-define-out.53
+net sig_ioout53 motion.0.digital-out-53
+
+
+########备用###############
+setp conv-io.1.inpin-54 [IO_OUTPUT54]PIN
+setp conv-io.1.inpol-54 1
+net sig_ioout54 conv-io.1.inaux-54 => motion.0.user-define-out.54
+net sig_ioout54 motion.0.digital-out-54
+
+
+########备用###############
+setp conv-io.1.inpin-55 [IO_OUTPUT55]PIN
+setp conv-io.1.inpol-55 1
+net sig_ioout55 conv-io.1.inaux-55 => motion.0.user-define-out.55
+net sig_ioout55 motion.0.digital-out-55
+
+
+########备用###############
+setp conv-io.1.inpin-56 [IO_OUTPUT56]PIN
+setp conv-io.1.inpol-56 1
+net sig_ioout56 conv-io.1.inaux-56 => motion.0.user-define-out.56
+net sig_ioout56 motion.0.digital-out-56
+
+
+########备用###############
+setp conv-io.1.inpin-57 [IO_OUTPUT57]PIN
+setp conv-io.1.inpol-57 1
+net sig_ioout57 conv-io.1.inaux-57 => motion.0.user-define-out.57
+#net sig_ioout57 motion.0.digital-out-057
+
+
+########备用###############
+setp conv-io.1.inpin-58 [IO_OUTPUT58]PIN
+setp conv-io.1.inpol-58 1
+net sig_ioout58 conv-io.1.inaux-58 => motion.0.user-define-out.58
+#net sig_ioout58 motion.0digital-out-58
+
+
+########备用###############
+setp conv-io.1.inpin-59 [IO_OUTPUT59]PIN
+setp conv-io.1.inpol-59 1
+net sig_ioout59 conv-io.1.inaux-59 => motion.0.user-define-out.59
+#net sig_ioout59 motion.0.digital-out-59
+
+
+########备用###############
+setp conv-io.1.inpin-60 [IO_OUTPUT60]PIN
+setp conv-io.1.inpol-60 1
+net sig_ioout60 conv-io.1.inaux-60 => motion.0.user-define-out.60
+#net sig_ioout60 motion.0.digital-out-60
+
+
+########备用###############
+setp conv-io.1.inpin-61 [IO_OUTPUT61]PIN
+setp conv-io.1.inpol-61 1
+net sig_ioout61 conv-io.1.inaux-61 => motion.0.user-define-out.61
+#net sig_ioout61 motion.0.digital-out-61
+
+
+########备用###############
+setp conv-io.1.inpin-62 [IO_OUTPUT62]PIN
+setp conv-io.1.inpol-62 1
+net sig_ioout62 conv-io.1.inaux-62 => motion.0.user-define-out.62
+#net sig_ioout62 motion.0.digital-out-62S
+
+
+########备用###############
+setp conv-io.1.inpin-63 [IO_OUTPUT63]PIN
+setp conv-io.1.inpol-63 1
+net sig_ioout63 conv-io.1.inaux-63 => motion.0.user-define-out.63
+#net sig_ioout63 motion.0.digital-out-63
+
+
+########备用###############
+setp conv-io.1.inpin-64 [IO_OUTPUT64]PIN
+setp conv-io.1.inpol-64 1
+net sig_ioout64 conv-io.1.inaux-64 => motion.0.user-define-out.64
+#net sig_ioout64 motion.0.digital-out-64
+
+########备用###############
+setp conv-io.1.inpin-65 [IO_OUTPUT65]PIN
+setp conv-io.1.inpol-65 1
+net sig_ioout65 conv-io.1.inaux-65 => motion.0.user-define-out.65
+#net sig_ioout65 motion.1.digital-out-65
+
+########备用###############
+setp conv-io.1.inpin-66 [IO_OUTPUT66]PIN
+setp conv-io.1.inpol-66 1
+net sig_ioout66 conv-io.1.inaux-66 => motion.0.user-define-out.66
+#net sig_ioout66 motion.2.digital-out-66
+
+########备用###############
+setp conv-io.1.inpin-67 [IO_OUTPUT67]PIN
+setp conv-io.1.inpol-67 1
+net sig_ioout67 conv-io.1.inaux-67 => motion.0.user-define-out.67
+#net sig_ioout67 motion.3.digital-out-67
+
+########备用###############
+setp conv-io.1.inpin-68 [IO_OUTPUT68]PIN
+setp conv-io.1.inpol-68 1
+#net sig_ioout68 conv-io.1.inaux-68 => motion.0.user-define-out.68
+
+########备用###############
+setp conv-io.1.inpin-69 [IO_OUTPUT69]PIN
+setp conv-io.1.inpol-69 1
+#net sig_ioout69 conv-io.1.inaux-69 => motion.0.user-define-out.69
+
+########备用###############
+setp conv-io.1.inpin-70 [IO_OUTPUT70]PIN
+setp conv-io.1.inpol-70 1
+#net sig_ioout70 conv-io.1.inaux-70 => motion.0.user-define-out.70
+
+########备用###############
+setp conv-io.1.inpin-71 [IO_OUTPUT71]PIN
+setp conv-io.1.inpol-71 1
+#net sig_ioout71 conv-io.1.inaux-71 => motion.0.user-define-out.71
+
+
+
+#################input#########################
+
+
+net sig_auxio4 ethercat.io.0.din.00.in => conv-io.0.inaux-0 
+net sig_auxio5 ethercat.io.0.din.01.in => conv-io.0.inaux-1 
+net sig_auxio6 ethercat.io.0.din.02.in => conv-io.0.inaux-2 
+net sig_auxio7 ethercat.io.0.din.03.in => conv-io.0.inaux-3 
+net sig_auxio8 ethercat.io.0.din.04.in => conv-io.0.inaux-4 
+net sig_auxio9 ethercat.io.0.din.05.in => conv-io.0.inaux-5 
+net sig_auxio10 ethercat.io.0.din.06.in => conv-io.0.inaux-6 
+net sig_auxio11 ethercat.io.0.din.07.in => conv-io.0.inaux-7
+net sig_auxio12 ethercat.io.0.din.08.in => conv-io.0.inaux-8
+net sig_auxio13 ethercat.io.0.din.09.in => conv-io.0.inaux-9 
+net sig_auxio14 ethercat.io.0.din.10.in => conv-io.0.inaux-10 
+net sig_auxio15 ethercat.io.0.din.11.in => conv-io.0.inaux-11
+net sig_auxio16 ethercat.io.0.din.12.in => conv-io.0.inaux-12
+net sig_auxio17 ethercat.io.0.din.13.in => conv-io.0.inaux-13 
+net sig_auxio18 ethercat.io.0.din.14.in => conv-io.0.inaux-14 
+net sig_auxio19 ethercat.io.0.din.15.in => conv-io.0.inaux-15 
+net sig_auxio20 ethercat.io.0.din.16.in => conv-io.0.inaux-16 
+net sig_auxio21 ethercat.io.0.din.17.in => conv-io.0.inaux-17 
+net sig_auxio22 ethercat.io.0.din.18.in => conv-io.0.inaux-18 
+net sig_auxio23 ethercat.io.0.din.19.in => conv-io.0.inaux-19 
+net sig_auxio24 ethercat.io.0.din.20.in => conv-io.0.inaux-20 
+net sig_auxio25 ethercat.io.0.din.21.in => conv-io.0.inaux-21 
+net sig_auxio26 ethercat.io.0.din.22.in => conv-io.0.inaux-22 
+net sig_auxio27 ethercat.io.0.din.23.in => conv-io.0.inaux-23 
+
+
+net sig_auxio28 ethercat.mt.00.din.00.in => conv-io.0.inaux-24 
+net sig_auxio29 ethercat.mt.00.din.01.in => conv-io.0.inaux-25 
+net sig_auxio30 ethercat.mt.00.din.02.in => conv-io.0.inaux-26 
+net sig_auxio31 ethercat.mt.00.din.03.in => conv-io.0.inaux-27
+net sig_auxio32 ethercat.mt.00.din.04.in => conv-io.0.inaux-28 
+net sig_auxio33 ethercat.mt.00.din.05.in => conv-io.0.inaux-29 
+net sig_auxio34 ethercat.mt.00.din.06.in => conv-io.0.inaux-30 
+net sig_auxio35 ethercat.mt.00.din.07.in => conv-io.0.inaux-31
+
+net sig_auxio36 ethercat.mt.01.din.00.in => conv-io.0.inaux-32
+net sig_auxio37 ethercat.mt.01.din.01.in => conv-io.0.inaux-33
+net sig_auxio38 ethercat.mt.01.din.02.in => conv-io.0.inaux-34 
+net sig_auxio39 ethercat.mt.01.din.03.in => conv-io.0.inaux-35 
+net sig_auxio40 ethercat.mt.01.din.04.in => conv-io.0.inaux-36 
+net sig_auxio41 ethercat.mt.01.din.05.in => conv-io.0.inaux-37
+net sig_auxio42 ethercat.mt.01.din.06.in => conv-io.0.inaux-38 
+net sig_auxio43 ethercat.mt.01.din.07.in => conv-io.0.inaux-39 
+
+
+net sig_MT3inio0 ethercat.mt.02.din.00.in => conv-io.0.inaux-40
+net sig_MT3inio1 ethercat.mt.02.din.01.in => conv-io.0.inaux-41
+net sig_MT3inio2 ethercat.mt.02.din.02.in => conv-io.0.inaux-42
+net sig_MT3inio3 ethercat.mt.02.din.03.in => conv-io.0.inaux-43 
+net sig_MT3inio4 ethercat.mt.02.din.04.in => conv-io.0.inaux-44 
+net sig_MT3inio5 ethercat.mt.02.din.05.in => conv-io.0.inaux-45
+net sig_MT3inio6 ethercat.mt.02.din.06.in => conv-io.0.inaux-46
+net sig_MT3inio7 ethercat.mt.02.din.07.in => conv-io.0.inaux-47
+
+net sig_MT4inio0 ethercat.mt.03.din.00.in => conv-io.0.inaux-48
+net sig_MT4inio1 ethercat.mt.03.din.01.in => conv-io.0.inaux-49
+net sig_MT4inio2 ethercat.mt.03.din.02.in => conv-io.0.inaux-50
+net sig_MT4inio3 ethercat.mt.03.din.03.in => conv-io.0.inaux-51 
+net sig_MT4inio4 ethercat.mt.03.din.04.in => conv-io.0.inaux-52 
+net sig_MT4inio5 ethercat.mt.03.din.05.in => conv-io.0.inaux-53
+net sig_MT4inio6 ethercat.mt.03.din.06.in => conv-io.0.inaux-54
+net sig_MT4inio7 ethercat.mt.03.din.07.in => conv-io.0.inaux-55
+
+net sig_MT5inio0 ethercat.mt.04.din.00.in => conv-io.0.inaux-56
+net sig_MT5inio1 ethercat.mt.04.din.01.in => conv-io.0.inaux-57
+net sig_MT5inio2 ethercat.mt.04.din.02.in => conv-io.0.inaux-58
+net sig_MT5inio3 ethercat.mt.04.din.03.in => conv-io.0.inaux-59
+net sig_MT5inio4 ethercat.mt.04.din.04.in => conv-io.0.inaux-60
+net sig_MT5inio5 ethercat.mt.04.din.05.in => conv-io.0.inaux-61
+net sig_MT5inio6 ethercat.mt.04.din.06.in => conv-io.0.inaux-62
+net sig_MT5inio7 ethercat.mt.04.din.07.in => conv-io.0.inaux-63
+
+net sig_MT6inio0 ethercat.mt.05.din.00.in => conv-io.0.inaux-64
+net sig_MT6inio1 ethercat.mt.05.din.01.in => conv-io.0.inaux-65
+net sig_MT6inio2 ethercat.mt.05.din.02.in => conv-io.0.inaux-66
+net sig_MT6inio3 ethercat.mt.05.din.03.in => conv-io.0.inaux-67 
+net sig_MT6inio4 ethercat.mt.05.din.04.in => conv-io.0.inaux-68 
+net sig_MT6inio5 ethercat.mt.05.din.05.in => conv-io.0.inaux-69
+net sig_MT6inio6 ethercat.mt.05.din.06.in => conv-io.0.inaux-70
+net sig_MT6inio7 ethercat.mt.05.din.07.in => conv-io.0.inaux-71
+
+net sig_MT7inio0 ethercat.mt.06.din.00.in => conv-io.0.inaux-72
+net sig_MT7inio1 ethercat.mt.06.din.01.in => conv-io.0.inaux-73
+net sig_MT7inio2 ethercat.mt.06.din.02.in => conv-io.0.inaux-74
+net sig_MT7inio3 ethercat.mt.06.din.03.in => conv-io.0.inaux-75 
+net sig_MT7inio4 ethercat.mt.06.din.04.in => conv-io.0.inaux-76 
+net sig_MT7inio5 ethercat.mt.06.din.05.in => conv-io.0.inaux-77
+net sig_MT7inio6 ethercat.mt.06.din.06.in => conv-io.0.inaux-78
+net sig_MT7inio7 ethercat.mt.06.din.07.in => conv-io.0.inaux-79
+
+#################output#########################
+net sig_outio0  ethercat.io.0.dout.00.out <= conv-io.1.outpin-0
+net sig_outio1  ethercat.io.0.dout.01.out <= conv-io.1.outpin-1
+net sig_outio2  ethercat.io.0.dout.02.out <= conv-io.1.outpin-2
+net sig_outio3  ethercat.io.0.dout.03.out <= conv-io.1.outpin-3
+net sig_outio4  ethercat.io.0.dout.04.out <= conv-io.1.outpin-4
+net sig_outio5  ethercat.io.0.dout.05.out <= conv-io.1.outpin-5
+net sig_outio6  ethercat.io.0.dout.06.out <= conv-io.1.outpin-6
+net sig_outio7  ethercat.io.0.dout.07.out <= conv-io.1.outpin-7
+net sig_outio8  ethercat.io.0.dout.08.out <= conv-io.1.outpin-8
+net sig_outio9  ethercat.io.0.dout.09.out <= conv-io.1.outpin-9
+net sig_outio10 ethercat.io.0.dout.10.out <= conv-io.1.outpin-10
+net sig_outio11 ethercat.io.0.dout.11.out <= conv-io.1.outpin-11
+net sig_outio12 ethercat.io.0.dout.12.out <= conv-io.1.outpin-12
+net sig_outio13 ethercat.io.0.dout.13.out <= conv-io.1.outpin-13
+net sig_outio14 ethercat.io.0.dout.14.out <= conv-io.1.outpin-14
+net sig_outio15 ethercat.io.0.dout.15.out <= conv-io.1.outpin-15
+
+####board 1
+net sig_MT1outio0  ethercat.mt.00.dout.00.out <= conv-io.1.outpin-16
+net sig_MT1outio1  ethercat.mt.00.dout.01.out <= conv-io.1.outpin-17
+net sig_MT1outio2  ethercat.mt.00.dout.02.out <= conv-io.1.outpin-18
+net sig_MT1outio3  ethercat.mt.00.dout.03.out <= conv-io.1.outpin-19
+net sig_MT1outio4  ethercat.mt.00.dout.04.out <= conv-io.1.outpin-20
+net sig_MT1outio5  ethercat.mt.00.dout.05.out <= conv-io.1.outpin-21
+net sig_MT1outio6  ethercat.mt.00.dout.06.out <= conv-io.1.outpin-22
+net sig_MT1outio7  ethercat.mt.00.dout.07.out <= conv-io.1.outpin-23
+
+####board 2
+net sig_MT2outio0  ethercat.mt.01.dout.00.out <= conv-io.1.outpin-24
+net sig_MT2outio1  ethercat.mt.01.dout.01.out <= conv-io.1.outpin-25
+net sig_MT2outio2  ethercat.mt.01.dout.02.out <= conv-io.1.outpin-26
+net sig_MT2outio3  ethercat.mt.01.dout.03.out <= conv-io.1.outpin-27
+net sig_MT2outio4  ethercat.mt.01.dout.04.out <= conv-io.1.outpin-28
+net sig_MT2outio5  ethercat.mt.01.dout.05.out <= conv-io.1.outpin-29
+net sig_MT2outio6  ethercat.mt.01.dout.06.out <= conv-io.1.outpin-30
+net sig_MT2outio7  ethercat.mt.01.dout.07.out <= conv-io.1.outpin-31
+
+
+####board 3
+net sig_MT3outio0  ethercat.mt.02.dout.00.out <= conv-io.1.outpin-32
+net sig_MT3outio1  ethercat.mt.02.dout.01.out <= conv-io.1.outpin-33
+net sig_MT3outio2  ethercat.mt.02.dout.02.out <= conv-io.1.outpin-34
+net sig_MT3outio3  ethercat.mt.02.dout.03.out <= conv-io.1.outpin-35
+net sig_MT3outio4  ethercat.mt.02.dout.04.out <= conv-io.1.outpin-36
+net sig_MT3outio5  ethercat.mt.02.dout.05.out <= conv-io.1.outpin-37
+net sig_MT3outio6  ethercat.mt.02.dout.06.out <= conv-io.1.outpin-38
+net sig_MT3outio7  ethercat.mt.02.dout.07.out <= conv-io.1.outpin-39
+
+
+
+####board 4
+net sig_MT4outio0  ethercat.mt.03.dout.00.out <= conv-io.1.outpin-40
+net sig_MT4outio1  ethercat.mt.03.dout.01.out <= conv-io.1.outpin-41
+net sig_MT4outio2  ethercat.mt.03.dout.02.out <= conv-io.1.outpin-42
+net sig_MT4outio3  ethercat.mt.03.dout.03.out <= conv-io.1.outpin-43
+net sig_MT4outio4  ethercat.mt.03.dout.04.out <= conv-io.1.outpin-44
+net sig_MT4outio5  ethercat.mt.03.dout.05.out <= conv-io.1.outpin-45
+net sig_MT4outio6  ethercat.mt.03.dout.06.out <= conv-io.1.outpin-46
+net sig_MT4outio7  ethercat.mt.03.dout.07.out <= conv-io.1.outpin-47
+
+####board 5
+net sig_MT5outio0  ethercat.mt.04.dout.00.out <= conv-io.1.outpin-48
+net sig_MT5outio1  ethercat.mt.04.dout.01.out <= conv-io.1.outpin-49
+net sig_MT5outio2  ethercat.mt.04.dout.02.out <= conv-io.1.outpin-50
+net sig_MT5outio3  ethercat.mt.04.dout.03.out <= conv-io.1.outpin-51
+net sig_MT5outio4  ethercat.mt.04.dout.04.out <= conv-io.1.outpin-52
+net sig_MT5outio5  ethercat.mt.04.dout.05.out <= conv-io.1.outpin-53
+net sig_MT5outio6  ethercat.mt.04.dout.06.out <= conv-io.1.outpin-54
+net sig_MT5outio7  ethercat.mt.04.dout.07.out <= conv-io.1.outpin-55
+
+####board 6
+net sig_MT6outio0  ethercat.mt.05.dout.00.out <= conv-io.1.outpin-56
+net sig_MT6outio1  ethercat.mt.05.dout.01.out <= conv-io.1.outpin-57
+net sig_MT6outio2  ethercat.mt.05.dout.02.out <= conv-io.1.outpin-58
+net sig_MT6outio3  ethercat.mt.05.dout.03.out <= conv-io.1.outpin-59
+net sig_MT6outio4  ethercat.mt.05.dout.04.out <= conv-io.1.outpin-60
+net sig_MT6outio5  ethercat.mt.05.dout.05.out <= conv-io.1.outpin-61
+net sig_MT6outio6  ethercat.mt.05.dout.06.out <= conv-io.1.outpin-62
+net sig_MT6outio7  ethercat.mt.05.dout.07.out <= conv-io.1.outpin-63
+
+
+####board 7
+net sig_MT7outio0  ethercat.mt.06.dout.00.out <= conv-io.1.outpin-64
+net sig_MT7outio1  ethercat.mt.06.dout.01.out <= conv-io.1.outpin-65
+net sig_MT7outio2  ethercat.mt.06.dout.02.out <= conv-io.1.outpin-66
+net sig_MT7outio3  ethercat.mt.06.dout.03.out <= conv-io.1.outpin-67
+net sig_MT7outio4  ethercat.mt.06.dout.04.out <= conv-io.1.outpin-68
+net sig_MT7outio5  ethercat.mt.06.dout.05.out <= conv-io.1.outpin-69
+net sig_MT7outio6  ethercat.mt.06.dout.06.out <= conv-io.1.outpin-70
+net sig_MT7outio7  ethercat.mt.06.dout.07.out <= conv-io.1.outpin-71
+
+

@@ -1,0 +1,64 @@
+component conv_io "Convert the ini to io";
+param rw u32 inpin-# [100];
+param rw u32 inpol-# [100];
+pin in bit inaux-# [100];
+pin in bit insim-# [100];
+param rw u32 simflagout;
+param rw u32 simflagin;
+param rw u32 io_type;
+
+pin out bit outpin-# [100];
+pin out bit error """If TRUE, then the io will be error and return  If FALSE, then continue.""";
+function _  "Update 'out' based on 'in'";
+license "GPL";
+
+;;
+FUNCTION(_) {
+	int i=0;
+
+	if(0 == io_type) {
+		for(i=0;i<100;i++) {
+			if(inpin(i)>99 || inpin(i)<0) {
+				error = 1;
+				return;
+			} 
+			if(0 == inpol(i)) {
+				if(1 == simflagin) {
+					outpin(i) = insim(inpin(i));	 
+				} else {
+					outpin(i) = inaux(inpin(i));
+				}
+			} else {
+				if(1 == simflagin) {
+					outpin(i) = !insim(inpin(i));	 
+				} else {
+					outpin(i) = !inaux(inpin(i));
+				}
+			}   
+			error = 0;
+	    } 
+	} else if(1 == io_type) {
+		for(i=0;i<100;i++) {
+			if(inpin(i)>99 || inpin(i)<0) {
+				error = 1;
+				return;
+			} 
+			if(0 == inpol(i)) {
+
+			} else {
+				if(1 == simflagout) {
+					outpin(inpin(i)) = insim(inpin(i));	  
+				} else {
+					outpin(inpin(i)) = inaux(i);
+				}
+			}
+			error = 0;
+	    }
+	}
+}
+
+
+
+
+
+

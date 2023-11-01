@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>IO_output</class>
+ <widget class="QDialog" name="IO_output">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>854</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QTableWidget" name="table_io_output">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="columnCount">
+      <number>6</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>sig_name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sig_pin</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sig_info</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sig_por</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sig_signal</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sig_time</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionIOControl">
+   <property name="text">
+    <string>IOControl</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+M</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

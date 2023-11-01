@@ -1,0 +1,6 @@
+Log file created at: 2019/07/20 15:27:24
+Running on machine: cnext
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0720 15:27:24.707159  1988 CameraGigeBase.cpp:2904] Device:(name:MV-GE134GM-IT#0 sn:059032510199 cam:192.168.1.18-1000-8000 nic:eth0-192.168.1.13-10M-9000)Heart Fail:1
+W0720 15:27:27.071986  1988 CameraGigeBase.cpp:2904] Device:(name:MV-GE134GM-IT#0 sn:059032510199 cam:192.168.1.18-1000-8000 nic:eth0-192.168.1.13-1000M-9000)Heart Fail:2
+W0720 15:27:28.382431  1988 CameraGigeBase.cpp:2859] Device:(name:MV-GE134GM-IT#0 sn:059032510199 cam:192.168.1.18-1000-8000 nic:eth0-192.168.1.13-1000M-9000)ReConnected, TolCount:1, Flag:0

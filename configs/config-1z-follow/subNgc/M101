@@ -1,0 +1,6 @@
+#!/bin/bash
+count=$1
+echo $count
+halcmd setp motion.count-piece $count
+
+exit 0

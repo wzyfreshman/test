@@ -1,0 +1,13 @@
+m71p4
+m66p25l1q10
+O001 if[#5399 eq -1]
+O610 if[#3680 eq 1]
+(debug,超过10秒没有检测到信号，退出反转.)
+O610 else if[#3680 eq 2]
+(debug,No signal was detected in more than 10 seconds.)
+O610 endif
+m72p4
+m30
+O001 endif
+m72p4
+#3810=[#3810-1]

@@ -1,0 +1,334 @@
+
+(debug,enter ..............)
+
+G1.1(N0_100 N1_100)F3000
+
+
+
+(######进钻慢速距离#######)
+#<drilling_slow_depth>=3
+
+(****************重置IO*****************)
+O001 if[#3659 EQ 0]
+
+(*****下排电机******)
+M65P6
+M65P7
+
+M65P9
+M65P10
+
+M65P12
+M65P13
+
+M65P15
+M65P16
+
+M65P18
+M65P19
+
+
+(*****上排电机******)
+
+M65P21
+M65P22
+
+M65P24
+M65P25
+
+M65P27
+M65P28
+
+M65P30
+M65P31
+
+M65P33
+M65P34
+
+(*****水平电机******)
+M65P0
+M65P1
+
+(关闭传送带)
+m72p8
+m72p9
+m72p10
+m72p11
+
+(######压料返回######)
+m72p4(上压返回)
+m72p5(下压返回)
+
+M72P7(关闭定位气缸)
+
+m72p6(关顶板)
+m72p3(关侧推)
+m72p2(关前推)
+
+m72p1
+
+(****************钻头一键回零*****************)
+O001 else if[#3659 EQ 1]
+
+G1.1(N3_#3753 N5_#3755 N11_#3760 N13_#3761 N15_#3762 N17_#3763 N19_#3764  N41_#3830 N43_#3831 N45_#3832 N47_#3833  N49_#3834)F#3614
+
+(****************水平钻1打孔*****************)
+O001 else if[#3659 EQ 2]
+
+#<p1_depth>=[#3656+#3753] 
+#<p1_slow_depth>=[#<p1_depth>+#<drilling_slow_depth>]
+#<p1_depth2>=[#<p1_depth>+#3703]
+
+M64P0
+
+G1.1(N3_#<p1_depth>)F#3612
+G1.1(N3_#<p1_slow_depth> )F#3613
+G1.1(N3_#<p1_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N3_#3753 )F#3614
+
+M65P0
+
+(****************水平钻2打孔*****************)
+O001 else if[#3659 EQ 3]
+
+#<p2_depth>=[#3656+#3755]
+#<p2_slow_depth>=[#<p2_depth>+#<drilling_slow_depth>]
+#<p2_depth2>=[#<p2_depth>+#3705]
+
+M64P1
+
+G1.1(N5_#<p2_depth>)F#3612
+G1.1(N5_#<p2_slow_depth> )F#3613
+G1.1(N5_#<p2_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N5_#3755 )F#3614
+
+M65P1
+
+(****************下垂直钻1打孔*****************)
+O001 else if[#3659 EQ 4]
+
+#<v1_differ>=[#3910-#3758]
+#<v1_initial>=[#3657-#<v1_differ>]
+#<v1_depth>=[#<v1_initial>+#3760]
+#<v1_slow_depth>=[#<v1_depth>+#<drilling_slow_depth>]
+#<v1_depth2>=[#<v1_depth>+#3711]
+
+M64P6
+M64P7
+
+G1.1(N11_#<v1_depth>)F#3612
+G1.1(N11_#<v1_slow_depth> )F#3613
+G1.1(N11_#<v1_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N11_#3760 )F#3614
+
+M65P6
+M65P7
+
+(****************下垂直钻2打孔*****************)
+O001 else if[#3659 EQ 5]
+
+#<v2_differ>=[#3911-#3758]
+#<v2_initial>=[#3657-#<v2_differ>]
+#<v2_depth>=[#<v2_initial>+#3761]
+#<v2_slow_depth>=[#<v2_depth>+#<drilling_slow_depth>]
+#<v2_depth2>=[#<v2_depth>+#3715]
+
+M64P9
+M64P10
+
+G1.1(N13_#<v2_depth>)F#3612
+G1.1(N13_#<v2_slow_depth> )F#3613
+G1.1(N13_#<v2_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N13_#3761 )F#3614
+
+M65P9
+M65P10
+
+(****************下垂直钻3打孔*****************)
+O001 else if[#3659 EQ 6]
+
+#<v3_differ>=[#3912-#3758]
+#<v3_initial>=[#3657-#<v3_differ>]
+#<v3_depth>=[#<v3_initial>+#3762]
+#<v3_slow_depth>=[#<v3_depth>+#<drilling_slow_depth>]
+#<v3_depth2>=[#<v3_depth>+#3719]
+
+M64P12
+M64P13
+
+G1.1(N15_#<v3_depth>)F#3612
+G1.1(N15_#<v3_slow_depth> )F#3613
+G1.1(N15_#<v3_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N15_#3762 )F#3614
+
+M65P12
+M65P13
+
+(****************下垂直钻4打孔*****************)
+O001 else if[#3659 EQ 7]
+
+#<v4_differ>=[#3913-#3758]
+#<v4_initial>=[#3657-#<v4_differ>]
+#<v4_depth>=[#<v4_initial>+#3763]
+#<v4_slow_depth>=[#<v4_depth>+#<drilling_slow_depth>]
+#<v4_depth2>=[#<v4_depth>+#3723]
+
+M64P15
+M64P16
+
+G1.1(N17_#<v4_depth>)F#3612
+G1.1(N17_#<v4_slow_depth> )F#3613
+G1.1(N17_#<v4_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N17_#3763 )F#3614
+
+M65P15
+M65P16
+
+(****************下垂直钻5打孔*****************)
+O001 else if[#3659 EQ 8]
+
+#<v5_differ>=[#3914-#3758]
+#<v5_initial>=[#3657-#<v5_differ>]
+#<v5_depth>=[#<v5_initial>+#3764]
+#<v5_slow_depth>=[#<v5_depth>+#<drilling_slow_depth>]
+#<v5_depth2>=[#<v5_depth>+#3727]
+
+M64P18
+M64P19
+
+G1.1(N19_#<v5_depth>)F#3612
+G1.1(N19_#<v5_slow_depth> )F#3613
+G1.1(N19_#<v5_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N19_#3764 )F#3614
+
+M65P18
+M65P19
+
+
+
+(****************上垂直钻1打孔*****************)
+O001 else if[#3659 EQ 25]
+
+#<top_JL>=[#3699 - #3689]
+#<u1_differ>=[#3920-#3758]
+#<u1_initial>=[#<top_JL>-#<u1_differ>]
+#<u1_depth>=[#<u1_initial>+#3830]
+#<u1_slow_depth>=[#<u1_depth>+#<drilling_slow_depth>]
+#<u1_depth2>=[#<u1_depth>+#3713]
+
+M64P21
+M64P22
+
+G1.1(N41_#<u1_depth>)F#3612
+G1.1(N41_#<u1_slow_depth> )F#3613
+G1.1(N41_#<u1_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N41_#3830 )F#3614
+
+M65P21
+M65P22
+
+(****************上垂直钻2打孔*****************)
+O001 else if[#3659 EQ 26]
+
+#<top_JL>=[#3699 - #3689]
+#<u2_differ>=[#3921-#3758]
+#<u2_initial>=[#<top_JL>-#<u2_differ>]
+#<u2_depth>=[#<u2_initial>+#3831]
+#<u2_slow_depth>=[#<u2_depth>+#<drilling_slow_depth>]
+#<u2_depth2>=[#<u2_depth>+#3717]
+
+M64P24
+M64P25
+
+G1.1(N43_#<u2_depth>)F#3612
+G1.1(N43_#<u2_slow_depth> )F#3613
+G1.1(N43_#<u2_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N43_#3831 )F#3614
+
+M65P24
+M65P25
+
+
+(****************上垂直钻3打孔*****************)
+O001 else if[#3659 EQ 27]
+
+#<top_JL>=[#3699 - #3689]
+#<u3_differ>=[#3922-#3758]
+#<u3_initial>=[#<top_JL>-#<u3_differ>]
+#<u3_depth>=[#<u3_initial>+#3832]
+#<u3_slow_depth>=[#<u3_depth>+#<drilling_slow_depth>]
+#<u3_depth2>=[#<u3_depth>+#3721]
+
+M64P27
+M64P28
+
+G1.1(N45_#<u3_depth>)F#3612
+G1.1(N45_#<u3_slow_depth> )F#3613
+G1.1(N45_#<u3_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N45_#3832 )F#3614
+
+M65P27
+M65P28
+
+
+(****************上垂直钻4打孔*****************)
+O001 else if[#3659 EQ 28]
+
+#<top_JL>=[#3699 - #3689]
+#<u4_differ>=[#3923-#3758]
+#<u4_initial>=[#<top_JL>-#<u4_differ>]
+#<u4_depth>=[#<u4_initial>+#3833]
+#<u4_slow_depth>=[#<u4_depth>+#<drilling_slow_depth>]
+#<u4_depth2>=[#<u4_depth>+#3725]
+
+M64P30
+M64P31
+
+G1.1(N47_#<u4_depth>)F#3612
+G1.1(N47_#<u4_slow_depth> )F#3613
+G1.1(N47_#<u4_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N47_#3833 )F#3614
+
+M65P30
+M65P31
+
+
+
+(****************上垂直钻5打孔*****************)
+O001 else if[#3659 EQ 29]
+
+#<top_JL>=[#3699 - #3689]
+#<u5_differ>=[#3924-#3758]
+#<u5_initial>=[#<top_JL>-#<u5_differ>]
+#<u5_depth>=[#<u5_initial>+#3834]
+#<u5_slow_depth>=[#<u5_depth>+#<drilling_slow_depth>]
+#<u5_depth2>=[#<u5_depth>+#3729]
+
+M64P33
+M64P34
+
+G1.1(N49_#<u5_depth>)F#3612
+G1.1(N49_#<u5_slow_depth> )F#3613
+G1.1(N49_#<u5_depth2>)F#3612
+g4p#3602(圆整时间)
+G1.1(N49_#3834 )F#3614
+
+M65P33
+M65P34
+
+
+O001 endif
+
+
+

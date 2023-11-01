@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<EtherCATInfo>
+	<Vendor>
+		<Id>#x1dd</Id>
+	</Vendor>
+	<Descriptions>
+		<Type RevisionNo="#x02040608" ProductCode="#x10305070">i3DS-**A30</Type>
+
+	<TxPdo Fixed="0">
+		<Fmmu>Inputs</Fmmu>
+		<Index>#x1A00</Index>
+		<Name LcId="1033">1st transmit PDO Mapping</Name>
+		<Exclude>#x1a01</Exclude>
+		<Exclude>#x1a02</Exclude>
+		<Exclude>#x1a03</Exclude>
+		<Entry>
+			<Index>#x6061</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>8</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x603F</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x606C</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name>Velocity actual value</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x6077</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name>ActualTorque</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+	</TxPdo>
+
+	<TxPdo Fixed="0">
+		<Fmmu>Inputs</Fmmu>
+		<Index>#x1A01</Index>
+		<Name LcId="1033">2st transmit PDO Mapping</Name>
+		<Entry>
+			<Index>#x6041</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Statusword</Name>
+			<DataType>UINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x6064</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Position actual value</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+	</TxPdo>
+	
+	<RxPdo Fixed="0">
+		<Fmmu>Outputs</Fmmu>
+		<Index>#x1600</Index>
+		<Name LcId="1033">1st receive PDO Mapping</Name>
+		<Exclude>#x1601</Exclude>
+		<Exclude>#x1602</Exclude>
+		<Exclude>#x1603</Exclude>
+		<Entry>
+			<Index>#x60FF</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name>TargetVelocity</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+
+		<Entry>
+			<Index>#x6071</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name>TargetTorque</Name>
+			<DataType>INT</DataType>
+		</Entry>
+		
+		<Entry>
+			<Index>#x6060</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>8</BitLen>
+			<Name>ModeOfOperation</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+	</RxPdo>
+
+	<RxPdo Fixed="0">
+		<Fmmu>Outputs</Fmmu>
+		<Index>#x1601</Index>
+		<Name LcId="1033">2st receive PDO Mapping</Name>
+		<Exclude>#x1600</Exclude>
+		<Exclude>#x1602</Exclude>
+		<Exclude>#x1603</Exclude>
+		<Entry>
+			<Index>#x6040</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Controlword</Name>
+			<DataType>UINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x607A</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Target position</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+	</RxPdo>
+
+		
+	<Dc>
+		<OpMode>
+			<Name>DC</Name>
+			<Desc>DC-Synchron</Desc>
+			<AssignActivate>#x300</AssignActivate>
+			<CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+			<ShiftTimeSync0>0</ShiftTimeSync0>
+			<CycleTimeSync1 Factor="1">0</CycleTimeSync1>
+		</OpMode>
+	</Dc>
+
+
+	<Sdo>
+	</Sdo>
+
+	</Descriptions>
+</EtherCATInfo>

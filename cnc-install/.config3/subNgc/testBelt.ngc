@@ -1,0 +1,30 @@
+	(###########上料##########)
+	
+	m71p6(顶板)
+	M71P7(打开定位气缸)
+	M72P11
+	M71P10(传送带高速)
+	M71P8(传送带正转)
+    M70P22L1
+	
+	
+	m66p0l4q#3611(检测木板感应信号)
+	O002 if[#5399 EQ -1]
+	
+	O003 if[#3680 EQ 1]
+	(debug,超过#3611 秒没有检测到木板，退出运行)
+	O003 else if[#3680 EQ 2]
+	(debug,The board was not detected in #3611 seconds and out of operation)
+	O003 endif
+	
+    M70P22L0
+	M72P8
+	M72P7
+    #3941=1
+	M30
+	O002 endif
+	
+	g4p#3605(送料到位延时)
+	
+	M72P8
+	m72p6(顶板)

@@ -1,0 +1,38 @@
+component lubepressure "lubepressure";
+
+pin in bit in0;
+pin in bit in1;
+pin out bit out;
+
+param rw u32 wait_delay = 2;
+param rw u32 useflag = 0;
+
+variable double timer;
+
+
+function _;
+
+license "GPL";
+;;
+
+FUNCTION(_) {
+    if(useflag == 1) {
+	if(in0 > 0) {
+		timer += fperiod;
+		if(timer > wait_delay) {
+			timer = 0;
+			if(in1 == 0) {
+				out = 1;
+			} else {
+				out = 0;
+			}
+		}
+	} else {
+		out = 0;
+	}
+    } else {
+	out = 0;
+    }
+}
+
+

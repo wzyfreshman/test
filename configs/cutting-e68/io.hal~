@@ -1,0 +1,465 @@
+########################################################
+## 2014-01-12
+## by ECNC
+########################################################     
+     
+#ghf-2014/5/28
+# <<section 2>> ------ axis zero index pulse
+# connect index pulses to motion controller
+# do these when index pulsing is figured out
+
+net Xindex <= ethercat.io.00.indexenable_0 axis.0.index-enable
+net Yindex <= ethercat.io.00.indexenable_1 axis.1.index-enable
+net Zindex <= ethercat.io.00.indexenable_2 axis.2.index-enable
+net Aindex <= ethercat.io.00.indexenable_3 axis.3.index-enable
+net Bindex <= ethercat.io.00.indexenable_4 axis.4.index-enable
+net Cindex <= ethercat.io.00.indexenable_5 axis.5.index-enable
+
+net Xclr <= ethercat.mt.00.set_zero axis.0.homeclearpos
+net Yclr <= ethercat.mt.01.set_zero axis.1.homeclearpos
+net Zclr <= ethercat.mt.02.set_zero axis.2.homeclearpos
+net Aclr <= ethercat.mt.03.set_zero axis.3.homeclearpos
+net Bclr <= ethercat.mt.04.set_zero axis.4.homeclearpos
+net Cclr <= ethercat.mt.05.set_zero axis.5.homeclearpos
+
+# <<section 8>> ------ the Spindle Value
+#newsig spindle_value float
+net spindle_value motion.distance-to-go ethercat.master.DAVol.1
+setp ethercat.master.DAScale.1 [TRAJ]SPINDLE_SCALE
+
+#setp ethercat.io.0.data_7010_1 0xff
+
+# <<section 9>> ------ the jog-wheel(handle)
+#enable jog-wheel limit velocity
+setp axis.0.jog-vel-mode 1
+setp axis.1.jog-vel-mode 1
+setp axis.2.jog-vel-mode 1
+setp axis.3.jog-vel-mode 1
+#setp axis.4.jog-vel-mode 1
+#setp axis.5.jog-vel-mode 1
+#setp axis.6.jog-vel-mode 1
+
+# <<section 10>> ------ the doublez Value ghf-2014/2/26
+#newsig set_which_z_value s32
+#net set_which_z_value motion.set_which_z ppmc.0.stepgen.set_which_z
+
+# handle
+net jog_enable axis.0.jog-enable
+net jog_enable axis.1.jog-enable
+net jog_enable axis.2.jog-enable
+net jog_enable axis.3.jog-enable
+#net jog_enable axis.4.jog-enable
+#net jog_enable axis.5.jog-enable
+#net jog_enable axis.6.jog-enable
+
+setp axis.0.jog-scale [TRAJ]HANDLE_SCALE
+setp axis.1.jog-scale [TRAJ]HANDLE_SCALE
+setp axis.2.jog-scale [TRAJ]HANDLE_SCALE
+setp axis.3.jog-scale [TRAJ]HANDLE_SCALE
+#setp axis.4.jog-scale [TRAJ]HANDLE_SCALE
+#setp axis.5.jog-scale [TRAJ]HANDLE_SCALE
+#setp axis.6.jog-scale [TRAJ]HANDLE_SCALE
+
+
+#ghf-2014/5/28
+net handlestate motion.jogVal ethercat.master.handleVal
+
+#hong-2014-08-29
+#net fpgastatus motion.fpgastatus ppmc.0.fpgastatus
+setp motion.fpgastatus 0xff
+
+net ethready motion.EthReady ethercat.master.ready motion.linktoEth
+
+#################input#########################
+setp conv-io.1.io-type 0
+
+#急停
+setp conv-io.0.inpin-0 [IO_INPUT0]PIN
+setp conv-io.0.inpol-0 [IO_INPUT0]POLARITY
+net sig_ioin0 conv-io.0.outpin-0 => not.1.in
+net sig_ioin0 iocontrol.0.emc-enable-in 
+net not2 not.1.out motion.user-define-in.00
+
+#启动
+setp conv-io.0.inpin-1 [IO_INPUT1]PIN
+setp conv-io.0.inpol-1 [IO_INPUT1]POLARITY
+net sig_ioin1 conv-io.0.outpin-1 => motion.user-define-in.01
+net sig_ioin1 motion.run-on
+
+#停止
+setp conv-io.0.inpin-2 [IO_INPUT2]PIN
+setp conv-io.0.inpol-2 [IO_INPUT2]POLARITY
+net sig_ioin2 conv-io.0.outpin-2 => motion.user-define-in.02
+net sig_ioin2 motion.pause-on
+
+#对刀仪信号
+setp conv-io.0.inpin-3 [IO_INPUT3]PIN
+setp conv-io.0.inpol-3 [IO_INPUT3]POLARITY
+net sig_ioin3 conv-io.0.outpin-3 => motion.user-define-in.03
+net sig_ioin3 motion.probe-2-input
+
+#对刀仪报警
+setp conv-io.0.inpin-4 [IO_INPUT4]PIN
+setp conv-io.0.inpol-4 [IO_INPUT4]POLARITY
+net sig_ioin4 conv-io.0.outpin-4 => motion.user-define-in.04
+net sig_ioin4 motion.probe-alarm
+
+##抬刀按钮输入
+setp conv-io.0.inpin-5 [IO_INPUT5]PIN
+setp conv-io.0.inpol-5 [IO_INPUT5]POLARITY
+net sig_ioin5 conv-io.0.outpin-5 => motion.user-define-in.05
+net sig_ioin5 motion.digital-in-01
+
+#气压报警
+setp conv-io.0.inpin-6 [IO_INPUT6]PIN
+setp conv-io.0.inpol-6 [IO_INPUT6]POLARITY
+net sig_ioin6 conv-io.0.outpin-6 => motion.user-define-in.06
+net sig_ioin6 motion.pressure-alarm
+
+#电柜过热
+setp conv-io.0.inpin-7 [IO_INPUT7]PIN
+setp conv-io.0.inpol-7 [IO_INPUT7]POLARITY
+net sig_ioin7 conv-io.0.outpin-7 => motion.user-define-in.07
+net sig_ioin7 motion.electric-cabinet-alarm 
+
+#润滑系统报警
+setp conv-io.0.inpin-8 [IO_INPUT8]PIN
+setp conv-io.0.inpol-8 [IO_INPUT8]POLARITY
+net sig_ioin8 conv-io.0.outpin-8 => motion.user-define-in.08
+net sig_ioin8 motion.lube-alarm
+
+#jiaota 
+setp conv-io.0.inpin-9 [IO_INPUT9]PIN
+setp conv-io.0.inpol-9 [IO_INPUT9]POLARITY
+net sig_ioin9 conv-io.0.outpin-9 => motion.user-define-in.09
+net sig_ioin9 pressure.0.in2
+
+
+#X轴正限位
+setp conv-io.0.inpin-10 [IO_INPUT10]PIN
+setp conv-io.0.inpol-10 [IO_INPUT10]POLARITY
+net sig_ioin10 conv-io.0.outpin-10 => motion.user-define-in.10
+#net sig_ioin10 axis.0.pos-lim-sw-in
+
+#Y轴负限位
+setp conv-io.0.inpin-11 [IO_INPUT11]PIN
+setp conv-io.0.inpol-11 [IO_INPUT11]POLARITY
+net sig_ioin11 conv-io.0.outpin-11 => motion.user-define-in.11
+#net sig_ioin11 axis.1.neg-lim-sw-in
+
+#Z轴负限位
+setp conv-io.0.inpin-12 [IO_INPUT12]PIN 
+setp conv-io.0.inpol-12 [IO_INPUT12]POLARITY
+net sig_ioin12 conv-io.0.outpin-12 => motion.user-define-in.12
+#net sig_ioin12 axis.2.neg-lim-sw-in
+
+#负压报警
+setp conv-io.0.inpin-13 [IO_INPUT13]PIN
+setp conv-io.0.inpol-13 [IO_INPUT13]POLARITY
+net sig_ioin13 conv-io.0.outpin-13 => motion.user-define-in.13
+net sig_ioin13 motion.user-define-warn.16
+
+#光栅报警
+setp conv-io.0.inpin-14 [IO_INPUT14]PIN
+setp conv-io.0.inpol-14 [IO_INPUT14]POLARITY
+net sig_ioin14 conv-io.0.outpin-14 => motion.user-define-in.14
+net sig_ioin14 motion.user-define-warn.17
+
+#自定义
+setp conv-io.0.inpin-15 [IO_INPUT15]PIN
+setp conv-io.0.inpol-15 [IO_INPUT15]POLARITY
+net sig_ioin15 conv-io.0.outpin-15 => motion.user-define-in.15
+
+########回零信号###############
+setp conv-io.0.inpin-16 [IO_INPUT16]PIN
+setp conv-io.0.inpol-16 [IO_INPUT16]POLARITY
+net sig_ioin16 conv-io.0.outpin-16 => motion.user-define-in.16
+net sig_ioin16 axis.0.home-sw-in 
+#axis.0.neg-lim-sw-in
+
+setp conv-io.0.inpin-17 [IO_INPUT17]PIN
+setp conv-io.0.inpol-17 [IO_INPUT17]POLARITY
+net sig_ioin17 conv-io.0.outpin-17 => motion.user-define-in.17
+net sig_ioin17 axis.1.home-sw-in 
+#axis.1.pos-lim-sw-in
+
+setp conv-io.0.inpin-18 [IO_INPUT18]PIN
+setp conv-io.0.inpol-18 [IO_INPUT18]POLARITY
+net sig_ioin18 conv-io.0.outpin-18 => motion.user-define-in.18
+net sig_ioin18 axis.2.home-sw-in 
+#axis.2.pos-lim-sw-in
+
+setp conv-io.0.inpin-19 [IO_INPUT19]PIN
+setp conv-io.0.inpol-19 [IO_INPUT19]POLARITY
+net sig_ioin19 conv-io.0.outpin-19 => motion.user-define-in.19
+net sig_ioin19 axis.3.home-sw-in  
+#axis.3.pos-lim-sw-in
+
+#吹气
+setp conv-io.0.inpin-20 [IO_INPUT20]PIN
+setp conv-io.0.inpol-20 [IO_INPUT20]POLARITY
+net sig_ioin20 conv-io.0.outpin-20 => motion.user-define-in.20
+net sig_ioin20 pressure.0.in0
+
+#吸气
+setp conv-io.0.inpin-21 [IO_INPUT21]PIN
+setp conv-io.0.inpol-21 [IO_INPUT21]POLARITY
+net sig_ioin21 conv-io.0.outpin-21 => motion.user-define-in.21
+net sig_ioin21 pressure.0.in1
+
+########X轴伺服报警###############
+setp conv-io.0.inpin-30 [IO_INPUT30]PIN
+setp conv-io.0.inpol-30 [IO_INPUT30]POLARITY
+net sig_ioin30 conv-io.0.outpin-30 => motion.user-define-in.30
+net sig_ioin30 axis.0.amp-fault-in motion.user-define-in.30
+
+########Y轴伺服报警###############
+setp conv-io.0.inpin-31 [IO_INPUT31]PIN
+setp conv-io.0.inpol-31 [IO_INPUT31]POLARITY
+net sig_ioin31 conv-io.0.outpin-31 => motion.user-define-in.31
+net sig_ioin31 axis.1.amp-fault-in motion.user-define-in.31
+
+########Z轴伺服报警###############
+setp conv-io.0.inpin-32 [IO_INPUT32]PIN
+setp conv-io.0.inpol-32 [IO_INPUT32]POLARITY
+net sig_ioin32 conv-io.0.outpin-32 => motion.user-define-in.32
+#net sig_ioin32 axis.2.amp-fault-in motion.user-define-in.32
+
+########Z2轴伺服报警###############
+setp conv-io.0.inpin-33 [IO_INPUT33]PIN
+setp conv-io.0.inpol-33 [IO_INPUT33]POLARITY
+net sig_ioin33 conv-io.0.outpin-33 => motion.user-define-in.33
+#net sig_ioin33 axis.3.amp-fault-in motion.user-define-in.33
+
+########Z3轴伺服报警###############
+setp conv-io.0.inpin-34 [IO_INPUT34]PIN
+setp conv-io.0.inpol-34 [IO_INPUT34]POLARITY
+net sig_ioin34 conv-io.0.outpin-34 => motion.user-define-in.34
+#net sig_ioin34  axis.4.amp-fault-in motion.user-define-in.34
+
+########Z4轴伺服报警###############
+setp conv-io.0.inpin-35 [IO_INPUT35]PIN
+setp conv-io.0.inpol-35 [IO_INPUT35]POLARITY
+net sig_ioin35 conv-io.0.outpin-35 => motion.user-define-in.35
+#net sig_ioin35  axis.5.amp-fault-in motion.user-define-in.35
+
+net toolalarm1 toolchange.0.alarm motion.user-define-warn.00
+
+setp motion.enable 1
+
+#################output#########################
+
+setp conv-io.1.io-type 1
+
+
+#####toolchang_sig#######
+net spindle_stop or2.0.out toolchange.0.in0 
+
+
+net enable <= ethercat.mt.00.enable ethercat.io.00.svron_0
+net enable <= ethercat.mt.01.enable ethercat.io.00.svron_1
+net enable <= ethercat.mt.02.enable  ethercat.io.00.svron_2
+net enable <= ethercat.mt.03.enable ethercat.io.00.svron_3
+net enable <= ethercat.mt.04.enable ethercat.io.00.svron_4
+net enable <= ethercat.mt.05.enable ethercat.io.00.svron_5
+net enable => motion.motion-enabled and2.0.in0 and2.1.in0
+#这里接两个抱匝信号
+
+net endout pressure.0.in3 motion.digital-out-03
+
+#主轴1
+setp conv-io.1.inpin-0 [IO_OUTPUT0]PIN
+setp conv-io.1.inpol-0 1
+net sig_ioout0 conv-io.1.inaux-0 => motion.user-define-out.00
+#net sig_ioout0 <= motion.spindle-forward or2.0.in0
+#setp or2.0.in1 0
+
+#工作灯
+setp conv-io.1.inpin-1 [IO_OUTPUT1]PIN
+setp conv-io.1.inpol-1 1
+net sig_ioout1 conv-io.1.inaux-1 => motion.user-define-out.01
+net sig_ioout1 motion.digital-out-02
+
+
+#红灯
+setp conv-io.1.inpin-2 [IO_OUTPUT2]PIN
+setp conv-io.1.inpol-2 1
+net sig_ioout2 conv-io.1.inaux-2 => motion.user-define-out.02  
+net sig_ioout2 <= or2.8.out
+net redon or2.8.in0 motion.red-on
+
+#绿灯
+setp conv-io.1.inpin-3 [IO_OUTPUT3]PIN
+setp conv-io.1.inpol-3 1
+net sig_ioout3 conv-io.1.inaux-3 => motion.user-define-out.03
+net sig_ioout3 <= motion.green-on
+
+#黄灯
+setp conv-io.1.inpin-4 [IO_OUTPUT4]PIN
+setp conv-io.1.inpol-4 1
+net sig_ioout4 conv-io.1.inaux-4 => motion.user-define-out.04
+net sig_ioout4 <= motion.yellow-on
+
+
+##润滑油
+setp conv-io.1.inpin-5 [IO_OUTPUT5]PIN
+setp conv-io.1.inpol-5 1
+net sig_ioout5 conv-io.1.inaux-5 => motion.user-define-out.05
+net sig_ioout5 iocontrol.0.lube lubepressure.0.in0
+
+#气压系统输出口
+setp conv-io.1.inpin-6 [IO_OUTPUT6]PIN
+setp conv-io.1.inpol-6 1
+net sig_ioout6 conv-io.1.inaux-6 => motion.user-define-out.06
+net sig_ioout6 <= pressure.0.vacuum
+
+##吸气输出口
+setp conv-io.1.inpin-7 [IO_OUTPUT7]PIN
+setp conv-io.1.inpol-7 1
+net sig_ioout7 conv-io.1.inaux-7 => motion.user-define-out.07
+net sig_ioout7 pressure.0.out1 motion.digital-in-02
+
+##吹气输出口
+setp conv-io.1.inpin-8 [IO_OUTPUT8]PIN
+setp conv-io.1.inpol-8 1
+net sig_ioout8 conv-io.1.inaux-8 => motion.user-define-out.08
+net sig_ioout8 <= pressure.0.out motion.digital-in-03
+
+#镜头盖
+setp conv-io.1.inpin-9 [IO_OUTPUT9]PIN
+setp conv-io.1.inpol-9 1
+net sig_ioout9 conv-io.1.inaux-9 => motion.user-define-out.09 
+net sig_ioout9 motion.digital-out-05
+
+#光源1
+setp conv-io.1.inpin-10 [IO_OUTPUT10]PIN
+setp conv-io.1.inpol-10 1
+net sig_ioout10 conv-io.1.inaux-10 => motion.user-define-out.10 
+net sig_ioout10 motion.digital-out-08
+
+#自定义
+setp conv-io.1.inpin-11 [IO_OUTPUT11]PIN
+setp conv-io.1.inpol-11 1
+net sig_ioout11 conv-io.1.inaux-11 => motion.user-define-out.11 
+
+#抱闸1
+setp conv-io.1.inpin-12 [IO_OUTPUT12]PIN
+setp conv-io.1.inpol-12 1
+net sig_ioout12 conv-io.1.inaux-12 => motion.user-define-out.12 
+#net sig_ioout12 <= and2.2.out
+#net linkready1 ethercat.mt.02.linkstate and2.0.in1 
+#net choseit0 and2.0.out and2.2.in0
+#setp and2.2.in1 [EMCIO]USE_HOLD
+
+
+#抱闸2
+setp conv-io.1.inpin-13 [IO_OUTPUT13]PIN
+setp conv-io.1.inpol-13 1
+net sig_ioout13 conv-io.1.inaux-13 => motion.user-define-out.13
+#net sig_ioout13 <= and2.3.out
+#net linkready2 ethercat.mt.04.linkstate and2.1.in1 
+#net choseit1 and2.1.out and2.3.in0
+#setp and2.3.in1 [EMCIO]USE_HOLD
+
+#自定义
+setp conv-io.1.inpin-14 [IO_OUTPUT14]PIN
+setp conv-io.1.inpol-14 1
+net sig_ioout14 conv-io.1.inaux-14 => motion.user-define-out.14
+
+
+#自定义
+setp conv-io.1.inpin-15 [IO_OUTPUT15]PIN
+setp conv-io.1.inpol-15 1
+net sig_ioout15 conv-io.1.inaux-15 => motion.user-define-out.15
+
+
+
+#################input#########################
+
+
+net sig_auxio4 ethercat.io.1.din.00.in => conv-io.0.inaux-0 
+net sig_auxio5 ethercat.io.1.din.01.in => conv-io.0.inaux-1 
+net sig_auxio6 ethercat.io.1.din.02.in => conv-io.0.inaux-2 
+net sig_auxio7 ethercat.io.1.din.03.in => conv-io.0.inaux-3 
+net sig_auxio8 ethercat.io.1.din.04.in => conv-io.0.inaux-4 
+net sig_auxio9 ethercat.io.1.din.05.in => conv-io.0.inaux-5 
+net sig_auxio10 ethercat.io.1.din.06.in => conv-io.0.inaux-6 
+net sig_auxio11 ethercat.io.1.din.07.in => conv-io.0.inaux-7
+net sig_auxio12 ethercat.io.1.din.08.in => conv-io.0.inaux-8
+net sig_auxio13 ethercat.io.1.din.09.in => conv-io.0.inaux-9 
+net sig_auxio14 ethercat.io.1.din.10.in => conv-io.0.inaux-10 
+net sig_auxio15 ethercat.io.1.din.11.in => conv-io.0.inaux-11
+net sig_auxio16 ethercat.io.1.din.12.in => conv-io.0.inaux-12
+net sig_auxio17 ethercat.io.1.din.13.in => conv-io.0.inaux-13 
+net sig_auxio18 ethercat.io.1.din.14.in => conv-io.0.inaux-14 
+net sig_auxio19 ethercat.io.1.din.15.in => conv-io.0.inaux-15 
+net sig_auxio20 ethercat.io.1.din.16.in => conv-io.0.inaux-16 
+net sig_auxio21 ethercat.io.1.din.17.in => conv-io.0.inaux-17 
+net sig_auxio22 ethercat.io.1.din.18.in => conv-io.0.inaux-18 
+net sig_auxio23 ethercat.io.1.din.19.in => conv-io.0.inaux-19 
+net sig_auxio24 ethercat.io.1.din.20.in => conv-io.0.inaux-20 
+net sig_auxio25 ethercat.io.1.din.21.in => conv-io.0.inaux-21 
+net sig_auxio26 ethercat.io.1.din.22.in => conv-io.0.inaux-22 
+net sig_auxio27 ethercat.io.1.din.23.in => conv-io.0.inaux-23 
+net sig_auxio28 ethercat.io.1.din.24.in => conv-io.0.inaux-24 
+net sig_auxio29 ethercat.io.1.din.25.in => conv-io.0.inaux-25 
+net sig_auxio30 ethercat.io.1.din.26.in => conv-io.0.inaux-26 
+net sig_auxio31 ethercat.io.1.din.27.in => conv-io.0.inaux-27
+net sig_auxio32 ethercat.io.1.din.28.in => conv-io.0.inaux-28 
+net sig_auxio33 ethercat.io.1.din.29.in => conv-io.0.inaux-29 
+
+################报警管脚信号####################
+net sig_auxio34 ethercat.io.00.svralm_0 => conv-io.0.inaux-30
+net sig_auxio35 ethercat.io.00.svralm_1 => conv-io.0.inaux-31
+net sig_auxio36 ethercat.io.00.svralm_2 => conv-io.0.inaux-32
+net sig_auxio37 ethercat.io.00.svralm_3 => conv-io.0.inaux-33
+net sig_auxio38 ethercat.io.00.svralm_4 => conv-io.0.inaux-34
+net sig_auxio39 ethercat.io.00.svralm_5 => conv-io.0.inaux-35
+
+
+#################output#########################
+net sig_outio0  ethercat.io.1.dout.00.out <= conv-io.1.outpin-0
+net sig_outio1  ethercat.io.1.dout.01.out <= conv-io.1.outpin-1
+net sig_outio2  ethercat.io.1.dout.02.out <= conv-io.1.outpin-2
+net sig_outio3  ethercat.io.1.dout.03.out <= conv-io.1.outpin-3
+net sig_outio4  ethercat.io.1.dout.04.out <= conv-io.1.outpin-4
+net sig_outio5  ethercat.io.1.dout.05.out <= conv-io.1.outpin-5
+net sig_outio6  ethercat.io.1.dout.06.out <= conv-io.1.outpin-6
+net sig_outio7  ethercat.io.1.dout.07.out <= conv-io.1.outpin-7
+net sig_outio8  ethercat.io.1.dout.08.out <= conv-io.1.outpin-8
+net sig_outio9  ethercat.io.1.dout.09.out <= conv-io.1.outpin-9
+net sig_outio10 ethercat.io.1.dout.10.out <= conv-io.1.outpin-10
+net sig_outio11 ethercat.io.1.dout.11.out <= conv-io.1.outpin-11
+net sig_outio12 ethercat.io.1.dout.12.out <= conv-io.1.outpin-12
+net sig_outio13 ethercat.io.1.dout.13.out <= conv-io.1.outpin-13
+net sig_outio14 ethercat.io.1.dout.14.out <= conv-io.1.outpin-14
+net sig_outio15 ethercat.io.1.dout.15.out <= conv-io.1.outpin-15
+net sig_outio16 ethercat.io.1.dout.16.out <= conv-io.1.outpin-16
+net sig_outio17 ethercat.io.1.dout.17.out <= conv-io.1.outpin-17
+net sig_outio18 ethercat.io.1.dout.18.out <= conv-io.1.outpin-18
+net sig_outio19 ethercat.io.1.dout.19.out <= conv-io.1.outpin-19
+net sig_outio20 ethercat.io.1.dout.20.out <= conv-io.1.outpin-20
+net sig_outio21 ethercat.io.1.dout.21.out <= conv-io.1.outpin-21
+net sig_outio22 ethercat.io.1.dout.22.out <= conv-io.1.outpin-22
+net sig_outio23 ethercat.io.1.dout.23.out <= conv-io.1.outpin-23
+net sig_outio24 ethercat.io.1.dout.24.out <= conv-io.1.outpin-24
+net sig_outio25 ethercat.io.1.dout.25.out <= conv-io.1.outpin-25
+net sig_outio26 ethercat.io.1.dout.26.out <= conv-io.1.outpin-26
+net sig_outio27 ethercat.io.1.dout.27.out <= conv-io.1.outpin-27
+net sig_outio28 ethercat.io.1.dout.28.out <= conv-io.1.outpin-28
+net sig_outio29 ethercat.io.1.dout.29.out <= conv-io.1.outpin-29
+net sig_outio30 ethercat.io.1.dout.30.out <= conv-io.1.outpin-30
+#net sig_outio31 ethercat.io.0.dout.31.out <= conv-io.1.outpin-31
+#net sig_outio32 ethercat.io.0.dout.32.out <= conv-io.1.outpin-32
+#net sig_outio33 ethercat.io.0.dout.33.out <= conv-io.1.outpin-33
+#net sig_outio34 ethercat.io.0.dout.34.out <= conv-io.1.outpin-34
+#net sig_outio35 ethercat.io.0.dout.35.out <= conv-io.1.outpin-35
+#net sig_outio36 ethercat.io.0.dout.36.out <= conv-io.1.outpin-36
+#net sig_outio37 ethercat.io.0.dout.37.out <= conv-io.1.outpin-37
+#net sig_outio38 ethercat.io.0.dout.38.out <= conv-io.1.outpin-38
+#net sig_outio39 ethercat.io.0.dout.39.out <= conv-io.1.outpin-39
+
+
+setp toolchange.0.tool-delay [TRAJ]TOOLCHANGE_DELAY
+setp toolchange.0.tool-delay [TRAJ]TOOLCHANGE_DELAY
+

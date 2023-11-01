@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<EtherCATInfo>
+	<Vendor>
+		<Id>#x88</Id>
+	</Vendor>
+	<Descriptions>
+		<Type RevisionNo="#x0001" ProductCode="#x10000">i3DS-**A30</Type>
+
+		<TxPdo Fixed="0">
+		<Fmmu>Inputs</Fmmu>
+		<Index>#x1A00</Index>
+		<Name LcId="1033">1st transmit PDO Mapping</Name>
+		<Entry>
+			<Index>#x6041</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Statusword</Name>
+			<DataType>UINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x6064</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Position actual value</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x6061</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>8</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x603F</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x60FD</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x60B9</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x60BA</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+	</TxPdo>
+						
+	<RxPdo Fixed="0">
+		<Fmmu>Outputs</Fmmu>
+		<Index>#x1600</Index>
+		<Name LcId="1033">1st receive PDO Mapping</Name>
+		<Exclude>#x1702</Exclude>
+		<Entry>
+			<Index>#x6040</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Controlword</Name>
+			<DataType>UINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x607A</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>32</BitLen>
+			<Name LcId="1033">Target position</Name>
+			<DataType>DINT</DataType>
+		</Entry>
+		<Entry>
+			<Index>#x6060</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>8</BitLen>
+			<Name LcId="1033">Modes of operation</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+
+		<Entry>
+			<Index>#x60B8</Index>
+			<SubIndex>0</SubIndex>
+			<BitLen>16</BitLen>
+			<Name LcId="1033">Modes of operation display</Name>
+			<DataType>SINT</DataType>
+		</Entry>
+		
+	</RxPdo>
+	
+		
+	<Dc>
+		<OpMode>
+			<Name>DC</Name>
+			<Desc>DC-Synchron</Desc>
+			<AssignActivate>#x300</AssignActivate>
+			<CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+			<ShiftTimeSync0>0</ShiftTimeSync0>
+			<CycleTimeSync1 Factor="1">0</CycleTimeSync1>
+		</OpMode>
+	</Dc>
+
+
+	<Sdo>
+	</Sdo>
+
+	</Descriptions>
+</EtherCATInfo>

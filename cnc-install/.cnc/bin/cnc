@@ -1,0 +1,517 @@
+#!/bin/bash
+
+################################################################################
+# Author: HONG
+# License: GPL Version 2
+# System: Linux
+# Date:2014-08-19
+# Copyright (c) 2004-2009 All rights reserved.
+################################################################################
+
+####################################################################################################
+# 1                  Initial the Environment variables                         #
+####################################################################################################
+
+ulimit -s 102400
+
+LSMOD=/sbin/lsmod
+PIDOF="/bin/pidof -x"
+PS=/bin/ps
+AWK=/usr/bin/awk
+IPCS=/usr/bin/ipcs
+KILL=/bin/kill
+
+LINUXCNC_HOME=/home/.cnc 
+LINUXCNC_BIN_DIR=/home/.cnc/bin
+LINUXCNC_RTLIB_DIR=/home/.cnc/modules
+LINUXCNC_CONFIG_PATH="/home/.config"
+REALTIME=/home/.cnc/bin/realtime
+
+LOCKFILE=/tmp/linuxcnc.lock
+FIRSTFILE=/tmp/firstFlie
+
+INIVAR=inivar
+HALCMD="halcmd"
+LINUXCNC_EMCSH=/usr/bin/wish8.5
+
+xset s 0
+xset dpms 0 0 0
+xset -dpms
+
+function readINI() {
+ FILENAME=$1; SECTION=$2; KEY=$3
+ RESULT=`awk -F '=' '/\['$SECTION'\]/{a=1}a==1&&$1~/'$KEY'/{print $2;exit}' $FILENAME`
+ echo $RESULT
+} 
+DevType=$(readINI /opt/EH-Master/Config.ini Settings DevType)
+DevValue=$(readINI /opt/EH-Master/Config.ini Settings DevValue)
+CycTime=$(readINI /opt/EH-Master/Config.ini Settings CycTime)
+
+echo $DevType 
+echo $DevValue
+echo $CycTime
+
+EthTryCount=5
+while [ $EthTryCount -ge 1 ];do
+pkill zenity
+info=`ethercat slaves`
+if [ -n "$info" ]; then
+    echo "find slaves"
+    echo $info
+    EthTryCount=0
+    pkill zenity
+else
+    
+    echo "cannot found slaves now rmmod driver"
+    zenity --info --title "提示" --text "Ethercat通讯初始化中..." &
+    sudo rmmod EH_ECATDRI
+    sleep 1
+    #sudo insmod /opt/EH-Master/EH-ECATDRI.ko
+    sudo insmod /opt/EH-Master/EH-$DevType.ko
+    sleep 3
+fi
+  echo "EthTry==>"$EthTryCount
+  EthTryCount=$[$EthTryCount-1]
+done
+
+
+
+EPPTEST=/home/.cnc/bin/epptest
+
+NMLFILE=/home/.cnc/share/linuxcnc/linuxcnc.nml
+
+export LINUXCNC_HOME
+export LD_LIBRARY_PATH=$LINUXCNC_HOME/lib
+export LINUXCNC_EMCSH
+export REALTIME
+export HALCMD
+export NMLFILE
+
+# "halcmd loadrt" can find them
+export HAL_RTMOD_DIR=$LINUXCNC_RTLIB_DIR
+
+MODULE_EXT=.ko
+
+#put the LINUXCNC_BIN_DIR in PATH use for search the .exe file
+PATH=$LINUXCNC_BIN_DIR:$PATH
+ 
+
+INIFILE="/home/.config/config.ini"
+if [ ! -f "$INIFILE" ] ; then
+    echo "ini file is not exist ..."
+    exit 0
+fi
+INI_NAME="${INIFILE##*/}"
+INI_DIR="${INIFILE%/*}"
+
+################################################################################
+# 2.       Get the Modules that we need                        #
+################################################################################
+
+RS274NGC_PARAMFILE=interp.var
+
+EMCMOT=motmod.ko
+
+EMCIO=iocontrol
+
+EMCTASK=milltask
+
+EMCSERVER=linuxcncsvr
+
+EMCDISPLAY=/home/.cnc/gui/ui
+
+PRINT_FILE=/tmp/cnext.print
+
+if [ ! -f "$PRINT_FILE" ] ; then
+   touch $PRINT_FILE
+fi
+########################### check ethercat st##############################
+function checkSt() {
+slavesok=0
+maxcount=0
+while [ $slavesok -eq 0 ] ; do
+	cmdtext=`sudo ethercat slaves`
+	if [ -n "$cmdtext"  ];then
+		cmdfind=$(echo $cmdtext | grep "0x00000000:0x00000000")
+		echo "cmdfind=" $cmdfind
+		if [ -z "$cmdfind" ];then
+			echo "END CHECK"
+			slavesok=1
+		fi
+	else
+		if [ $maxcount -gt 2 ];then
+			sudo /home/.cnc/bin/ethercat-slaves  $IO_NUM $MOTOR_NUM $MOTION_TYPE $BOARD_TYPE $LINK_TYPE
+			sudo ethercat rescan
+			zenity --question --title "提示" --text "通讯正在建立，请稍等......." --cancel-label="忽略" 
+			ret=$?
+			if [ $ret -eq 1 ];then
+				break;
+			fi
+		fi
+	fi
+	echo $cmdtext $maxcount
+	((maxcount= maxcount+1))
+	sleep 1
+	if [ $maxcount -gt 10 ];then
+		zenity --info --title "异常提示" --text "通讯异常，无法正常打开,请断电重启"
+		slavesok=1
+#		exit 0
+	fi
+done
+}
+
+
+
+
+############################READ INI KEY #######################################
+function ReadINIfile()    
+{     
+    Key=$1  
+    Section=$2  
+    Configfile=$3  
+    ReadINI=`awk -F '=' '/\['$Section'\]/{a=1}a==1&&$1~/'$Key'/{print $2;exit}' $Configfile`    
+    echo "$ReadINI"    
+}  
+
+################################################################################
+# 3.1. Kills a list of tasks with timeout
+# if it doesn't work, kill -9 is used
+################################################################################
+program_available () {
+    type -path "$1" 
+}
+
+
+KILL_TIMEOUT=20
+
+function KillTaskWithTimeout() {
+    if [ ! -n "$KILL_PIDS" ] ; then
+	KILL_PIDS=`$PIDOF $KILL_TASK`
+    fi
+    if [ ! -n "$KILL_PIDS" ] ; then
+	echo "Could not find pid(s) for task $KILL_TASK" < $PRINT_FILE
+	return -1
+    fi
+    for KILL_PID in $KILL_PIDS ; do
+	echo "Killing task $KILL_TASK, PID=$KILL_PID"  < $PRINT_FILE
+	# first a "gentle" kill with signal TERM
+	$KILL $KILL_PID
+	WAIT=$KILL_TIMEOUT
+	# wait and see if it dissappears
+	while [ $WAIT -gt 1 ] ; do
+	    # see if it's still alive
+	    if $PS $KILL_PID < $PRINT_FILE ; then
+		WAIT=$(($WAIT-1))
+		sleep .1
+	    else
+		WAIT=0
+	    fi
+	done
+	if [ $WAIT -gt 0 ] ; then
+	    # gentle didn't work, get serious
+	    echo "Timeout, trying kill -9" < $PRINT_FILE
+	    $KILL -9 $KILL_PID 
+	    WAIT=$KILL_TIMEOUT
+	    # wait and see if it dissappears
+	    while [ $WAIT -gt 1 ] ; do
+		# see if it's still alive
+		if $PS $KILL_PID < $PRINT_FILE ; then
+		    WAIT=$(($WAIT-1))
+		    sleep .1
+		else
+		    WAIT=0
+		fi
+	    done
+	fi
+	if [ $WAIT -gt 0 ] ; then
+	    echo "Could not kill task $KILL_TASK, PID=$KILL_PID" < $PRINT_FILE
+	fi
+	KILL_PIDS=
+	KILL_TASK=
+    done
+}
+
+################################################################################
+# 3.2. define the cleanup function
+#
+# this cleanup function doesn't know or care what was actually
+# loaded - it simply kills _any_ processes in its list of
+# components
+################################################################################
+function Cleanup() {
+
+    echo "Shutting down and cleaning up LinuxCNC..." < $PRINT_FILE
+    # Kill displays first - that should cause an orderly
+    #   shutdown of the rest of linuxcnc
+    pkill iocontrol
+    if program_available axis-remote ; then
+	if [ ! -z "$DISPLAY" ]; then
+	    axis-remote --ping && axis-remote --quit
+	fi
+    fi
+
+    if [ "$1" = "other" ]; then
+        echo -n "Waiting for other session to finish exiting..." < $PRINT_FILE
+	WAIT=$KILL_TIMEOUT
+	while [ $WAIT -gt 1 ]; do
+            if ! [ -f $LOCKFILE ]; then
+                echo " Ok"
+                return 0
+            fi
+            WAIT=$(($WAIT-1))
+            sleep .1
+        done
+        echo "lockfile still not removed" < $PRINT_FILE
+    fi
+
+    # now kill all the other user space components
+    for KILL_TASK in linuxcncsvr milltask; do
+	if $PIDOF $KILL_TASK ; then
+	    KillTaskWithTimeout
+	fi
+    done
+
+
+    echo "Stopping realtime threads"  < $PRINT_FILE
+    $HALCMD stop
+    echo "Unloading hal components"  < $PRINT_FILE
+    $HALCMD unload all
+
+    for i in `seq 10`; do
+        # (the one component is the halcmd itself)
+        if [ `$HALCMD list comp | wc -w` = 1 ]; then break; fi
+        sleep .2
+    done
+
+    echo "Removing HAL_LIB, RTAPI, and Real Time OS modules"  < $PRINT_FILE
+    $REALTIME stop
+
+    echo "Removing NML shared memory segments" < $PRINT_FILE
+    while read b x t x x x x x x m x; do
+        case $b$t in
+            BSHMEM)ipcrm -M $m 2>/dev/null;;
+        esac
+    done < $NMLFILE
+
+
+    # remove lock file
+    if [ -f $LOCKFILE ] ; then
+	rm $LOCKFILE
+    fi
+    pkill libraryrun
+    echo "Cleanup done" < $PRINT_FILE
+}
+
+###################################获取当前轴类型###############################
+MOTION_TYPE=`ReadINIfile "VALUE" "PAR_EMCMOT_MOTOR_CHOSE" "$INIFILE"`
+LINK_TYPE=`ReadINIfile "VALUE" "PAR_EMCMOT_LINK_TYPE" "$INIFILE"`
+IO_NUM=`ReadINIfile "VALUE" "PAR_EMCMOT_IO_NUMBER" "$INIFILE"`
+MOTOR_NUM=`ReadINIfile "VALUE" "PAR_EMCMOT_MOTOR_AXISNUM" "$INIFILE"`
+BOARD_TYPE=`ReadINIfile "VALUE" "PAR_EMCIO_IOBOARD_TYPE" "$INIFILE"`
+
+result=1
+rebootcount=0
+until [ $result -eq 0 ]
+do
+rebootcount=`expr $rebootcount + 1`
+################################################################################
+# 1. Start the Ethercat Master
+################################################################################
+################################################################################
+# 2. Check whether a old system is running and make a choice   #
+################################################################################
+# Check for exit
+if [ -f $LOCKFILE ]; then
+  if tty -s; then
+    echo -n "系统仍在运行，输入y关闭  [Y/n] " < $PRINT_FILE
+    read input; [ -z $input ] && input=y
+  else
+   zenity --question --text  "系统仍在运行，确定关闭系统?"
+    getinput=$?
+    if [ $getinput -eq 0 ]; then
+	input=y
+    else
+        input=n
+    fi
+    
+  fi
+  case $input in
+    y|Y|yes)
+	$KILL $($PIDOF ui)
+	sudo rm $LOCKFILE
+      echo Cleaning up CNEXT... < $PRINT_FILE
+      Cleanup other
+	exit 0
+    ;;
+    *)
+	
+      echo Not starting new LinuxCNC... < $PRINT_FILE
+	exit 0
+    ;;
+  esac
+fi
+
+trap 'Cleanup ; exit 0' SIGINT SIGTERM
+
+
+# Create the lock file
+touch $LOCKFILE
+
+################################################################################
+# 3. pop up intro graphic
+###########################################
+img="/home/cnext/icon/cnext"
+if [ -f $img ]; then
+  img="/home/cnext/icon/cnext"
+else
+  img="/home/.cnc/cnext"
+fi
+
+imgtime=8
+if [ "$img" != "" ] ; then
+    if [ -x /home/.cnc/bin/popimage ] ; then
+        /home/.cnc/bin/popimage $img $imgtime &
+    fi
+fi
+################################################################################
+# 4 Now we can finally start loading LinuxCNC
+################################################################################
+cd "$INI_DIR"
+
+
+rm -f "/tmp/nmlready.flag"
+rm -f "/tmp/halready.flag"
+sync
+sleep 0.5
+echo "Starting LinuxCNC server program: $EMCSERVER" < $PRINT_FILE
+if ! program_available $EMCSERVER; then
+    echo "Can't execute server program $EMCSERVER" < $PRINT_FILE
+    Cleanup
+    exit 1
+fi
+export INI_FILE_NAME="$INIFILE"
+$EMCSERVER -ini "$INIFILE" &
+
+
+NMLSTRING=
+for ((i=1; i<=5; i++))
+do
+  echo "waitfor==>NML"
+  if [ -f "/tmp/nmlready.flag" ];then
+   echo "NML init done"
+   NMLSTRING="OK"
+   break
+  else
+   echo $i"...."
+   sleep 0.5
+  fi
+done
+if [ -z "$NMLSTRING" ]; then
+ echo "NML InitFail......!!"
+ #不用cleanup 目前只打开了server 而且server已经自动退出了
+ pkill linuxcncsvr
+ exit 1
+fi
+
+
+################################################################################
+# 5 Start REALTIME
+################################################################################
+echo "Loading Real Time OS, RTAPI, and HAL_LIB modules"  < $PRINT_FILE
+if ! $REALTIME start ; then
+    echo "Realtime system did not load" < $PRINT_FILE
+    Cleanup
+    exit -1
+fi
+
+
+#在Loading Real Time OS 和 Starting LinuxCNC IO program 之间加
+echo "Start rtapi_app"
+/home/.cnc/bin/rtapi_app &
+HALSTRING=
+for ((i=1; i<=100; i++))
+do
+  echo "waitfor==>HAL"
+  if [ -f "/tmp/halready.flag" ];then
+   echo "Hal init done"
+   HALSTRING="OK"
+   break
+  else
+   echo $i"...."
+   sleep 0.1
+  fi
+done
+if [ -z "$HALSTRING" ]; then
+ echo "Hal InitFail......!!"
+ pkill linuxcncsvr
+ pkill rtapi_app
+ exit 1
+fi
+
+
+# 5.1 Run io in background
+echo "Starting LinuxCNC IO program: $EMCIO" < $PRINT_FILE
+if ! program_available $EMCIO ; then
+    echo "Can't execute IO program $EMCIO" < $PRINT_FILE
+    Cleanup
+    exit 1
+fi
+$HALCMD loadusr -Wn iocontrol $EMCIO -ini "$INIFILE"
+
+# 5.2 execute HALCMD config files (if any)
+# get first config file name from ini file
+NUM=1
+CFGFILE=`$INIVAR -ini "$INIFILE" -var HALFILE -sec HAL -num $NUM `
+while [ -n "$CFGFILE" ] ; do
+    if ! $HALCMD -i "$INIFILE" -f $CFGFILE && [ "$DASHK" = "" ]; then
+        Cleanup
+        exit -1
+    fi
+# get next config file name from ini file
+NUM=$(($NUM+1))
+CFGFILE=`$INIVAR -ini "$INIFILE" -var HALFILE -sec HAL -num $NUM `
+done
+
+
+# 5.3 start the realtime stuff ticking
+$HALCMD start
+
+# 5.4 Run task in background
+echo "Starting TASK program: $EMCTASK"  < $PRINT_FILE
+if ! program_available $EMCTASK ; then
+    echo "Can't execute TASK program $EMCTASK" < $PRINT_FILE
+    Cleanup
+    exit 1
+fi
+$EMCTASK -ini "$INIFILE" &
+
+# add lock file
+touch $LOCKFILE
+
+# 5.5 start the GUI
+echo "Starting DISPLAY program: $EMCDISPLAY" < $PRINT_FILE 
+result=0
+
+
+sleep 1
+$EMCDISPLAY -ini "$INIFILE" 
+sync
+result=$?
+sleep 1
+pkill libraryrun
+
+################################################################################
+# 6 exist
+################################################################################
+Cleanup
+echo $rebootcount
+if [ $rebootcount -gt 4 ]; then
+zenity --info --title "异常提示" --text "软件异常，无法正常打开,请断电重启"
+result=0
+exit 0
+fi
+
+done
+
+exit $result
+

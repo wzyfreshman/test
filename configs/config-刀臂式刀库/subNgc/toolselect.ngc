@@ -1,0 +1,104 @@
+
+O<toolselect> sub
+
+(注释：)
+(#3814 :    需要切换到的目标刀号)
+(debug,3814=#3814)
+
+
+
+#1=1
+O200 while [#3814 ne #[3200+#1]]
+#1=[#1+1]
+O222 if [#1 gt #3811]
+	(debug,刀盘没有该刀号)
+    m30
+O222 endif
+O200 endwhile
+#<pocket>=#1
+(debug,需要切换到刀槽：#<pocket>)
+
+(####################Z1开始换刀##########################)
+
+
+O334 if [ [#3810 lt 1] or [#3810 gt #3811] ]
+    (debug,当前刀盘号超出范围，请重新设定)
+    m30
+O334 endif
+
+(####选择当前刀具##转动标志：0,不转；1,正转；2,反转##)
+#2002=0
+
+(debug,计算需要数刀数： 当前刀盘:#3810     目标刀盘:#<pocket> )
+O401 if[ #<pocket> lt #3810 ]
+	#<pos_num1>=[[#3811+#<pocket>]-[#3810]]
+	#<pos_num2>=[#3810-#<pocket>]
+	O411 if[#<pos_num1> lt #<pos_num2>]
+	(正转)
+		#<move_num>=#<pos_num1>
+		#2002=1
+	O411 else
+	(反转)
+		#<move_num>=#<pos_num2>
+		#2002=2
+	O411 endif
+
+O401 else
+	#<pos_num1>=[#<pocket>-[#3810]]
+	#<pos_num2>=[[#3811+#3810]-#<pocket>]
+	O411 if[#<pos_num1> lt #<pos_num2>]
+	(正转)
+		#<move_num>=#<pos_num1>
+		#2002=1
+	O411 else
+	(反转)
+		#<move_num>=#<pos_num2>
+		#2002=2
+	O411 endif
+O401 endif
+    
+O402 if [#<move_num> GT 0]    
+	#2000=#<move_num>
+O402 else
+	#2002=0
+	#2000=0
+O402 endif
+
+
+M72P5
+M71P6 (保证刀套水平)
+O603 if [#4291 eq 0]
+	m66p27l3q5  (获取刀套水平到位信号)
+	O636 if [#5399 NE 1]
+		(debug,WARN:刀套水平不到位，退出换刀)
+		M66p0l0
+		#4303=2
+		M72P6 (刀套水平)
+		M30
+	O636 endif 
+O603 endif
+M72P6 (刀套水平)
+
+
+O404 if[ #2002 eq 1 ] 
+        (debug,#####正向转动#2000把刀#########)
+		M68E1Q#2000
+	m72p4
+	g4p0.2
+        m71p3
+        #2001=0
+	
+O404 else if[ #2002 eq 2 ] 
+		(debug,#####反向转动#2000把刀##########)
+		M68E1Q#2000
+	m72p3
+	g4p0.2
+        m71p4
+        #2001=0	
+O404 else
+		#2001=#2000
+O404 endif
+#3810=#<pocket>
+
+
+O<toolselect> endsub

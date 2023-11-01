@@ -1,0 +1,30 @@
+O<m211> sub
+
+/(debug,#1 #2 #3 #4 #5 #6)
+
+#3002=5
+#<TR>=#3002
+#<WIDTH>=[#4/2]
+#<HEIGHT>=[#5/2]
+
+
+
+G18
+G53G1F[#6]X[#1]Y[#2]Z[#3]
+G53G1F[#6]X[#1+#<WIDTH>]Z[#3]
+G53G1F[#6]X[#1+#<WIDTH>]Z[#3-#<HEIGHT>]
+G53G1F[#6]X[#1-#<WIDTH>]Z[#3-#<HEIGHT>]
+G53G1F[#6]X[#1-#<WIDTH>]Z[#3+#<HEIGHT>]
+G53G1F[#6]X[#1+#<WIDTH>]Z[#3+#<HEIGHT>]
+G53G1F[#6]X[#1+#<WIDTH>]Z[#3]
+G53G1F[#6]X[#1]Y[#2]Z[#3]
+
+G17
+
+
+
+
+
+O<M211> endsub
+
+

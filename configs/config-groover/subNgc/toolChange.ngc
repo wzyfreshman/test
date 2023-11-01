@@ -1,0 +1,53 @@
+
+
+/(debug,4300=======#4300)
+
+#<g5x_index>=#3600
+
+O001 if[#4300 EQ 1]
+
+    m65p3
+    m64p4
+
+    O002 if[#<g5x_index> EQ 1]
+
+        #5223=#3000
+
+    O002 else if[#<g5x_index> EQ 2]
+
+        #5243=#3002
+
+    O002 endif
+
+O001 else if[#4300 EQ 2]    
+
+    m65p4
+    m64p3
+
+    O002 if[#<g5x_index> EQ 1]
+
+        #5223=#3001
+
+    O002 else if[#<g5x_index> EQ 2]
+
+        #5243=#3003
+
+    O002 endif
+
+O001 endif
+
+
+#<x_offset> = #[5221+[#<g5x_index>-1]*20]
+#<y_offset> = #[5222+[#<g5x_index>-1]*20]
+#<z_offset> = #[5223+[#<g5x_index>-1]*20]
+
+
+G10L2P#<g5x_index> X[#<x_offset>] Y[#<y_offset>] Z[#<z_offset>]
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+component tooldisk "辅助刀盘换刀模块";
+
+pin in float countnum;		//数刀数
+pin in bit picktool;		//开始选刀
+pin in bit counttool;		//接受刀的数刀信号
+pin out bit movingtool;		//开始旋转刀库
+
+
+param rw u32 toolcount = 0;
+
+
+variable int recordcount = 0;
+
+variable int startcount = 0;
+variable int startpicktool = 0;
+variable int recordpicktool = 0;
+
+
+function _;
+
+license "GPL";
+;;
+
+FUNCTION(_) {
+
+if(0 < picktool) {
+
+	if(countnum==0){
+	//(未设置刀数计数的情况下，直接输出)
+		movingtool=1;	
+		recordpicktool=0;
+		toolcount = 0;
+	} else {
+
+	//(设置刀数计数的情况下，先找零点信号，找到零点信号后再去计数)
+		if(recordpicktool == 0) {
+			startpicktool=1;
+			recordpicktool = 1;
+			startcount = 1;
+		}
+
+		if(0 < startcount) {
+			if(recordcount != counttool) {
+				if(recordcount == 0 && counttool > 0) {
+					if(toolcount >= countnum) {
+			//(记刀数达到设定值，停止记刀)
+						startpicktool = 0;
+						startcount = 0;
+						toolcount = 0;
+					}
+					toolcount+=1;
+				}
+				recordcount = counttool;
+			} 
+		}
+	movingtool=startpicktool;
+
+	}
+
+} else {
+	recordpicktool=0;
+	movingtool=0;
+	startpicktool = 0;
+	startcount = 0;
+	recordcount=0;
+	toolcount=0;
+}
+
+}
+
+

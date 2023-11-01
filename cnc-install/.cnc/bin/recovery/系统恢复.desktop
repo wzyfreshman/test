@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MasterCam
+Comment=
+Exec=sudo externupdater
+Icon=/usr/share/icons/Humanity/actions/64/media-import-audio-cd.svg
+Path=
+Terminal=false
+StartupNotify=false
+Name[zh_CN]=系统恢复

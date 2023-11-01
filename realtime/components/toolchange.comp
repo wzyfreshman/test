@@ -1,0 +1,55 @@
+component toolchange "The equivalent of a time-delay relay";
+
+pin in bit in0;
+pin in bit in1;
+pin out bit alarm;
+pin out bit out;
+pin out bit spindleflag;
+pin out bit oldin = 0;
+
+param rw u32 tool_delay = 3;
+
+
+variable double timer;
+
+
+function _;
+
+license "GPL";
+;;
+
+FUNCTION(_) {
+		
+	if(oldin != in0) {
+		if(0 == in0) {
+			spindleflag = 1;
+			timer = 0;
+		} else {
+			spindleflag = 0;
+		}
+		oldin = in0;
+	}
+	if(0 != spindleflag) {
+		timer += fperiod;
+		if(timer > tool_delay) {
+			spindleflag = 0;
+			timer = 0;
+		}
+	}
+
+	if(0 != in1) {
+		if(0 != spindleflag || 0 != in0) {
+			out = 0;
+			alarm = 1;
+		} else {
+			out = 1;
+			alarm = 0;
+			timer = 0;
+		}
+	} else {
+		alarm = 0;
+		out = 0;
+	}
+}
+
+

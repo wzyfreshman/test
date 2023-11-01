@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<EtherCATInfo>
+  <!-- Slave 0 -->
+  <Vendor>
+    <Id>0x000116c7</Id>
+  </Vendor>
+  <Descriptions>
+
+        <Type ProductCode="#x550700a1" RevisionNo="#x00000001">SV-X3T5010A-A EC</Type>
+        <Name><![CDATA[SV-X3T5010A-A EC]]></Name>
+        <Sm Enable="1" StartAddress="#x1000" ControlByte="#x26" DefaultSize="256" />
+        <Sm Enable="1" StartAddress="#x1200" ControlByte="#x22" DefaultSize="256" />
+        <Sm Enable="1" StartAddress="#x1400" ControlByte="#x64" DefaultSize="9" />
+        <Sm Enable="1" StartAddress="#x1600" ControlByte="#x20" DefaultSize="23" />
+        <RxPdo Sm="2" Fixed="1" Mandatory="1">
+          <Index>#x1601</Index>
+          <Name>Receive PDO mapping 1</Name>
+          <Entry>
+            <Index>#x6040</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>Controlword</Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6060</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Modes of operation</Name>
+            <DataType>UINT8</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x607a</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>Target position</Name>
+            <DataType>UINT32</DataType>
+          </Entry>
+        </RxPdo>
+        <TxPdo Sm="3" Fixed="1" Mandatory="1">
+          <Index>#x1a00</Index>
+          <Name>Transmit PDO mapping 1</Name>
+          <Entry>
+            <Index>#x603f</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>Error code</Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>Statusword</Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>8</BitLen>
+            <Name>Modes of operation display</Name>
+            <DataType>UINT8</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>Position actual value</Name>
+            <DataType>UINT32</DataType>
+          </Entry>
+        </TxPdo>
+
+	
+		
+	<Dc>
+		<OpMode>
+			<Name>DC</Name>
+			<Desc>DC-Synchron</Desc>
+			<AssignActivate>#x300</AssignActivate>
+			<CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+			<ShiftTimeSync0>0</ShiftTimeSync0>
+			<CycleTimeSync1 Factor="1">0</CycleTimeSync1>
+		</OpMode>
+	</Dc>
+
+
+	<Sdo>
+	</Sdo>
+
+  </Descriptions>
+</EtherCATInfo>

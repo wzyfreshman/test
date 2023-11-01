@@ -1,0 +1,166 @@
+
+    #3610=0.5
+	
+	#<current_num>=#4085
+	
+	#<extension>=#3957
+    #<y1_start>=[#3744-#<extension>]
+    #<y2_start>=[#3745-#<extension>]
+    #<z1_start>=[#3747+[[#3657-#3689]-#3990]]
+    #<z2_start>=[#3748+[[#3657-#3689]-#3990]]
+
+	(#######speed##########)
+	#<fast_feed>=#3612
+	#<slow_feed>=#3613
+	#<fast_move>=#3616
+    #<cut_speed>=#3619
+
+
+    G1.1(N2_#<z1_start> N5_#<z2_start>)F#<fast_feed>
+    /G1.1(N1_#<y1_start> N4_#<y2_start>)F#<fast_move>
+
+
+(###############################上料####################################)
+	
+	M72P11
+	M71P7(打开定位气缸)
+	M71P10(传送带高速)
+	M71P8(传送带正转)
+
+	M70P22L1
+	
+	m66p0l4q#3611(检测木板感应信号)
+	O002 if[#5399 EQ -1]
+	
+	    O003 if[#3680 EQ 2]
+	    (debug,The board was not detected in #3611 seconds and out of operation)
+	    O003 else 
+	    (debug,超过#3611 秒没有检测到木板，退出运行)
+	    O003 endif
+	
+	    #3941=1
+        M70P22L0
+	    M72P8
+	    M72P7
+	    M30
+
+	O002 endif
+	
+	/M72P10
+	/M71P11(传送带低速)
+	
+	g4p#3605(送料到位延时)
+	
+	M72P8
+	M72P11(关闭传送带)
+	g4p0.1
+
+
+    m71p15(侧推4)
+    O005 if[#3960 GT #3956]
+    m71p14(侧推3)
+    O005 endif 
+    O005 if[#3960 GT #3955]
+    m71p13(侧推2)
+    O005 endif 
+    O005 if[#3960 GT #3954]
+    m71p12(侧推1)
+    O005 endif 
+    g4p#3607(侧推时间)
+
+
+
+
+
+
+
+	
+
+(回安全高度)
+G1.1(N2_-11.582   N5_28.677   )F9000
+
+
+
+
+    #3610=0.5
+	#<extension>=#3957
+    #<y1_start>=[#3744-#<extension>]
+    #<y2_start>=[#3745-#<extension>]
+    #<z1_start>=[#3747+[[#3657-#3689]-#3990]]
+    #<z2_start>=[#3748+[[#3657-#3689]-#3990]]
+
+	(#######speed##########)
+	#<fast_feed>=#3612
+	#<slow_feed>=#3613
+	#<fast_move>=#3616
+    #<cut_speed>=#3619
+
+
+(##################################下料########################################)
+
+    M72P7(关闭定位气缸)
+
+    m72p12(侧推1)
+    m72p13(侧推2)
+    m72p14(侧推3)
+    m72p15(侧推4)
+    g4p#3607(侧推时间)
+
+
+	(###########退料###########)
+
+
+    #2003=0
+
+	m66p0l0q0(检测木板感应信号)
+    O002 if[#5399 EQ 1]
+        #2003=1
+    O002 else if[#5399 EQ 0]
+        #2003=0
+    O002 endif
+
+	M71P8(传送带正转)
+	M71P10(传送带高速)
+
+
+    G1.1(N2_#<z1_start> N5_#<z2_start>)F#<fast_feed>
+    G1.1(N1_#<y1_start> N4_#<y2_start>)F#<fast_move>
+
+    O001 if[#2003 EQ 0]
+
+        m66p0l3q10(检测木板感应信号)
+        O002 if[#5399 EQ -1]
+
+            O003 if[#3680 EQ 2]
+            (debug,It was detected that the board had not been sent out and was out of operation.)
+            O003 else
+            (debug,检测到木板还没有送出去，退出运行)
+            O003 endif
+	
+	        #3941=1
+            M72P8(传送带正转)
+            M72P10(传送带高速)
+        	#4085=[#<current_num>+1]
+            M30
+
+        O002 endif
+
+        g4p#3608(定位下降长板)
+
+    O001 else if[#2003 EQ 1]
+
+        g4p#3610(定位下降短板)
+
+    O001 endif
+
+
+	#4085=[#<current_num>+1]
+
+    
+    /M72P8(传送带正转)
+
+
+
+
+
+

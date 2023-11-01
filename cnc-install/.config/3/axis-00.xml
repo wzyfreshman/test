@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<EtherCATInfo>
+  <Vendor>
+    	<Id>#x00556666</Id>
+  </Vendor>
+  <Descriptions>
+
+
+	<Type ProductCode="#X00009d08" RevisionNo="#x783978d0"></Type>
+
+        <RxPdo Sm="2" Fixed="1" Mandatory="1">
+          <Index>#x1600</Index>
+          <Name></Name>
+	          <Entry>
+	            <Index>#x6040</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>16</BitLen>
+	            <Name></Name>
+	            <DataType>UINT16</DataType>
+	          </Entry>
+	          <Entry>
+	            <Index>#x607a</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>32</BitLen>
+	            <Name></Name>
+	            <DataType>UINT32</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x60FF</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>32</BitLen>
+	            <Name></Name>
+	            <DataType>UINT32</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x6060</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>16</BitLen>
+	            <Name></Name>
+	            <DataType>UINT16</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x60B8</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>16</BitLen>
+	            <Name></Name>
+	            <DataType>UINT16</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x2105</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>32</BitLen>
+	            <Name></Name>
+	            <DataType>UINT32</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x2106</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>32</BitLen>
+	            <Name></Name>
+	            <DataType>UINT32</DataType>
+          	</Entry>
+	          <Entry>
+	            <Index>#x2107</Index>
+	            <SubIndex>0</SubIndex>
+	            <BitLen>32</BitLen>
+	            <Name></Name>
+	            <DataType>UINT32</DataType>
+          	</Entry>
+        </RxPdo>
+        
+        
+        <TxPdo Sm="3" Fixed="1" Mandatory="1">
+          <Index>#x1a00</Index>
+          <Name></Name>
+          <Entry>
+            <Index>#x6041</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name></Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6064</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name></Name>
+            <DataType>UINT32</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x606c</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name></Name>
+            <DataType>UINT32</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6061</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name></Name>
+            <DataType>UINT8</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6078</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name></Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x6077</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name></Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60B9</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name></Name>
+            <DataType>UINT16</DataType>
+          </Entry>
+          <Entry>
+            <Index>#x60BA</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name></Name>
+            <DataType>UINT32</DataType>
+          </Entry>
+        </TxPdo>
+
+	<Dc>
+		<OpMode>
+			<Name>DC</Name>
+			<Desc>DC-Synchron</Desc>
+			<AssignActivate>#x300</AssignActivate>
+			<CycleTimeSync0 Factor="1">0</CycleTimeSync0>
+			<ShiftTimeSync0>#x0</ShiftTimeSync0>
+			<CycleTimeSync1 Factor="1">0</CycleTimeSync1>
+		</OpMode>
+	</Dc>
+
+
+	<Sdo>
+
+	</Sdo>
+
+	</Descriptions>
+</EtherCATInfo>

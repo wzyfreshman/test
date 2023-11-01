@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ToolChanger</class>
+ <widget class="QWidget" name="ToolChanger">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>473</width>
+    <height>484</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{
+						border-width:1px;
+						border-style:solid;
+						border-color:rgb(181,181,181);
+						margin-top:2.5ex;
+					}
+					QGroupBox::title{
+						subcontrol-origin: margin;
+						subcontrol-position: top left;
+						left:2px;
+						mairgin-left: 0px;
+						padding: 3px;
+					}</string>
+     </property>
+     <property name="title">
+      <string>换刀操作</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <property name="spacing">
+       <number>2</number>
+      </property>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="btn_changetotool">
+        <property name="text">
+         <string>换刀</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="move_c">
+        <property name="text">
+         <string>C移动到刀号位置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>选择目标刀具:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="toolchose">
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="modelColumn">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="move_b">
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="text">
+         <string>B移动到刀号位置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="btn_resetB">
+        <property name="text">
+         <string>B复位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="btn_resetC">
+        <property name="text">
+         <string>C复位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="move_x">
+        <property name="text">
+         <string>X移动到刀号位置</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{
+						border-width:1px;
+						border-style:solid;
+						border-color:rgb(181,181,181);
+						margin-top:2.5ex;
+					}
+					QGroupBox::title{
+						subcontrol-origin: margin;
+						subcontrol-position: top left;
+						left:2px;
+						mairgin-left: 0px;
+						padding: 3px;
+					}</string>
+     </property>
+     <property name="title">
+      <string>输出控制</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="3">
+       <widget class="QPushButton" name="btn_tool3">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义4</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QPushButton" name="btn_tool7">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义8</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4">
+       <widget class="QPushButton" name="btn_tool8">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义9</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="btn_tool6">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义7</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="btn_tool2">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义3</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QPushButton" name="btn_tool4">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义5</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>主轴松夹刀</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="btn_tool1">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义2</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QPushButton" name="btn_tool5">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义6</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>刀库关信号</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>刀库推出</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="spindle2_on">
+        <property name="styleSheet">
+         <string notr="true">QPushButton::checked{
+	background-color: rgb(85, 85, 255);
+	color: rgb(255, 255, 255);
+	 border: 2px solid #8f8f91;
+     border-radius: 6px;
+     min-width: 80px;
+	border-color: rgb(28, 86, 15);
+}</string>
+        </property>
+        <property name="text">
+         <string>自定义1</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="chk_debug">
+     <property name="text">
+      <string>调试</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>主轴定位</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,1,1">
+      <item>
+       <widget class="QCheckBox" name="setangle">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>定位后偏移角度:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="OffsetAngle">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::NoButtons</enum>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-360.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>360.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_spindlelocation">
+        <property name="text">
+         <string>主轴定位</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>测量刀长</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_probe">
+        <property name="text">
+         <string>测量刀长</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

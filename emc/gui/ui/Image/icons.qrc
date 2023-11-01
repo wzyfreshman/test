@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/opengl">
+        <file>tool_axis_p.gif</file>
+        <file>tool_axis_x.gif</file>
+        <file>tool_axis_y.gif</file>
+        <file>tool_axis_z.gif</file>
+        <file>tool_axis_z2.gif</file>
+        <file>tool_clear.gif</file>
+        <file>tool_reload.gif</file>
+        <file>tool_zoomin.gif</file>
+        <file>tool_zoomout.gif</file>
+    </qresource>
+    <qresource prefix="/std">
+        <file>std_error.gif</file>
+        <file>std_info.gif</file>
+        <file>std_warning.gif</file>
+    </qresource>
+</RCC>

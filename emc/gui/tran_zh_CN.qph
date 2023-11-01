@@ -1,0 +1,5305 @@
+<!DOCTYPE QPH>
+<QPH language="zh_CN">
+<phrase>
+    <source>TrigleAuto</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleManual</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleMdi</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleProbe</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleArray</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>FocusOnFeedSlider</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>FocusOnSpindleSlider</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ActionSpindleDec</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ActionSpindlePlus</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed10</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed20</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed30</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed40</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed50</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed60</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed70</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed80</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed90</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Feed100</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleModel</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleInfo</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleIoIn</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>TrigleIoOut</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewX</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewY</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewZ</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewZ2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewP</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewClear</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewReload</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewZoomIn</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ViewZoomOut</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Para_set</source>
+    <target>参数设置</target>
+</phrase>
+<phrase>
+    <source>yes</source>
+    <target>是</target>
+</phrase>
+<phrase>
+    <source>no</source>
+    <target>否</target>
+</phrase>
+<phrase>
+    <source>sure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>copy</source>
+    <target>复制</target>
+</phrase>
+<phrase>
+    <source>paste</source>
+    <target>粘贴</target>
+</phrase>
+<phrase>
+    <source>Yes</source>
+    <target>是</target>
+</phrase>
+<phrase>
+    <source>Yes_btn</source>
+    <target>是</target>
+</phrase>
+<phrase>
+    <source>No_btn</source>
+    <target>否</target>
+</phrase>
+<phrase>
+    <source>positive</source>
+    <target>正向</target>
+</phrase>
+<phrase>
+    <source>negative</source>
+    <target>反向</target>
+</phrase>
+<phrase>
+    <source>Machine Arm:</source>
+    <target>机械臂:</target>
+</phrase>
+<phrase>
+    <source>now cannot read the correct file</source>
+    <target>上下料文件发生错误</target>
+</phrase>
+<phrase>
+    <source>Triggle Reset</source>
+    <target>复位</target>
+</phrase>
+<phrase>
+    <source>Machine On</source>
+    <target>机器启动</target>
+</phrase>
+<phrase>
+    <source>level_deep cannot be zero!!
+</source>
+    <target>每层深度不能为0!!</target>
+</phrase>
+<phrase>
+    <source>level_deep cannot be zero!!</source>
+    <target>每层深度不能为0!!</target>
+</phrase>
+<phrase>
+    <source>clean</source>
+    <target>清除</target>
+</phrase>
+<phrase>
+    <source>run_from</source>
+    <target>从此处运行</target>
+</phrase>
+<phrase>
+    <source>edit</source>
+    <target>编辑</target>
+</phrase>
+<phrase>
+    <source>flush</source>
+    <target>刷新</target>
+</phrase>
+<phrase>
+    <source>unload</source>
+    <target>卸载</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Lefttime:</source>
+    <target>剩余时间:</target>
+</phrase>
+<phrase>
+    <source>Systemnum:</source>
+    <target>板卡编号:</target>
+</phrase>
+<phrase>
+    <source>Modify</source>
+    <target>修改</target>
+</phrase>
+<phrase>
+    <source>Verifynum:</source>
+    <target>校验编码:</target>
+</phrase>
+<phrase>
+    <source>Code:</source>
+    <target>解锁密码:</target>
+</phrase>
+<phrase>
+    <source>More</source>
+    <target>更多信息</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Esc</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>MachineState:</source>
+    <target>系统状态:</target>
+</phrase>
+<phrase>
+    <source>UnlockCode:</source>
+    <target>解锁密码:</target>
+</phrase>
+<phrase>
+    <source>Register</source>
+    <target>软件注册</target>
+</phrase>
+<phrase>
+    <source>LeftTime:</source>
+    <target>剩余时间:</target>
+</phrase>
+<phrase>
+    <source>%1 hours %2 minutes</source>
+    <target>%1 小时 %2 分钟</target>
+</phrase>
+<phrase>
+    <source>%1 minutes</source>
+    <target>%1分钟</target>
+</phrase>
+<phrase>
+    <source>time over</source>
+    <target>注册时间已到期</target>
+</phrase>
+<phrase>
+    <source>permanent valid</source>
+    <target>永久有效</target>
+</phrase>
+<phrase>
+    <source>Input sysnum</source>
+    <target>输入机床编号</target>
+</phrase>
+<phrase>
+    <source>sysnum:</source>
+    <target>机床编号:</target>
+</phrase>
+<phrase>
+    <source>warnning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>sysnum must be 8 byte</source>
+    <target>机床编号必须为8位</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>sysnum must be 6 byte</source>
+    <target>机床编号必须为6位</target>
+</phrase>
+<phrase>
+    <source>EndDate:</source>
+    <target>到期日期:</target>
+</phrase>
+<phrase>
+    <source>Matchine is Locked.Please input the unlock code</source>
+    <target>系统未授权,请输入授权密码!</target>
+</phrase>
+<phrase>
+    <source>Matchine is unLocked</source>
+    <target>系统已授权</target>
+</phrase>
+<phrase>
+    <source>sysnum too large</source>
+    <target>机床编号太长</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Format is not right!!</source>
+    <target>输入格式不正确!!</target>
+</phrase>
+<phrase>
+    <source>write fail errorcode -1!!</source>
+    <target>写入密码错误，错误代码 -1!!</target>
+</phrase>
+<phrase>
+    <source>write fail errorcode -2!!</source>
+    <target>写入密码错误，错误代码 -2!!</target>
+</phrase>
+<phrase>
+    <source>write fail errorcode -3!!</source>
+    <target>写入密码错误，错误代码 -3!!</target>
+</phrase>
+<phrase>
+    <source>write success!!</source>
+    <target>写入成功!!</target>
+</phrase>
+<phrase>
+    <source>info</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Record the current coordinates  ?</source>
+    <target>是否记录当前坐标？</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Open</source>
+    <target>打开</target>
+</phrase>
+<phrase>
+    <source>Save_as</source>
+    <target>另存为</target>
+</phrase>
+<phrase>
+    <source>Ctrl+Z</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Ctrl+Shift+Z</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>SaveLoad</source>
+    <target>保存并加载</target>
+</phrase>
+<phrase>
+    <source>Save_as(F1)</source>
+    <target>另存为(F1)</target>
+</phrase>
+<phrase>
+    <source>Undo(F2)</source>
+    <target>撤销(F2)</target>
+</phrase>
+<phrase>
+    <source>Redo(F3)</source>
+    <target>重做(F3)</target>
+</phrase>
+<phrase>
+    <source>Find(F4)</source>
+    <target>查找(F4)</target>
+</phrase>
+<phrase>
+    <source>Replace(F5)</source>
+    <target>替换(F5)</target>
+</phrase>
+<phrase>
+    <source>Jump(F6)</source>
+    <target>跳转(F6)</target>
+</phrase>
+<phrase>
+    <source>Operation info</source>
+    <target>显示操作信息</target>
+</phrase>
+<phrase>
+    <source>Warn info</source>
+    <target>显示警告信息</target>
+</phrase>
+<phrase>
+    <source>Error info</source>
+    <target>显示错误信息</target>
+</phrase>
+<phrase>
+    <source>&amp;find</source>
+    <target>&amp;查找</target>
+</phrase>
+<phrase>
+    <source>&amp;replace</source>
+    <target>&amp;替换</target>
+</phrase>
+<phrase>
+    <source>jump</source>
+    <target>跳转</target>
+</phrase>
+<phrase>
+    <source>&amp;jump</source>
+    <target>&amp;跳转</target>
+</phrase>
+<phrase>
+    <source>Ctrl+J</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>find</source>
+    <target>查找</target>
+</phrase>
+<phrase>
+    <source>Ctrl+F</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>replace</source>
+    <target>替换</target>
+</phrase>
+<phrase>
+    <source>Ctrl+R</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Save</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>Undo</source>
+    <target>撤消</target>
+</phrase>
+<phrase>
+    <source>Redo</source>
+    <target>重做</target>
+</phrase>
+<phrase>
+    <source>Load</source>
+    <target>加载</target>
+</phrase>
+<phrase>
+    <source>File Editor</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Cut  Ctrl+X</source>
+    <target>剪贴  Ctrl+X</target>
+</phrase>
+<phrase>
+    <source>Copy  Ctrl+C</source>
+    <target>复制  Ctrl+C</target>
+</phrase>
+<phrase>
+    <source>Paste  Ctrl+V</source>
+    <target>粘贴  Ctrl+Z</target>
+</phrase>
+<phrase>
+    <source>Solfware Information</source>
+    <target>软件信息</target>
+</phrase>
+<phrase>
+    <source>ecncInfo</source>
+    <target>历史信息</target>
+</phrase>
+<phrase>
+    <source>shortCut</source>
+    <target>快捷键</target>
+</phrase>
+<phrase>
+    <source>Save File</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>NCFile (*.ngc)</source>
+    <target>NC文件 (*.ngc)</target>
+</phrase>
+<phrase>
+    <source>Open File</source>
+    <target>打开文件</target>
+</phrase>
+<phrase>
+    <source>Files(*.*)</source>
+    <target>*.*</target>
+</phrase>
+<phrase>
+    <source>WARNING</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Save File Fail !!</source>
+    <target>保存文件失败 !!</target>
+</phrase>
+<phrase>
+    <source>Warnning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Your changes will not save if U exit from here
+ Still exist?</source>
+    <target>当前文件修改不会被保存，确定退出?</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>类型</target>
+</phrase>
+<phrase>
+    <source>Info</source>
+    <target>日志信息</target>
+</phrase>
+<phrase>
+    <source>Time</source>
+    <target>时间</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>now is loading file,please wait...</source>
+    <target>正在加载文件......</target>
+</phrase>
+<phrase>
+    <source>Jump</source>
+    <target>跳转</target>
+</phrase>
+<phrase>
+    <source>Jump to line:</source>
+    <target>跳转到行:</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Can not find %1</source>
+    <target>找不到字符 %1</target>
+</phrase>
+<phrase>
+    <source>Code Input</source>
+    <target>密码输入</target>
+</phrase>
+<phrase>
+    <source>Modify</source>
+    <target>修改密码</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Input PassWord:</source>
+    <target>输入密码:</target>
+</phrase>
+<phrase>
+    <source>warnning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Input code error</source>
+    <target>输入密码错误</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>日志</target>
+</phrase>
+<phrase>
+    <source>&amp;Z1</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;All</source>
+    <target>&amp;A所有轴</target>
+</phrase>
+<phrase>
+    <source>&amp;X(U)</source>
+    <target>&amp;X轴(U轴)</target>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;Y</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>A</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;Z1(W)</source>
+    <target>&amp;Z轴（W轴）</target>
+</phrase>
+<phrase>
+    <source>Z</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>DirectlySet</source>
+    <target>直接设定</target>
+</phrase>
+<phrase>
+    <source>D</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>B</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;X</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;U</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>U</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;V</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>V</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;W</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>W</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>     Press the left (All)button, the machine will Homing in order Z, X ,Y.</source>
+    <target>点击(所有轴)回零按钮，先进行Z轴回零，Z轴回零结束后，X、Y轴同时回零。</target>
+</phrase>
+<phrase>
+    <source>Press the directly set button to home all axis directly,and it set the current absolutely coordinate as the zero point.</source>
+    <target>直接设定回零方式把当前机械坐标值设为机械零点.</target>
+</phrase>
+<phrase>
+    <source>     Press the left  button (X,Y,Z1,Z2), the corresponding  axis will Homing</source>
+    <target>点击左边的回零按钮，软件会进行对应的X、Y、Z轴的回零</target>
+</phrase>
+<phrase>
+    <source>     Note that pressing F11 or Quit button can stop exercising  immediately without closing the dialog.</source>
+    <target>触发F11快捷键或者下面的停止按钮，可以立刻停止回零而不退出回零界面。</target>
+</phrase>
+<phrase>
+    <source>Machine1</source>
+    <target>机械1</target>
+</phrase>
+<phrase>
+    <source>Machine2</source>
+    <target>机械2</target>
+</phrase>
+<phrase>
+    <source>AllMachine</source>
+    <target>机械1+2</target>
+</phrase>
+<phrase>
+    <source>Stop(&amp;F11)</source>
+    <target>停止(&amp;F11)</target>
+</phrase>
+<phrase>
+    <source>Quit(&amp;Esc)</source>
+    <target>退出(&amp;Esc)</target>
+</phrase>
+<phrase>
+    <source>F11</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&amp;Quit</source>
+    <target>&amp;Q停止</target>
+</phrase>
+<phrase>
+    <source>Return</source>
+    <target>返回</target>
+</phrase>
+<phrase>
+    <source>Esc</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Z2</source>
+    <target>Z2</target>
+</phrase>
+<phrase>
+    <source>Home All</source>
+    <target>所有轴回零</target>
+</phrase>
+<phrase>
+    <source>HomeDialog</source>
+    <target>回零</target>
+</phrase>
+<phrase>
+    <source>&amp;Z</source>
+    <target>Z</target>
+</phrase>
+<phrase>
+    <source>homeX posfb %1</source>
+    <target>X轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis X Cannot find the coder index ,please check the signal</source>
+    <target>X轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeY posfb %1</source>
+    <target>Y轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis Y Cannot find the coder index ,please check the signal</source>
+    <target>Y轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeZ1 posfb %1</source>
+    <target>Z1轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis Z1 Cannot find the coder index ,please check the signal</source>
+    <target>Z1轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeZ2 posfb %1</source>
+    <target>Z2轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis Z2 Cannot find the coder index ,please check the signal</source>
+    <target>Z2轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeU posfb %1</source>
+    <target>U轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis U Cannot find the coder index ,please check the signal</source>
+    <target>U轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeV posfb %1</source>
+    <target>V轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis V Cannot find the coder index ,please check the signal</source>
+    <target>V轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>homeW posfb %1</source>
+    <target>W轴的粗精差为 %1</target>
+</phrase>
+<phrase>
+    <source>axis W Cannot find the coder index ,please check the signal</source>
+    <target>W轴粗精差为0,请检测编码器零点信号是否正常</target>
+</phrase>
+<phrase>
+    <source>warn</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>AXIS Z is unhomed,ensure to continue?</source>
+    <target>Z轴未回零，请确保Z轴处于安全高度?</target>
+</phrase>
+<phrase>
+    <source>Home axis X</source>
+    <target>回X轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis U</source>
+    <target>回U轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis Y</source>
+    <target>回轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis Z</source>
+    <target>回Z轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis V</source>
+    <target>回V轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis W</source>
+    <target>回W轴操作</target>
+</phrase>
+<phrase>
+    <source>Home axis Z2</source>
+    <target>Z2轴回零</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>InputIO</source>
+    <target>输入端口</target>
+</phrase>
+<phrase>
+    <source>INFO</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>SIGNAL</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>IO</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>POLARITY</source>
+    <target>极性</target>
+</phrase>
+<phrase>
+    <source>VALUE</source>
+    <target>信号值</target>
+</phrase>
+<phrase>
+    <source>FILTER</source>
+    <target>滤波时间</target>
+</phrase>
+<phrase>
+    <source>OutputIO</source>
+    <target>输出端口</target>
+</phrase>
+<phrase>
+    <source>Warnning</source>
+    <target>警告信息</target>
+</phrase>
+<phrase>
+    <source>Effect:</source>
+    <target>信号使能：</target>
+</phrase>
+<phrase>
+    <source>Enable</source>
+    <target>有效</target>
+</phrase>
+<phrase>
+    <source>Disable</source>
+    <target>无效</target>
+</phrase>
+<phrase>
+    <source>Pol:</source>
+    <target>极性:</target>
+</phrase>
+<phrase>
+    <source>Postive</source>
+    <target>正</target>
+</phrase>
+<phrase>
+    <source>Negative</source>
+    <target>负</target>
+</phrase>
+<phrase>
+    <source>Info:</source>
+    <target>报警信息：</target>
+</phrase>
+<phrase>
+    <source>Save</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Oper Code</source>
+    <target>操作密码</target>
+</phrase>
+<phrase>
+    <source>Debug Code</source>
+    <target>调试密码</target>
+</phrase>
+<phrase>
+    <source>Develop Code</source>
+    <target>开发密码</target>
+</phrase>
+<phrase>
+    <source>INFO</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>SIGNAL</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>Save</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>IOConfig</source>
+    <target>设置IO</target>
+</phrase>
+<phrase>
+    <source>forbid_run</source>
+    <target>禁止运行</target>
+</phrase>
+<phrase>
+    <source>Stop_and_Redlight</source>
+    <target>立刻停止并报警</target>
+</phrase>
+<phrase>
+    <source>forbid_spindle</source>
+    <target>停止主轴旋转</target>
+</phrase>
+<phrase>
+    <source>getAlarm_only_showinfo</source>
+    <target>只显示报警信息</target>
+</phrase>
+<phrase>
+    <source>run</source>
+    <target>外部运行信号</target>
+</phrase>
+<phrase>
+    <source>abort_or_pause</source>
+    <target>外部停止信号</target>
+</phrase>
+<phrase>
+    <source>Warnning</source>
+    <target>IO报警信息</target>
+</phrase>
+<phrase>
+    <source>modify_tip</source>
+    <target>修改提示</target>
+</phrase>
+<phrase>
+    <source>the pin %1 is already exist,make sure u need to change?</source>
+    <target>管脚 %1已经存在，确定改变为该管脚？</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Need Reboot</source>
+    <target>重启生效</target>
+</phrase>
+<phrase>
+    <source>Set filter time</source>
+    <target>设置滤波时间</target>
+</phrase>
+<phrase>
+    <source>filter time</source>
+    <target>设定值</target>
+</phrase>
+<phrase>
+    <source>Information</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>save success</source>
+    <target>保存成功</target>
+</phrase>
+<phrase>
+    <source>save filter time failed!</source>
+    <target>保存失败！</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.\nDo you realy want to exit?</source>
+    <target>参数值被修改，确定退出?</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.</source>
+    <target>IO信息有修改但还没有保存.</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to exit?</source>
+    <target>确定退出?</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>sig_name</source>
+    <target>标识</target>
+</phrase>
+<phrase>
+    <source>sig_pin</source>
+    <target>管脚</target>
+</phrase>
+<phrase>
+    <source>sig_info</source>
+    <target>简称</target>
+</phrase>
+<phrase>
+    <source>sig_por</source>
+    <target>极性</target>
+</phrase>
+<phrase>
+    <source>sig_signal</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>sig_time</source>
+    <target>滤波时间</target>
+</phrase>
+<phrase>
+    <source>Signal</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>Pin</source>
+    <target>管脚</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>信号名</target>
+</phrase>
+<phrase>
+    <source>Polarity</source>
+    <target>极性</target>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>信号值</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>日志</target>
+</phrase>
+<phrase>
+    <source>sig_name</source>
+    <target>标识</target>
+</phrase>
+<phrase>
+    <source>sig_pin</source>
+    <target>管脚号</target>
+</phrase>
+<phrase>
+    <source>sig_info</source>
+    <target>简称</target>
+</phrase>
+<phrase>
+    <source>sig_por</source>
+    <target>极性</target>
+</phrase>
+<phrase>
+    <source>sig_signal</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>sig_time</source>
+    <target>滤波时间</target>
+</phrase>
+<phrase>
+    <source>IOControl</source>
+    <target>IO调试</target>
+</phrase>
+<phrase>
+    <source>Ctrl+Shift+M</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Signal</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>Pin</source>
+    <target>管脚</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>信号名</target>
+</phrase>
+<phrase>
+    <source>Polarity</source>
+    <target>极性</target>
+</phrase>
+<phrase>
+    <source>Value</source>
+    <target>信号值</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Clear Infomation</source>
+    <target>清除日志</target>
+</phrase>
+<phrase>
+    <source>System Infomation</source>
+    <target>显示操作信息</target>
+</phrase>
+<phrase>
+    <source>Warning Infomation</source>
+    <target>显示警告信息</target>
+</phrase>
+<phrase>
+    <source>Alarm Infomation</source>
+    <target>显示错误信息</target>
+</phrase>
+<phrase>
+    <source>clean</source>
+    <target>清除</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>类型</target>
+</phrase>
+<phrase>
+    <source>Info</source>
+    <target>日志信息</target>
+</phrase>
+<phrase>
+    <source>Time</source>
+    <target>时间</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>CustomNum:</source>
+    <target>客户编号:</target>
+</phrase>
+<phrase>
+    <source>BoardNum:</source>
+    <target>主板编号:</target>
+</phrase>
+<phrase>
+    <source>SoftwareVer:</source>
+    <target>软件编号:</target>
+</phrase>
+<phrase>
+    <source>More</source>
+    <target>更多信息</target>
+</phrase>
+<phrase>
+    <source>HardwareVer:</source>
+    <target>硬件编号:</target>
+</phrase>
+<phrase>
+    <source>MachineNum:</source>
+    <target>机床编号：</target>
+</phrase>
+<phrase>
+    <source>Modify</source>
+    <target>修改</target>
+</phrase>
+<phrase>
+    <source>System Info</source>
+    <target>软件信息</target>
+</phrase>
+<phrase>
+    <source>Bma Tech</source>
+    <target>宝码科技</target>
+</phrase>
+<phrase>
+    <source>%1-%2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>warnning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>sysnum too large</source>
+    <target>机床编号太长</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>日志</target>
+</phrase>
+<phrase>
+    <source>INFO</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>SIGNAL</source>
+    <target>信号</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>手动上下料</target>
+</phrase>
+<phrase>
+    <source>Station1</source>
+    <target>治具1</target>
+</phrase>
+<phrase>
+    <source>Location_1</source>
+    <target>定位块1</target>
+</phrase>
+<phrase>
+    <source>Vacuum_1</source>
+    <target>真空1</target>
+</phrase>
+<phrase>
+    <source>Discharge_blowing_1</source>
+    <target>放料反吹1</target>
+</phrase>
+<phrase>
+    <source>Taking</source>
+    <target>取料</target>
+</phrase>
+<phrase>
+    <source>Discharge</source>
+    <target>放料</target>
+</phrase>
+<phrase>
+    <source>Unloading 1</source>
+    <target>下料1</target>
+</phrase>
+<phrase>
+    <source>Loading 1</source>
+    <target>上料1</target>
+</phrase>
+<phrase>
+    <source>Station2</source>
+    <target>治具2</target>
+</phrase>
+<phrase>
+    <source>Location_2</source>
+    <target>定位块2</target>
+</phrase>
+<phrase>
+    <source>Vacuum_2</source>
+    <target>真空2</target>
+</phrase>
+<phrase>
+    <source>Discharge_blowing_2</source>
+    <target>放料反吹2</target>
+</phrase>
+<phrase>
+    <source>Unloading 2</source>
+    <target>下料2</target>
+</phrase>
+<phrase>
+    <source>Loading 2</source>
+    <target>上料2</target>
+</phrase>
+<phrase>
+    <source>Station3</source>
+    <target>治具3</target>
+</phrase>
+<phrase>
+    <source>Location_3</source>
+    <target>定位块3</target>
+</phrase>
+<phrase>
+    <source>Vacuum_3</source>
+    <target>真空3</target>
+</phrase>
+<phrase>
+    <source>Discharge_blowing_3</source>
+    <target>放料反吹3</target>
+</phrase>
+<phrase>
+    <source>Unloading 3</source>
+    <target>下料3</target>
+</phrase>
+<phrase>
+    <source>Loading 3</source>
+    <target>上料3</target>
+</phrase>
+<phrase>
+    <source>Station4</source>
+    <target>治具4</target>
+</phrase>
+<phrase>
+    <source>Location_4</source>
+    <target>定位块4</target>
+</phrase>
+<phrase>
+    <source>Vacuum_4</source>
+    <target>真空4</target>
+</phrase>
+<phrase>
+    <source>Discharge_blowing_4</source>
+    <target>放料反吹4</target>
+</phrase>
+<phrase>
+    <source>Break Vacuum 1</source>
+    <target>破真空1</target>
+</phrase>
+<phrase>
+    <source>Break Vacuum 2</source>
+    <target>破真空2</target>
+</phrase>
+<phrase>
+    <source>Break Vacuum 3</source>
+    <target>破真空3</target>
+</phrase>
+<phrase>
+    <source>Break Vacuum 4</source>
+    <target>破真空4</target>
+</phrase>
+<phrase>
+    <source>Unloading 4</source>
+    <target>下料4</target>
+</phrase>
+<phrase>
+    <source>Loading 4</source>
+    <target>上料4</target>
+</phrase>
+<phrase>
+    <source>Manipulator</source>
+    <target>机械臂</target>
+</phrase>
+<phrase>
+    <source>Forward</source>
+    <target>前进</target>
+</phrase>
+<phrase>
+    <source>Back_away</source>
+    <target>后退</target>
+</phrase>
+<phrase>
+    <source>Sucker_on</source>
+    <target>吸盘</target>
+</phrase>
+<phrase>
+    <source>turing</source>
+    <target>翻转</target>
+</phrase>
+<phrase>
+    <source>Sucker_blowing</source>
+    <target>吸盘反吹</target>
+</phrase>
+<phrase>
+    <source>ResetIO</source>
+    <target>端口复位</target>
+</phrase>
+<phrase>
+    <source>Please remove the spindle</source>
+    <target>请先将主轴移开</target>
+</phrase>
+<phrase>
+    <source>machine2 runing</source>
+    <target>机械2运行</target>
+</phrase>
+<phrase>
+    <source>now cannot read the correct file</source>
+    <target>上下料文件发生错误</target>
+</phrase>
+<phrase>
+    <source>Input Range:%1 - %2</source>
+    <target>输入范围:%1 - %2</target>
+</phrase>
+<phrase>
+    <source>Input Range:%1 ~ %2</source>
+    <target>输入范围：%1 ~ %2</target>
+</phrase>
+<phrase>
+    <source>set value:</source>
+    <target>设定值：</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>ECNC</target>
+</phrase>
+<phrase>
+    <source>Please input the Machine Number</source>
+    <target>请输入机床编号</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>日志</target>
+</phrase>
+<phrase>
+    <source>PublicOffset</source>
+    <target>公共偏置</target>
+</phrase>
+<phrase>
+    <source>X:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Y:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z1:</source>
+    <target>Z1:</target>
+</phrase>
+<phrase>
+    <source>Z2:</source>
+    <target>Z2:</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>Piece Offset</source>
+    <target>工件偏置</target>
+</phrase>
+<phrase>
+    <source>Piece Coor</source>
+    <target>工件坐标</target>
+</phrase>
+<phrase>
+    <source>0.000</source>
+    <target>3D视觉 {0.000?}</target>
+</phrase>
+<phrase>
+    <source>Raise/Fall</source>
+    <target>抬高/加深</target>
+</phrase>
+<phrase>
+    <source>-0.01mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-0.1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>+0.01mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>+0.1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>+1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>DECENT:</source>
+    <target>加深:</target>
+</phrase>
+<phrase>
+    <source>RAISE:</source>
+    <target>抬高:</target>
+</phrase>
+<phrase>
+    <source>Setting</source>
+    <target>快速设置</target>
+</phrase>
+<phrase>
+    <source>setx</source>
+    <target>设置X</target>
+</phrase>
+<phrase>
+    <source>sety</source>
+    <target>设置Y</target>
+</phrase>
+<phrase>
+    <source>setxy</source>
+    <target>设置XY</target>
+</phrase>
+<phrase>
+    <source>      Read the current machine coordinate and set  to the current offset.</source>
+    <target>读取当前对机械坐标并设为当前的工件偏置.</target>
+</phrase>
+<phrase>
+    <source>chotomy</source>
+    <target>分中</target>
+</phrase>
+<phrase>
+    <source>Record:  Record the current machine coordinate.
+Chotomy:  Take an average of the current machine coordinate value with the record value and set it.</source>
+    <target>记录:记录当前的机械坐标点.
+分中:取当前机械坐标和记录点坐标的平均值并设置到工件偏置.</target>
+</phrase>
+<phrase>
+    <source>Quit</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>decent 0.01mm</source>
+    <target>下降 0.01mm</target>
+</phrase>
+<phrase>
+    <source>decent 0.1mm</source>
+    <target>下降 0.1mm</target>
+</phrase>
+<phrase>
+    <source>decent 1mm</source>
+    <target>下降 1mm</target>
+</phrase>
+<phrase>
+    <source>raise 0.01mm</source>
+    <target>抬高 0.01mm</target>
+</phrase>
+<phrase>
+    <source>raise 0.1mm</source>
+    <target>抬高 0.1mm</target>
+</phrase>
+<phrase>
+    <source>raise 1mm</source>
+    <target>抬高 1mm</target>
+</phrase>
+<phrase>
+    <source>record X</source>
+    <target>记录X</target>
+</phrase>
+<phrase>
+    <source>record Y</source>
+    <target>记录Y</target>
+</phrase>
+<phrase>
+    <source>dichotomy_x</source>
+    <target>分中X</target>
+</phrase>
+<phrase>
+    <source>dichotomy_y</source>
+    <target>分中Y</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>OffsetDialog</source>
+    <target>设置偏置</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.</source>
+    <target>坐标值有修改但还没保存.</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to exit?</source>
+    <target>确定退出?</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.\nDo you realy want to exit?</source>
+    <target>参数值已经被修改，确定不保存退出?</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>information</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>set offset complete</source>
+    <target>设置坐标完成</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>set offset fail!!</source>
+    <target>设置坐标失败!!</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>日志</target>
+</phrase>
+<phrase>
+    <source>Oper Code</source>
+    <target>操作参数</target>
+</phrase>
+<phrase>
+    <source>Debug Code</source>
+    <target>调试参数</target>
+</phrase>
+<phrase>
+    <source>Develop Code</source>
+    <target>开发参数</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>ParameterConfig</source>
+    <target>参数设置</target>
+</phrase>
+<phrase>
+    <source>Operation</source>
+    <target>操作参数</target>
+</phrase>
+<phrase>
+    <source>Feed</source>
+    <target>进给轴参数</target>
+</phrase>
+<phrase>
+    <source>Spindle</source>
+    <target>主轴参数</target>
+</phrase>
+<phrase>
+    <source>Handle</source>
+    <target>手轮参数</target>
+</phrase>
+<phrase>
+    <source>Program</source>
+    <target>程序参数</target>
+</phrase>
+<phrase>
+    <source>Interface</source>
+    <target>界面参数</target>
+</phrase>
+<phrase>
+    <source>Tool</source>
+    <target>刀具参数</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>其他参数</target>
+</phrase>
+<phrase>
+    <source>All_System</source>
+    <target>系统参数</target>
+</phrase>
+<phrase>
+    <source>Find Results</source>
+    <target>查找结果</target>
+</phrase>
+<phrase>
+    <source>ID</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>NAME</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>goto</source>
+    <target>定位到相应位置</target>
+</phrase>
+<phrase>
+    <source>Find Complete! Couldn&apos;t find any results</source>
+    <target>查询结束！未找到相关内容</target>
+</phrase>
+<phrase>
+    <source>Find Complete! query to %1 data</source>
+    <target>查找完成！查询到 %1 条数据</target>
+</phrase>
+<phrase>
+    <source>Enter the keyword you want to search for</source>
+    <target>请输入你需要查找的关键字</target>
+</phrase>
+<phrase>
+    <source>MACHINE</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>No</source>
+    <target>否</target>
+</phrase>
+<phrase>
+    <source>Yes</source>
+    <target>是</target>
+</phrase>
+<phrase>
+    <source>positive</source>
+    <target>正向</target>
+</phrase>
+<phrase>
+    <source>negative</source>
+    <target>反向</target>
+</phrase>
+<phrase>
+    <source>Machine1</source>
+    <target>机械1</target>
+</phrase>
+<phrase>
+    <source>Machine2</source>
+    <target>机械2</target>
+</phrase>
+<phrase>
+    <source>Failed ! parameter %1: %2 ==&gt; %3  is not save</source>
+    <target>失败！参数 %1：%2 ==&gt; %3未成功保存</target>
+</phrase>
+<phrase>
+    <source>The para is changed ,need reboot!</source>
+    <target>修改的部分参数重启生效！</target>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target>X轴参数</target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target>Y轴参数</target>
+</phrase>
+<phrase>
+    <source>Z</source>
+    <target>Z轴参数</target>
+</phrase>
+<phrase>
+    <source>System</source>
+    <target>软件参数</target>
+</phrase>
+<phrase>
+    <source>Validate Immediately</source>
+    <target>立即生效</target>
+</phrase>
+<phrase>
+    <source>Validate Reboot</source>
+    <target>重启软件</target>
+</phrase>
+<phrase>
+    <source>parameter %1: %2 ==&gt; %3</source>
+    <target>参数 %1：%2 ==&gt; %3</target>
+</phrase>
+<phrase>
+    <source>INFO</source>
+    <target>参数名称</target>
+</phrase>
+<phrase>
+    <source>VALUE</source>
+    <target>参数值</target>
+</phrase>
+<phrase>
+    <source>RANGE</source>
+    <target>范围</target>
+</phrase>
+<phrase>
+    <source>REBOOT</source>
+    <target>生效方式</target>
+</phrase>
+<phrase>
+    <source>Save Parameter Success</source>
+    <target>保存参数成功</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Hight speed parmeter is not reasonable,maybe larger than max velocity</source>
+    <target>高速进给速度值过大</target>
+</phrase>
+<phrase>
+    <source>ANGLE2 is too large</source>
+    <target>相邻量线段的夹角2大于夹角1</target>
+</phrase>
+<phrase>
+    <source>ANGLE1 is too small</source>
+    <target>相邻量线段的夹角1小于夹角2</target>
+</phrase>
+<phrase>
+    <source>COEFF1 is too small</source>
+    <target>夹角1系数限制小于夹角2系数限制</target>
+</phrase>
+<phrase>
+    <source>COEFF2 is too large</source>
+    <target>夹角2系数限制大于夹角1系数限制</target>
+</phrase>
+<phrase>
+    <source>Need Reboot before it works!</source>
+    <target>该参数重启后生效!</target>
+</phrase>
+<phrase>
+    <source>Parameter name:</source>
+    <target>参数名称：</target>
+</phrase>
+<phrase>
+    <source>Parameter range:</source>
+    <target>范围：</target>
+</phrase>
+<phrase>
+    <source>Onset time:</source>
+    <target>生效方式：</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>The system is runing!</source>
+    <target>系统正在运行！</target>
+</phrase>
+<phrase>
+    <source>WARNING</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Some parameter has been changed,Ensure to Exit?</source>
+    <target>有部分参数被修改但还没有保存，确定退出?</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>DESCRIPTION</source>
+    <target>描述</target>
+</phrase>
+<phrase>
+    <source>VALUE</source>
+    <target>参数值</target>
+</phrase>
+<phrase>
+    <source>RANGE</source>
+    <target>范围</target>
+</phrase>
+<phrase>
+    <source>REBOOT</source>
+    <target>生效方式</target>
+</phrase>
+<phrase>
+    <source>Oper Code(O)</source>
+    <target>操作密码(O)</target>
+</phrase>
+<phrase>
+    <source>Debug Code(M)</source>
+    <target>调试密码(M)</target>
+</phrase>
+<phrase>
+    <source>Develop Code(D)</source>
+    <target>开发密码(D)</target>
+</phrase>
+<phrase>
+    <source>Find</source>
+    <target>查找</target>
+</phrase>
+<phrase>
+    <source>match</source>
+    <target>完全匹配</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>保存</target>
+</phrase>
+<phrase>
+    <source>Cancle</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Esc</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Modify Code</source>
+    <target>修改密码</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>old code:</source>
+    <target>输入旧密码:</target>
+</phrase>
+<phrase>
+    <source>new code:</source>
+    <target>输入新密码:</target>
+</phrase>
+<phrase>
+    <source>new code again:</source>
+    <target>确认新密码:</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Input Code Cannot be NULL</source>
+    <target>密码输入不能为空</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>old code is not correct</source>
+    <target>输入旧密码错误</target>
+</phrase>
+<phrase>
+    <source>two new code art not compative</source>
+    <target>两次输入的新密码不匹配</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>modify code is ok</source>
+    <target>修改密码成功</target>
+</phrase>
+<phrase>
+    <source>input password</source>
+    <target>请输入密码</target>
+</phrase>
+<phrase>
+    <source>Input Password</source>
+    <target>输入密码</target>
+</phrase>
+<phrase>
+    <source>Input Operation Password</source>
+    <target>输入操作密码</target>
+</phrase>
+<phrase>
+    <source>Input Debug Password</source>
+    <target>输入调试密码</target>
+</phrase>
+<phrase>
+    <source>Input Developer Password</source>
+    <target>输入开发密码</target>
+</phrase>
+<phrase>
+    <source>Input Password Again</source>
+    <target>密码输入错误，重新输入</target>
+</phrase>
+<phrase>
+    <source>password</source>
+    <target>密码</target>
+</phrase>
+<phrase>
+    <source>Send Manual Mode</source>
+    <target>设置手动模式</target>
+</phrase>
+<phrase>
+    <source>Send Auto Mode</source>
+    <target>设置自动模式</target>
+</phrase>
+<phrase>
+    <source>Send Mdi Mode</source>
+    <target>设置MDI模式</target>
+</phrase>
+<phrase>
+    <source>level_deep cannot be zero!!
+</source>
+    <target>每层深度不能为0!!</target>
+</phrase>
+<phrase>
+    <source>level_deep cannot be zero!!</source>
+    <target>每层深度不能为0!!</target>
+</phrase>
+<phrase>
+    <source>SetFeed</source>
+    <target>设置进给</target>
+</phrase>
+<phrase>
+    <source>Default Feed:</source>
+    <target>默认进给速度：</target>
+</phrase>
+<phrase>
+    <source>High Feed:</source>
+    <target>高速进给速度：</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>defaultfeed higher than fasterfeed</source>
+    <target>默认进给速度比高速进给速度数值大</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>RectFlat</source>
+    <target>矩形铣底</target>
+</phrase>
+<phrase>
+    <source>Total Deep:</source>
+    <target>雕刻深度:</target>
+</phrase>
+<phrase>
+    <source>Unit:mm</source>
+    <target>单位:mm</target>
+</phrase>
+<phrase>
+    <source>Level Deep:</source>
+    <target>每层深度:</target>
+</phrase>
+<phrase>
+    <source>Tool Space:</source>
+    <target>刀尖间距:</target>
+</phrase>
+<phrase>
+    <source>Tool Dia:</source>
+    <target>刀具直径:</target>
+</phrase>
+<phrase>
+    <source>Speed</source>
+    <target>速度</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>宽度</target>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>高度</target>
+</phrase>
+<phrase>
+    <source>horizon</source>
+    <target>横铣</target>
+</phrase>
+<phrase>
+    <source>vertical</source>
+    <target>纵铣</target>
+</phrase>
+<phrase>
+    <source>CircleFlat</source>
+    <target>圆形铣底</target>
+</phrase>
+<phrase>
+    <source>Circle Radius</source>
+    <target>圆弧半径</target>
+</phrase>
+<phrase>
+    <source>Circle Center</source>
+    <target>圆心坐标</target>
+</phrase>
+<phrase>
+    <source>RectFrame</source>
+    <target>铣矩形边框</target>
+</phrase>
+<phrase>
+    <source>Speed:</source>
+    <target>速度:</target>
+</phrase>
+<phrase>
+    <source>Width:</source>
+    <target>宽度:</target>
+</phrase>
+<phrase>
+    <source>Height:</source>
+    <target>高度:</target>
+</phrase>
+<phrase>
+    <source>Start_X:</source>
+    <target>起始点X:</target>
+</phrase>
+<phrase>
+    <source>Start_Y:</source>
+    <target>起始点Y:</target>
+</phrase>
+<phrase>
+    <source>InsideFrame</source>
+    <target>内框</target>
+</phrase>
+<phrase>
+    <source>OutsideFrame</source>
+    <target>外框</target>
+</phrase>
+<phrase>
+    <source>CircleFrame</source>
+    <target>铣圆形边框</target>
+</phrase>
+<phrase>
+    <source>Execute</source>
+    <target>执行</target>
+</phrase>
+<phrase>
+    <source>SmartControl</source>
+    <target>高级加工</target>
+</phrase>
+<phrase>
+    <source>Save File</source>
+    <target>保存文件</target>
+</phrase>
+<phrase>
+    <source>Generate  program %1</source>
+    <target>生成程序 %1</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>SpecifyLine</source>
+    <target>指定行</target>
+</phrase>
+<phrase>
+    <source>FileHead</source>
+    <target>文件头</target>
+</phrase>
+<phrase>
+    <source>StartLine:</source>
+    <target>起始行:</target>
+</phrase>
+<phrase>
+    <source>EndLine:</source>
+    <target>结束行:</target>
+</phrase>
+<phrase>
+    <source>FileEnd</source>
+    <target>文件尾</target>
+</phrase>
+<phrase>
+    <source>FastRun</source>
+    <target>快速模式</target>
+</phrase>
+<phrase>
+    <source>Start</source>
+    <target>开始运行</target>
+</phrase>
+<phrase>
+    <source>Quit</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Esc</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>*Note:Enable the FastRun that the lines of the 
+specifyline will be ignore.</source>
+    <target>注意：快速模式不对指定行之前的程序进行解释
+因此开始运行的速度会比较快，请谨慎使用.</target>
+</phrase>
+<phrase>
+    <source>SmartStart</source>
+    <target>高级开始</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>endline must be greater than startline!</source>
+    <target>结束行必须大于起始行!</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Specify line(total:%1):</source>
+    <target>指定行(总行:%1):</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>RectFlat</source>
+    <target>矩形铣底</target>
+</phrase>
+<phrase>
+    <source>Total Deep:</source>
+    <target>雕刻深度:</target>
+</phrase>
+<phrase>
+    <source>Unit:mm</source>
+    <target>单位:mm</target>
+</phrase>
+<phrase>
+    <source>Level Deep:</source>
+    <target>每层深度:</target>
+</phrase>
+<phrase>
+    <source>Tool Space:</source>
+    <target>刀尖间距:</target>
+</phrase>
+<phrase>
+    <source>Tool Dia:</source>
+    <target>刀具直径:</target>
+</phrase>
+<phrase>
+    <source>Speed:</source>
+    <target>速度:</target>
+</phrase>
+<phrase>
+    <source>ZSpeed:</source>
+    <target>Z轴速度:</target>
+</phrase>
+<phrase>
+    <source>Width</source>
+    <target>宽度</target>
+</phrase>
+<phrase>
+    <source>Height</source>
+    <target>高度</target>
+</phrase>
+<phrase>
+    <source>X:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Y:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Start Point:</source>
+    <target>起始点坐标:</target>
+</phrase>
+<phrase>
+    <source>horizon</source>
+    <target>横铣</target>
+</phrase>
+<phrase>
+    <source>vertical</source>
+    <target>纵铣</target>
+</phrase>
+<phrase>
+    <source>CircleFlat</source>
+    <target>圆形铣底</target>
+</phrase>
+<phrase>
+    <source>Circle Radius:</source>
+    <target>圆弧半径:</target>
+</phrase>
+<phrase>
+    <source>Circle Center</source>
+    <target>圆心坐标</target>
+</phrase>
+<phrase>
+    <source>RectFrame</source>
+    <target>铣矩形边框</target>
+</phrase>
+<phrase>
+    <source>Width:</source>
+    <target>宽度:</target>
+</phrase>
+<phrase>
+    <source>Height:</source>
+    <target>高度:</target>
+</phrase>
+<phrase>
+    <source>Start_X:</source>
+    <target>起始点X:</target>
+</phrase>
+<phrase>
+    <source>Start_Y:</source>
+    <target>起始点Y:</target>
+</phrase>
+<phrase>
+    <source>InsideFrame</source>
+    <target>内框</target>
+</phrase>
+<phrase>
+    <source>OutsideFrame</source>
+    <target>外框</target>
+</phrase>
+<phrase>
+    <source>CircleFrame</source>
+    <target>铣圆形边框</target>
+</phrase>
+<phrase>
+    <source>Generate File</source>
+    <target>生成程序</target>
+</phrase>
+<phrase>
+    <source>Execute</source>
+    <target>执行</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>SystemTool</source>
+    <target>系统工具</target>
+</phrase>
+<phrase>
+    <source>The progress of the operation</source>
+    <target>操作进度:</target>
+</phrase>
+<phrase>
+    <source>Windows XP Restore</source>
+    <target>重装WindowsXP</target>
+</phrase>
+<phrase>
+    <source>MasterCam Backup</source>
+    <target>MasterCam备份</target>
+</phrase>
+<phrase>
+    <source>Open Reloading File</source>
+    <target>打开上下料文件</target>
+</phrase>
+<phrase>
+    <source>Operation failed</source>
+    <target>操作失败</target>
+</phrase>
+<phrase>
+    <source>Operation Succeed</source>
+    <target>操作成功</target>
+</phrase>
+<phrase>
+    <source>info</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>Reinstall the system, all user data will be lost!</source>
+    <target>重装系统,winXP所有数据将还原出厂设置!</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>now chose pin</source>
+    <target>更改管脚</target>
+</phrase>
+<phrase>
+    <source>modify_tip</source>
+    <target>修改提示</target>
+</phrase>
+<phrase>
+    <source>the pin %1 is already exist,make sure u need to change?</source>
+    <target>管脚 %1已经存在，确定改变为该管脚？</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Pos</source>
+    <target>正极</target>
+</phrase>
+<phrase>
+    <source>Neg</source>
+    <target>负极</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Comp</source>
+    <target>刀具补偿</target>
+</phrase>
+<phrase>
+    <source>Manager</source>
+    <target>刀具管理</target>
+</phrase>
+<phrase>
+    <source>tool length comp effective axis</source>
+    <target>刀长有效轴</target>
+</phrase>
+<phrase>
+    <source>Z1+Z2</source>
+    <target>Z1+Z2</target>
+</phrase>
+<phrase>
+    <source>Z1</source>
+    <target>Z1</target>
+</phrase>
+<phrase>
+    <source>Z2</source>
+    <target>Z2</target>
+</phrase>
+<phrase>
+    <source>Note:
+    This function is to tell the CNC which Z axis makes the tool length compensation effect.</source>
+    <target>注意:此功能指定哪一个Z轴所设定的刀具长度补偿有效，选择Z1+Z2选项则两个Z轴的刀具长度补偿有效。</target>
+</phrase>
+<phrase>
+    <source>Using different Z axes</source>
+    <target>刀具长度分别补偿</target>
+</phrase>
+<phrase>
+    <source>Using Array File</source>
+    <target>阵列文件单补</target>
+</phrase>
+<phrase>
+    <source>Delete</source>
+    <target>删除</target>
+</phrase>
+<phrase>
+    <source>AddTool</source>
+    <target>添加刀具</target>
+</phrase>
+<phrase>
+    <source>ReRead</source>
+    <target>重读刀具</target>
+</phrase>
+<phrase>
+    <source>SaveFile</source>
+    <target>保存文件</target>
+</phrase>
+<phrase>
+    <source>SaveLoad</source>
+    <target>保存并加载</target>
+</phrase>
+<phrase>
+    <source>Quit</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Tool Table Editor</source>
+    <target>刀具补偿表</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to exit?</source>
+    <target>确定退出?</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.\nDo you realy want to exit?</source>
+    <target>参数值已经被修改，确定不保存退出?</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>My Application</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>save and load faile!!</source>
+    <target>保存并加载失败!!</target>
+</phrase>
+<phrase>
+    <source>save and load success</source>
+    <target>保存并加载成功</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.\nDo you realy want to reload?</source>
+    <target>参数值已经被修改，确定重新加载?</target>
+</phrase>
+<phrase>
+    <source>save tbl_file faile!!</source>
+    <target>保存tbl文件失败!!</target>
+</phrase>
+<phrase>
+    <source>save tbl_file success</source>
+    <target>保存tbl文件成功</target>
+</phrase>
+<phrase>
+    <source>dia:</source>
+    <target>DIA_</target>
+</phrase>
+<phrase>
+    <source>X1</source>
+    <target>单补X1</target>
+</phrase>
+<phrase>
+    <source>X2</source>
+    <target>单补X2</target>
+</phrase>
+<phrase>
+    <source>Y1</source>
+    <target>单补Y1</target>
+</phrase>
+<phrase>
+    <source>Y2</source>
+    <target>单补Y2</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.</source>
+    <target>刀具表被修改过但没被保存.</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to reload?</source>
+    <target>确定重新加载?</target>
+</phrase>
+<phrase>
+    <source>TOOL</source>
+    <target>刀具号</target>
+</phrase>
+<phrase>
+    <source>POC</source>
+    <target>刀槽号</target>
+</phrase>
+<phrase>
+    <source>NAME</source>
+    <target>刀具信息</target>
+</phrase>
+<phrase>
+    <source>DIAM</source>
+    <target>补偿直径</target>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target>单补X1</target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target>单补Y1</target>
+</phrase>
+<phrase>
+    <source>Z</source>
+    <target>补偿长度</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>changeTool</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>change current tool:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>PushButton</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>IOControl</source>
+    <target>IO调试</target>
+</phrase>
+<phrase>
+    <source>dustcover</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>SpindleIO</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>changercover</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Ensure to change to Tool %1</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Now change to Tool %1</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>换料设置</target>
+</phrase>
+<phrase>
+    <source>Tool seting</source>
+    <target>治具位置设定</target>
+</phrase>
+<phrase>
+    <source>tool_1</source>
+    <target>治具1坐标</target>
+</phrase>
+<phrase>
+    <source>setoff</source>
+    <target>记录</target>
+</phrase>
+<phrase>
+    <source>tool_2</source>
+    <target>治具2坐标</target>
+</phrase>
+<phrase>
+    <source>tool_3</source>
+    <target>治具3坐标</target>
+</phrase>
+<phrase>
+    <source>tool_4</source>
+    <target>治具4坐标</target>
+</phrase>
+<phrase>
+    <source>Loading Set</source>
+    <target>上料设定</target>
+</phrase>
+<phrase>
+    <source>record</source>
+    <target>记录</target>
+</phrase>
+<phrase>
+    <source>V2 Postion</source>
+    <target>V轴位置2</target>
+</phrase>
+<phrase>
+    <source>V1 Postion</source>
+    <target>V轴位置1</target>
+</phrase>
+<phrase>
+    <source>Taking height</source>
+    <target>取料高度</target>
+</phrase>
+<phrase>
+    <source>Material V postion</source>
+    <target>V轴原料位置</target>
+</phrase>
+<phrase>
+    <source>Putting height</source>
+    <target>放料高度</target>
+</phrase>
+<phrase>
+    <source>V1 Product postion</source>
+    <target>V1成品位置</target>
+</phrase>
+<phrase>
+    <source>V2 Product postion</source>
+    <target>V2成品位置</target>
+</phrase>
+<phrase>
+    <source>V1 fixture Postion</source>
+    <target>V1夹具位置</target>
+</phrase>
+<phrase>
+    <source>V2 fixture  Postion</source>
+    <target>V2夹具位置</target>
+</phrase>
+<phrase>
+    <source>First loading</source>
+    <target>首次上料</target>
+</phrase>
+<phrase>
+    <source>Modify coor</source>
+    <target>修改坐标</target>
+</phrase>
+<phrase>
+    <source>Delay</source>
+    <target>延时设置</target>
+</phrase>
+<phrase>
+    <source>Blow delay</source>
+    <target>吸盘反吹延时</target>
+</phrase>
+<phrase>
+    <source>ms</source>
+    <target>ms</target>
+</phrase>
+<phrase>
+    <source>Sucking delay</source>
+    <target>吸盘延时</target>
+</phrase>
+<phrase>
+    <source>turn delay</source>
+    <target>翻转气缸延时</target>
+</phrase>
+<phrase>
+    <source>Location delay</source>
+    <target>定位块延时</target>
+</phrase>
+<phrase>
+    <source>Vacunm delay</source>
+    <target>真空延时</target>
+</phrase>
+<phrase>
+    <source>Ahead delay</source>
+    <target>前进气缸延时</target>
+</phrase>
+<phrase>
+    <source>Tool  range</source>
+    <target>治具范围</target>
+</phrase>
+<phrase>
+    <source>Tool 1</source>
+    <target>治具1</target>
+</phrase>
+<phrase>
+    <source>Tool 3</source>
+    <target>治具3</target>
+</phrase>
+<phrase>
+    <source>Tool 4</source>
+    <target>治具4</target>
+</phrase>
+<phrase>
+    <source>Tool 2</source>
+    <target>治具2</target>
+</phrase>
+<phrase>
+    <source>turn height</source>
+    <target>翻转高度</target>
+</phrase>
+<phrase>
+    <source>Putting height 1</source>
+    <target>放料高度1</target>
+</phrase>
+<phrase>
+    <source>Putting height 2</source>
+    <target>放料高度2</target>
+</phrase>
+<phrase>
+    <source>Push height</source>
+    <target>下压高度</target>
+</phrase>
+<phrase>
+    <source>Product postion</source>
+    <target>成品仓位置</target>
+</phrase>
+<phrase>
+    <source>Material postion</source>
+    <target>原料仓位置</target>
+</phrase>
+<phrase>
+    <source>Moving left</source>
+    <target>左移距离</target>
+</phrase>
+<phrase>
+    <source>Moving right</source>
+    <target>右移距离</target>
+</phrase>
+<phrase>
+    <source>delay_setting</source>
+    <target>延时设置</target>
+</phrase>
+<phrase>
+    <source>delay_1</source>
+    <target>翻转延时</target>
+</phrase>
+<phrase>
+    <source>delay_2</source>
+    <target>吸盘延时</target>
+</phrase>
+<phrase>
+    <source>delay_3</source>
+    <target>前进后退延时</target>
+</phrase>
+<phrase>
+    <source>CheckBox</source>
+    <target>是否首次上料</target>
+</phrase>
+<phrase>
+    <source>Warehouse setting</source>
+    <target>料仓设置</target>
+</phrase>
+<phrase>
+    <source>mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Location height</source>
+    <target>定位高度</target>
+</phrase>
+<phrase>
+    <source>Unloading Set</source>
+    <target>下料设定</target>
+</phrase>
+<phrase>
+    <source>V Product 1</source>
+    <target>V轴位置1</target>
+</phrase>
+<phrase>
+    <source>V Product 2</source>
+    <target>V轴位置2</target>
+</phrase>
+<phrase>
+    <source>Work Range</source>
+    <target>加工范围</target>
+</phrase>
+<phrase>
+    <source>Product</source>
+    <target>成品数量</target>
+</phrase>
+<phrase>
+    <source>Material</source>
+    <target>原料数量</target>
+</phrase>
+<phrase>
+    <source>Space between</source>
+    <target>材料间距</target>
+</phrase>
+<phrase>
+    <source>re_material</source>
+    <target>重置原料</target>
+</phrase>
+<phrase>
+    <source>Capacity</source>
+    <target>料仓容量</target>
+</phrase>
+<phrase>
+    <source>product_c</source>
+    <target>成品清零</target>
+</phrase>
+<phrase>
+    <source>Taking Posting</source>
+    <target>下料位置</target>
+</phrase>
+<phrase>
+    <source>Putting Postion</source>
+    <target>上料位置</target>
+</phrase>
+<phrase>
+    <source>Set Product Postion</source>
+    <target>设置成品位置</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Refresh the following data?</source>
+    <target>是否同步刷新以下数据？</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Set Tool1 Coor: %1</source>
+    <target>设置治具1坐标为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool2 Coor: %1</source>
+    <target>设置治具2坐标为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool3 Coor: %1</source>
+    <target>设置治具3坐标为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool4 Coor: %1</source>
+    <target>设置治具4坐标为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Moving Height: %1</source>
+    <target>设置移动高度为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Taking Height: %1</source>
+    <target>设置原料取料高度为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Putting Height: %1</source>
+    <target>设置放料高度为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Putting Height1: %1</source>
+    <target>设置放料高度1为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Putting Height2: %1</source>
+    <target>设置放料高度2为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Down Distance: %1</source>
+    <target>设置下压高度为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Product Postion: %1</source>
+    <target>设置成品仓位置为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Material Postion: %1</source>
+    <target>设置原料仓位置为:%1</target>
+</phrase>
+<phrase>
+    <source>Clear Product</source>
+    <target>成品清零</target>
+</phrase>
+<phrase>
+    <source>Reset Material</source>
+    <target>重置原料</target>
+</phrase>
+<phrase>
+    <source>Set Tool1 Postion</source>
+    <target>设置治具1坐标</target>
+</phrase>
+<phrase>
+    <source>Set Tool2 Postion</source>
+    <target>设置治具2坐标</target>
+</phrase>
+<phrase>
+    <source>Set Tool3 Postion</source>
+    <target>设置治具3坐标</target>
+</phrase>
+<phrase>
+    <source>Set Tool4 Postion</source>
+    <target>设置治具4坐标</target>
+</phrase>
+<phrase>
+    <source>Set Moving Height</source>
+    <target>设置移动高度</target>
+</phrase>
+<phrase>
+    <source>Set Taking Height</source>
+    <target>设置去料高度</target>
+</phrase>
+<phrase>
+    <source>Set Putting Height</source>
+    <target>设置放料高度</target>
+</phrase>
+<phrase>
+    <source>Set Tool1 Height</source>
+    <target>设置放料高度1</target>
+</phrase>
+<phrase>
+    <source>Set Tool2 Height</source>
+    <target>设置放料高度2</target>
+</phrase>
+<phrase>
+    <source>Set Left Distance</source>
+    <target>设置左移距离</target>
+</phrase>
+<phrase>
+    <source>Set Moving Left Distance: %1</source>
+    <target>设置左移距离为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Right Distance</source>
+    <target>设置右移距离</target>
+</phrase>
+<phrase>
+    <source>Set Moving Right Distance: %1</source>
+    <target>设置右移距离为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Push Height</source>
+    <target>设置下压高度</target>
+</phrase>
+<phrase>
+    <source>Set Material Postion</source>
+    <target>设置原料位置</target>
+</phrase>
+<phrase>
+    <source>Set Capacity</source>
+    <target>设置料仓容量</target>
+</phrase>
+<phrase>
+    <source>Set Capacity: %1</source>
+    <target>设置料仓容量:%1</target>
+</phrase>
+<phrase>
+    <source>Set Product Amount: %1==&gt;%2</source>
+    <target>设置成品数量: %1==&gt;%2</target>
+</phrase>
+<phrase>
+    <source>Set Material Amount</source>
+    <target>设置原料数量</target>
+</phrase>
+<phrase>
+    <source>Set Material Amount: %1==&gt;%2</source>
+    <target>设置原料数量: %1==&gt;%2</target>
+</phrase>
+<phrase>
+    <source>Set Material Amount: %1</source>
+    <target>设置原料数量:%1</target>
+</phrase>
+<phrase>
+    <source>Set Delay Time</source>
+    <target>设置延时时间</target>
+</phrase>
+<phrase>
+    <source>Set Delay Time: %1</source>
+    <target>设置延时时间为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool Range</source>
+    <target>治具范围</target>
+</phrase>
+<phrase>
+    <source>Set Tool Min</source>
+    <target>设置值</target>
+</phrase>
+<phrase>
+    <source>Set Tool 1 Min: %1</source>
+    <target>治具1最小值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool 1 Max: %1</source>
+    <target>治具1最大值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool 2 Min: %1</source>
+    <target>治具2最小值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool Max</source>
+    <target>设置值</target>
+</phrase>
+<phrase>
+    <source>Set Tool 2 Max: %1</source>
+    <target>治具2最大值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set V Material Postion</source>
+    <target>设置原料盒V轴坐标</target>
+</phrase>
+<phrase>
+    <source>Set V Material Postion: %1</source>
+    <target>设置V轴原料位置为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool 3 Max: %1</source>
+    <target>治具3最大值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool 4 Min: %1</source>
+    <target>治具4最小值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Tool 4 Max: %1</source>
+    <target>治具4最大值为:%1</target>
+</phrase>
+<phrase>
+    <source>Set V1 Distance</source>
+    <target>设置V轴距离1</target>
+</phrase>
+<phrase>
+    <source>Set V1 Distance: %1</source>
+    <target>设置V轴距离为:%1</target>
+</phrase>
+<phrase>
+    <source>Set V2 Distance</source>
+    <target>设置V轴距离2</target>
+</phrase>
+<phrase>
+    <source>Set V2 Distance: %1</source>
+    <target>设置V轴距离2:%1</target>
+</phrase>
+<phrase>
+    <source>Set V Product</source>
+    <target>设置V轴成品位置</target>
+</phrase>
+<phrase>
+    <source>Set V Product: %1</source>
+    <target>设置V轴成品位置:%1</target>
+</phrase>
+<phrase>
+    <source>Set V2 Product</source>
+    <target>V轴下料位置设置</target>
+</phrase>
+<phrase>
+    <source>Set V2 Product: %1</source>
+    <target>V轴下料位置2设置为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Location Height</source>
+    <target>设置定位高度</target>
+</phrase>
+<phrase>
+    <source>Set Location Height: %1</source>
+    <target>设置定位高度:%1</target>
+</phrase>
+<phrase>
+    <source>Set Product Amount</source>
+    <target>设置成品数量</target>
+</phrase>
+<phrase>
+    <source>Material Posting</source>
+    <target>取料位置</target>
+</phrase>
+<phrase>
+    <source>Product Postion</source>
+    <target>放料位置</target>
+</phrase>
+<phrase>
+    <source>Set Product Amount: %1</source>
+    <target>设置成品数量:%1</target>
+</phrase>
+<phrase>
+    <source>Set Distance Material</source>
+    <target>设置材料间距</target>
+</phrase>
+<phrase>
+    <source>Set Distance Material: %1</source>
+    <target>设置材料间距:%1</target>
+</phrase>
+<phrase>
+    <source>Machine Arm:</source>
+    <target>机械臂:</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>图形属性</target>
+</phrase>
+<phrase>
+    <source>G00:</source>
+    <target>G00:</target>
+</phrase>
+<phrase>
+    <source>G01:</source>
+    <target>G01:</target>
+</phrase>
+<phrase>
+    <source>G02:</source>
+    <target>G02:</target>
+</phrase>
+<phrase>
+    <source>Selected:</source>
+    <target>被选轨迹:</target>
+</phrase>
+<phrase>
+    <source>realtime:</source>
+    <target>实时轨迹:</target>
+</phrase>
+<phrase>
+    <source>Origin:</source>
+    <target>工件原点:</target>
+</phrase>
+<phrase>
+    <source>Backcolor:</source>
+    <target>背景:</target>
+</phrase>
+<phrase>
+    <source>limit:</source>
+    <target>限位:</target>
+</phrase>
+<phrase>
+    <source>reset</source>
+    <target>恢复默认</target>
+</phrase>
+<phrase>
+    <source>sure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>cancle</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>linuxcnc</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>MachineCoor</source>
+    <target>机械坐标</target>
+</phrase>
+<phrase>
+    <source>Feed</source>
+    <target>进给轴</target>
+</phrase>
+<phrase>
+    <source>Input</source>
+    <target>输入端口</target>
+</phrase>
+<phrase>
+    <source>Output</source>
+    <target>输出端口</target>
+</phrase>
+<phrase>
+    <source>RobotArm</source>
+    <target>自动上下料</target>
+</phrase>
+<phrase>
+    <source>Run Time</source>
+    <target>运行时间</target>
+</phrase>
+<phrase>
+    <source>00:00:00</source>
+    <target>00:00:00</target>
+</phrase>
+<phrase>
+    <source>tool num</source>
+    <target>当前刀具</target>
+</phrase>
+<phrase>
+    <source>compensate</source>
+    <target>直径补偿</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0 {0?}</target>
+</phrase>
+<phrase>
+    <source>Piece:</source>
+    <target>工件数:</target>
+</phrase>
+<phrase>
+    <source>Actual Feed</source>
+    <target>实际进给</target>
+</phrase>
+<phrase>
+    <source>Setting Feed</source>
+    <target>指定进给</target>
+</phrase>
+<phrase>
+    <source>mm/min</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Actual Spindle</source>
+    <target>实际转速</target>
+</phrase>
+<phrase>
+    <source>Setting Spindle</source>
+    <target>指定转速</target>
+</phrase>
+<phrase>
+    <source>rpm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Offsets</source>
+    <target>偏置坐标</target>
+</phrase>
+<phrase>
+    <source>Return</source>
+    <target>返回</target>
+</phrase>
+<phrase>
+    <source>Fixed Probe</source>
+    <target>固定对刀</target>
+</phrase>
+<phrase>
+    <source>LockTheFirstprobe</source>
+    <target>锁住第一次对刀</target>
+</phrase>
+<phrase>
+    <source>FirstProbe</source>
+    <target>第一次对刀</target>
+</phrase>
+<phrase>
+    <source>SecondProbe</source>
+    <target>换刀后对刀</target>
+</phrase>
+<phrase>
+    <source>调试</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>warm</source>
+    <target>暖机</target>
+</phrase>
+<phrase>
+    <source>0/0</source>
+    <target>0/0</target>
+</phrase>
+<phrase>
+    <source>0.000</source>
+    <target>0.000</target>
+</phrase>
+<phrase>
+    <source>Z2</source>
+    <target>Z2</target>
+</phrase>
+<phrase>
+    <source>Z1</source>
+    <target>Z1</target>
+</phrase>
+<phrase>
+    <source>Z2-</source>
+    <target>Z2-</target>
+</phrase>
+<phrase>
+    <source>Z2+</source>
+    <target>Z2+</target>
+</phrase>
+<phrase>
+    <source>Z1+</source>
+    <target>Z1+</target>
+</phrase>
+<phrase>
+    <source>Z1-</source>
+    <target>Z1-</target>
+</phrase>
+<phrase>
+    <source>(Z1+Z2)FirstProbe</source>
+    <target>(Z1+Z2)第一次对刀</target>
+</phrase>
+<phrase>
+    <source>(Z1+Z2)SecondProbe</source>
+    <target>(Z1+Z2)第二次对刀</target>
+</phrase>
+<phrase>
+    <source>Floating Probe</source>
+    <target>浮动对刀</target>
+</phrase>
+<phrase>
+    <source>FloatingProbe</source>
+    <target>浮动对刀</target>
+</phrase>
+<phrase>
+    <source>Warmming Move</source>
+    <target>暖机</target>
+</phrase>
+<phrase>
+    <source>Array</source>
+    <target>阵列</target>
+</phrase>
+<phrase>
+    <source>Xnum:</source>
+    <target>X阵列数:</target>
+</phrase>
+<phrase>
+    <source>Ynum:</source>
+    <target>Y阵列数:</target>
+</phrase>
+<phrase>
+    <source>DistanceX:</source>
+    <target>X阵列偏移:</target>
+</phrase>
+<phrase>
+    <source>DistanceY:</source>
+    <target>Y阵列偏移:</target>
+</phrase>
+<phrase>
+    <source>ArrayMode</source>
+    <target>阵列模式</target>
+</phrase>
+<phrase>
+    <source>SimpleMode</source>
+    <target>简易模式</target>
+</phrase>
+<phrase>
+    <source>        Users can modify the ngc</source>
+    <target>      通过复制文件生成阵列</target>
+</phrase>
+<phrase>
+    <source>ComplexMode</source>
+    <target>增强模式</target>
+</phrase>
+<phrase>
+    <source>        Cannot modify the ngc,but suit for large ngc</source>
+    <target>      通过在文件内循环运算生成阵列</target>
+</phrase>
+<phrase>
+    <source>Run(&amp;F9)</source>
+    <target>运行(&amp;F9)</target>
+</phrase>
+<phrase>
+    <source>Pause(&amp;F10)</source>
+    <target>暂停(&amp;F10)</target>
+</phrase>
+<phrase>
+    <source>Abort(&amp;F11)</source>
+    <target>停止(&amp;F11)</target>
+</phrase>
+<phrase>
+    <source>PickConfig</source>
+    <target>选择配置</target>
+</phrase>
+<phrase>
+    <source>Register</source>
+    <target>软件注册</target>
+</phrase>
+<phrase>
+    <source>Update</source>
+    <target>软件升级</target>
+</phrase>
+<phrase>
+    <source>runLine</source>
+    <target>高级开始</target>
+</phrase>
+<phrase>
+    <source>BuildInstaller</source>
+    <target>生成安装包</target>
+</phrase>
+<phrase>
+    <source>BackUpRestore</source>
+    <target>备份和还原</target>
+</phrase>
+<phrase>
+    <source>ngcInfo</source>
+    <target>NC文件信息</target>
+</phrase>
+<phrase>
+    <source>WaterOut</source>
+    <target>排水</target>
+</phrase>
+<phrase>
+    <source>Light</source>
+    <target>工作灯</target>
+</phrase>
+<phrase>
+    <source>SystemTool</source>
+    <target>系统工具</target>
+</phrase>
+<phrase>
+    <source>pickLinkage</source>
+    <target>联动配置</target>
+</phrase>
+<phrase>
+    <source>PickRotation</source>
+    <target>轮动配置</target>
+</phrase>
+<phrase>
+    <source>BackUpMastercam</source>
+    <target>MasterCam备份</target>
+</phrase>
+<phrase>
+    <source>Robot</source>
+    <target>机械臂</target>
+</phrase>
+<phrase>
+    <source>blowing</source>
+    <target>除尘吹气</target>
+</phrase>
+<phrase>
+    <source>SafePoint1</source>
+    <target>固定点1</target>
+</phrase>
+<phrase>
+    <source>Safe Point 1</source>
+    <target>固定点1</target>
+</phrase>
+<phrase>
+    <source>SafePoint2</source>
+    <target>固定点2</target>
+</phrase>
+<phrase>
+    <source>Safe Point 2</source>
+    <target>固定点2</target>
+</phrase>
+<phrase>
+    <source>Load</source>
+    <target>生成阵列文件</target>
+</phrase>
+<phrase>
+    <source>File</source>
+    <target>文件</target>
+</phrase>
+<phrase>
+    <source>Operation</source>
+    <target>操作</target>
+</phrase>
+<phrase>
+    <source>Help</source>
+    <target>帮助</target>
+</phrase>
+<phrase>
+    <source>Tool</source>
+    <target>工具</target>
+</phrase>
+<phrase>
+    <source>Home</source>
+    <target>回零</target>
+</phrase>
+<phrase>
+    <source>Lube</source>
+    <target>润滑</target>
+</phrase>
+<phrase>
+    <source>Reset</source>
+    <target>复位</target>
+</phrase>
+<phrase>
+    <source>Repeat</source>
+    <target>循环启动</target>
+</phrase>
+<phrase>
+    <source>LimitRelease</source>
+    <target>超程释放</target>
+</phrase>
+<phrase>
+    <source>Edit_Tools</source>
+    <target>刀具补偿</target>
+</phrase>
+<phrase>
+    <source>Spindle status</source>
+    <target>主轴状态</target>
+</phrase>
+<phrase>
+    <source>X+</source>
+    <target>X+</target>
+</phrase>
+<phrase>
+    <source>&amp;Tool</source>
+    <target>&amp;T工具</target>
+</phrase>
+<phrase>
+    <source>halmeter</source>
+    <target>信号跟踪</target>
+</phrase>
+<phrase>
+    <source>halconfigure</source>
+    <target>底层信息</target>
+</phrase>
+<phrase>
+    <source>Handle_Guide</source>
+    <target>手轮引导</target>
+</phrase>
+<phrase>
+    <source>ProEdit</source>
+    <target>程序编辑</target>
+</phrase>
+<phrase>
+    <source>HalScope</source>
+    <target>示波器</target>
+</phrase>
+<phrase>
+    <source>Cool</source>
+    <target>冷却</target>
+</phrase>
+<phrase>
+    <source>Spindle</source>
+    <target>主轴</target>
+</phrase>
+<phrase>
+    <source>Mist</source>
+    <target>润滑</target>
+</phrase>
+<phrase>
+    <source>Unload</source>
+    <target>卸载程序</target>
+</phrase>
+<phrase>
+    <source>History_record</source>
+    <target>历史记录</target>
+</phrase>
+<phrase>
+    <source>ShortCut</source>
+    <target>快捷键说明</target>
+</phrase>
+<phrase>
+    <source>System_Info</source>
+    <target>软件信息</target>
+</phrase>
+<phrase>
+    <source>Verify</source>
+    <target>程序核对</target>
+</phrase>
+<phrase>
+    <source>GO_Origin</source>
+    <target>回固定点</target>
+</phrase>
+<phrase>
+    <source>GO_Offset</source>
+    <target>回工件零点</target>
+</phrase>
+<phrase>
+    <source>Smart_Control</source>
+    <target>高级加工</target>
+</phrase>
+<phrase>
+    <source>Save_Offset</source>
+    <target>保存坐标</target>
+</phrase>
+<phrase>
+    <source>Load_Offset</source>
+    <target>加载坐标</target>
+</phrase>
+<phrase>
+    <source>Y+</source>
+    <target>Y+</target>
+</phrase>
+<phrase>
+    <source>X-</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>LeftCoor</source>
+    <target>剩余坐标</target>
+</phrase>
+<phrase>
+    <source>Y-</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>10mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Continue</source>
+    <target>连续</target>
+</phrase>
+<phrase>
+    <source>Cycle times</source>
+    <target>循环次数</target>
+</phrase>
+<phrase>
+    <source>Coor</source>
+    <target>坐标</target>
+</phrase>
+<phrase>
+    <source>W:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>V:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>U:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Machine2Coor</source>
+    <target>机械臂坐标</target>
+</phrase>
+<phrase>
+    <source>Machien1</source>
+    <target>机械1</target>
+</phrase>
+<phrase>
+    <source>Spindle Speed</source>
+    <target>主轴转速</target>
+</phrase>
+<phrase>
+    <source>0.000 </source>
+    <target>0.000 </target>
+</phrase>
+<phrase>
+    <source>Machien2</source>
+    <target>机械2</target>
+</phrase>
+<phrase>
+    <source>moving Feed</source>
+    <target>移动速度设定</target>
+</phrase>
+<phrase>
+    <source>sucking near speed</source>
+    <target>吸盘接近速度</target>
+</phrase>
+<phrase>
+    <source>PushButton</source>
+    <target>测试</target>
+</phrase>
+<phrase>
+    <source>Manual Operation</source>
+    <target>手动操作</target>
+</phrase>
+<phrase>
+    <source>Reloading</source>
+    <target>换料设置</target>
+</phrase>
+<phrase>
+    <source>Machine1</source>
+    <target>机械1</target>
+</phrase>
+<phrase>
+    <source>Machine2</source>
+    <target>机械2</target>
+</phrase>
+<phrase>
+    <source>All machine</source>
+    <target>机械1+2</target>
+</phrase>
+<phrase>
+    <source>Handle Control</source>
+    <target>手轮控制</target>
+</phrase>
+<phrase>
+    <source>Machine1 Manual</source>
+    <target>机械1手动</target>
+</phrase>
+<phrase>
+    <source>Maschine2 Manual</source>
+    <target>机械2手动</target>
+</phrase>
+<phrase>
+    <source>W+</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>V+</source>
+    <target>V+</target>
+</phrase>
+<phrase>
+    <source>W-</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Workpiece Count</source>
+    <target>工件计数</target>
+</phrase>
+<phrase>
+    <source>Z1 Count</source>
+    <target>Z1计数</target>
+</phrase>
+<phrase>
+    <source>Z2 Count</source>
+    <target>Z2计数</target>
+</phrase>
+<phrase>
+    <source>toolinfo</source>
+    <target>长度补偿</target>
+</phrase>
+<phrase>
+    <source>V-</source>
+    <target>V-</target>
+</phrase>
+<phrase>
+    <source>Handle</source>
+    <target>手轮</target>
+</phrase>
+<phrase>
+    <source>0.01mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source> 0.1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>   1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>&gt;</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>0.001mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Piece</source>
+    <target>工件计数</target>
+</phrase>
+<phrase>
+    <source>Material Box</source>
+    <target>原料数量</target>
+</phrase>
+<phrase>
+    <source>Protuct Box</source>
+    <target>成品数量</target>
+</phrase>
+<phrase>
+    <source>Path:</source>
+    <target>路径:</target>
+</phrase>
+<phrase>
+    <source>U-</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>U+</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>MDI</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Send</source>
+    <target>发送</target>
+</phrase>
+<phrase>
+    <source>Probe</source>
+    <target>对刀</target>
+</phrase>
+<phrase>
+    <source>Run</source>
+    <target>运行</target>
+</phrase>
+<phrase>
+    <source>Pause</source>
+    <target>暂停</target>
+</phrase>
+<phrase>
+    <source>Abort</source>
+    <target>停止</target>
+</phrase>
+<phrase>
+    <source>X:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z1:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Machine</source>
+    <target>机床</target>
+</phrase>
+<phrase>
+    <source>OffsetCoor</source>
+    <target>偏移坐标</target>
+</phrase>
+<phrase>
+    <source>Y:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z2:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-0.000</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Setting</source>
+    <target>指定速度</target>
+</phrase>
+<phrase>
+    <source>Acture</source>
+    <target>实际速度</target>
+</phrase>
+<phrase>
+    <source>Spindle Status</source>
+    <target>主轴状态</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Spindle Override</source>
+    <target>主轴倍率</target>
+</phrase>
+<phrase>
+    <source>Feed Override</source>
+    <target>进给倍率</target>
+</phrase>
+<phrase>
+    <source>Current Line</source>
+    <target>当前行号</target>
+</phrase>
+<phrase>
+    <source>Info</source>
+    <target>日志信息</target>
+</phrase>
+<phrase>
+    <source>Model</source>
+    <target>加工轨迹</target>
+</phrase>
+<phrase>
+    <source>3D</source>
+    <target>3D视觉</target>
+</phrase>
+<phrase>
+    <source>Font</source>
+    <target>正视图</target>
+</phrase>
+<phrase>
+    <source>Side</source>
+    <target>侧视图</target>
+</phrase>
+<phrase>
+    <source>Clear</source>
+    <target>清除轨迹</target>
+</phrase>
+<phrase>
+    <source>Build</source>
+    <target>生成路径</target>
+</phrase>
+<phrase>
+    <source>Auto</source>
+    <target>自动</target>
+</phrase>
+<phrase>
+    <source>Manual</source>
+    <target>手动</target>
+</phrase>
+<phrase>
+    <source>&amp;File</source>
+    <target>&amp;F文件</target>
+</phrase>
+<phrase>
+    <source>&amp;Edit</source>
+    <target>&amp;E编辑</target>
+</phrase>
+<phrase>
+    <source>&amp;Operation</source>
+    <target>&amp;O操作</target>
+</phrase>
+<phrase>
+    <source>&amp;Machine</source>
+    <target>&amp;M机床</target>
+</phrase>
+<phrase>
+    <source>&amp;Help</source>
+    <target>&amp;H帮助</target>
+</phrase>
+<phrase>
+    <source>Open</source>
+    <target>打开</target>
+</phrase>
+<phrase>
+    <source>Offsets:</source>
+    <target>偏移:</target>
+</phrase>
+<phrase>
+    <source>&amp;File(F)</source>
+    <target>&amp;F文件</target>
+</phrase>
+<phrase>
+    <source>&amp;Operation(O)</source>
+    <target>&amp;O操作</target>
+</phrase>
+<phrase>
+    <source>&amp;Machine(M)</source>
+    <target>&amp;M机床</target>
+</phrase>
+<phrase>
+    <source>&amp;Help(H)</source>
+    <target>&amp;H帮助</target>
+</phrase>
+<phrase>
+    <source>&amp;Tool(T)</source>
+    <target>&amp;T工具</target>
+</phrase>
+<phrase>
+    <source>machine</source>
+    <target>机器开关</target>
+</phrase>
+<phrase>
+    <source>&amp;Open</source>
+    <target>&amp;O打开</target>
+</phrase>
+<phrase>
+    <source>&amp;Home</source>
+    <target>&amp;H回零</target>
+</phrase>
+<phrase>
+    <source>Z1+Z2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Set_Offset</source>
+    <target>设置偏移</target>
+</phrase>
+<phrase>
+    <source>Set_Parameters</source>
+    <target>参数设置</target>
+</phrase>
+<phrase>
+    <source>Set_IO</source>
+    <target>IO设置</target>
+</phrase>
+<phrase>
+    <source>Recent File</source>
+    <target>最近打开的文件</target>
+</phrase>
+<phrase>
+    <source>MODE:MANUAL</source>
+    <target>模式：手动</target>
+</phrase>
+<phrase>
+    <source>MODE:AUTO</source>
+    <target>模式：自动</target>
+</phrase>
+<phrase>
+    <source>PAUSE</source>
+    <target>暂停</target>
+</phrase>
+<phrase>
+    <source>RUNNING</source>
+    <target>正在运行</target>
+</phrase>
+<phrase>
+    <source>IDLE</source>
+    <target>空闲</target>
+</phrase>
+<phrase>
+    <source>Set Feed Override %1</source>
+    <target>设置进给倍率为:%1</target>
+</phrase>
+<phrase>
+    <source>Spindle On</source>
+    <target>主轴打开</target>
+</phrase>
+<phrase>
+    <source>CNC Start</source>
+    <target>软件启动</target>
+</phrase>
+<phrase>
+    <source>Spindle Off</source>
+    <target>主轴关闭</target>
+</phrase>
+<phrase>
+    <source>Lube On</source>
+    <target>润滑油开</target>
+</phrase>
+<phrase>
+    <source>Lube Off</source>
+    <target>润滑油关闭</target>
+</phrase>
+<phrase>
+    <source>Flood On</source>
+    <target>冷却液开</target>
+</phrase>
+<phrase>
+    <source>Flood Off</source>
+    <target>冷却液关闭</target>
+</phrase>
+<phrase>
+    <source>Set Spindle Override %1</source>
+    <target>设置主轴倍率为:%1</target>
+</phrase>
+<phrase>
+    <source>Set Feed</source>
+    <target>设置进给</target>
+</phrase>
+<phrase>
+    <source>Range</source>
+    <target>范围</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Set Feed Rate %1</source>
+    <target>设置进给速度为 %1</target>
+</phrase>
+<phrase>
+    <source>info</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>times:</source>
+    <target>循环次数：</target>
+</phrase>
+<phrase>
+    <source>now cannot read the correct file</source>
+    <target>读取文件发生错误</target>
+</phrase>
+<phrase>
+    <source>Set Feed Override %1%</source>
+    <target>设置进给倍率为:%1%</target>
+</phrase>
+<phrase>
+    <source>Set Spindle Override %1%</source>
+    <target>设置主轴倍率为:%1%</target>
+</phrase>
+<phrase>
+    <source>Set HighFeed Rate %1</source>
+    <target>设置高速进给倍率为 %1</target>
+</phrase>
+<phrase>
+    <source>Set Spindle Feed</source>
+    <target>设置主轴转速</target>
+</phrase>
+<phrase>
+    <source>Set Spindle feedrate %1</source>
+    <target>设置主轴进给率为 %1</target>
+</phrase>
+<phrase>
+    <source>can not run with a null filepath</source>
+    <target>不能运行空文件</target>
+</phrase>
+<phrase>
+    <source>We need to reset the z1 offset or probing after changing tool</source>
+    <target>Z1轴换刀后需要重新设置Z1轴工件坐标或进行换刀后对刀</target>
+</phrase>
+<phrase>
+    <source>We need to reset the z2 offset or probing after changing tool</source>
+    <target>Z2轴换刀后需要重新设置Z2轴工件坐标或进行换刀后对刀</target>
+</phrase>
+<phrase>
+    <source>We need to reset the z3 offset or probing after changing tool</source>
+    <target>Z1Z2轴换刀后需要重新设置工件坐标或进行换刀后对刀</target>
+</phrase>
+<phrase>
+    <source>Sure</source>
+    <target>继续</target>
+</phrase>
+<phrase>
+    <source>Can not run while pause signal is active</source>
+    <target>外部暂停/停止信号存在不能运行</target>
+</phrase>
+<phrase>
+    <source>Start Program Run</source>
+    <target>程序运行</target>
+</phrase>
+<phrase>
+    <source>Start Program Resume</source>
+    <target>程序继续运行</target>
+</phrase>
+<phrase>
+    <source>Now the program is running</source>
+    <target>软件正在运行</target>
+</phrase>
+<phrase>
+    <source>Raw materials used, please fill the raw materials</source>
+    <target>当前原料为0,请添加原料</target>
+</phrase>
+<phrase>
+    <source>Now the reloading program is running</source>
+    <target>机械臂继续运行</target>
+</phrase>
+<phrase>
+    <source>feedoverrate is zero</source>
+    <target>当前进给倍率为0</target>
+</phrase>
+<phrase>
+    <source>Start Program Pause</source>
+    <target>程序暂停</target>
+</phrase>
+<phrase>
+    <source>Now the program is Paused already</source>
+    <target>软件已处于暂停状态</target>
+</phrase>
+<phrase>
+    <source>Program Abort</source>
+    <target>程序退出</target>
+</phrase>
+<phrase>
+    <source>pieceoffset </source>
+    <target>偏置修改 </target>
+</phrase>
+<phrase>
+    <source>nc file has been changed,ensure to reload?</source>
+    <target>nc文件已经改变，确定重新加载?</target>
+</phrase>
+<phrase>
+    <source>start program repeat</source>
+    <target>开启循环启动</target>
+</phrase>
+<phrase>
+    <source>Program Verify Abort</source>
+    <target>程序核对完毕</target>
+</phrase>
+<phrase>
+    <source>Robot arm occures error,please reset!</source>
+    <target>上下料出错，请复位并查看日志信息！</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>the file is invalid!!</source>
+    <target>该文件无效！！</target>
+</phrase>
+<phrase>
+    <source>-2 the programe may not excute right!!</source>
+    <target>程序不能正确执行!!</target>
+</phrase>
+<phrase>
+    <source>-1 the programe may not excute right!!</source>
+    <target>程序不能正确执行!!</target>
+</phrase>
+<phrase>
+    <source>loading model finish</source>
+    <target>加载模型完毕</target>
+</phrase>
+<phrase>
+    <source>loading model error</source>
+    <target>加载模型错误</target>
+</phrase>
+<phrase>
+    <source>Machine On</source>
+    <target>机器启动</target>
+</phrase>
+<phrase>
+    <source>Machine Off</source>
+    <target>机器关闭</target>
+</phrase>
+<phrase>
+    <source>Open File</source>
+    <target>打开文件</target>
+</phrase>
+<phrase>
+    <source>Files(*.*)</source>
+    <target>*.*</target>
+</phrase>
+<phrase>
+    <source>Set to Z1</source>
+    <target>切换到Z1轴</target>
+</phrase>
+<phrase>
+    <source>Set to Z2</source>
+    <target>切换到Z2轴</target>
+</phrase>
+<phrase>
+    <source>Set to Z1+Z2</source>
+    <target>切换到Z1+Z2轴</target>
+</phrase>
+<phrase>
+    <source>Ensure to clear the pieces?</source>
+    <target>确定清除工件计数?</target>
+</phrase>
+<phrase>
+    <source>Send MDI:%1</source>
+    <target>发送MDI命令:%1</target>
+</phrase>
+<phrase>
+    <source>Set Jogincr</source>
+    <target>设置步进值</target>
+</phrase>
+<phrase>
+    <source>WARNING</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>Now is going to run warm,ensure continue?</source>
+    <target>正准备执行暖机，是否执行？</target>
+</phrase>
+<phrase>
+    <source>ECNC-V3.58</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>JingSheng-ECNC-V3.58</source>
+    <target>精盛数控-ECNC-V3.58</target>
+</phrase>
+<phrase>
+    <source>D_solid_map</source>
+    <target>立体视图</target>
+</phrase>
+<phrase>
+    <source>positive_view</source>
+    <target>正视图</target>
+</phrase>
+<phrase>
+    <source>side_view</source>
+    <target>侧视图</target>
+</phrase>
+<phrase>
+    <source>top_view_1</source>
+    <target>俯视图1</target>
+</phrase>
+<phrase>
+    <source>top_view_2</source>
+    <target>俯视图2</target>
+</phrase>
+<phrase>
+    <source>blow_up</source>
+    <target>放大</target>
+</phrase>
+<phrase>
+    <source>narrow</source>
+    <target>缩小</target>
+</phrase>
+<phrase>
+    <source>gl_clear</source>
+    <target>清除轨迹</target>
+</phrase>
+<phrase>
+    <source>gl_build</source>
+    <target>加载模型</target>
+</phrase>
+<phrase>
+    <source>gl_abort</source>
+    <target>终止加载模型</target>
+</phrase>
+<phrase>
+    <source>gl_property</source>
+    <target>图形属性</target>
+</phrase>
+<phrase>
+    <source>ToolChanger</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z+</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z-</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Alarm status can not run</source>
+    <target>报警状态不能运行</target>
+</phrase>
+<phrase>
+    <source>Set Machine2 Feed Override %1%</source>
+    <target>设置机械手进给倍率：%1%</target>
+</phrase>
+<phrase>
+    <source>We need to reset the z offset or probing after changing tool</source>
+    <target>换刀后需要进行换刀后对刀或重新设置工件零点</target>
+</phrase>
+<phrase>
+    <source>Not take the first piece</source>
+    <target>当前取料位置不是原料盒片，是否继续？</target>
+</phrase>
+<phrase>
+    <source>Stop</source>
+    <target>停止</target>
+</phrase>
+<phrase>
+    <source>Please move to safepoint 2</source>
+    <target>首次上料，请先移动到固定点2</target>
+</phrase>
+<phrase>
+    <source>Please move to safepoint 1</source>
+    <target>首次上料，请先移动到固定点1</target>
+</phrase>
+<phrase>
+    <source>Channel2 Program Abort</source>
+    <target>机械2停止</target>
+</phrase>
+<phrase>
+    <source>Now is going to run warm,ensure continue1?</source>
+    <target>正准备执行暖机，是否执行？</target>
+</phrase>
+<phrase>
+    <source>Error in processing program</source>
+    <target>加工程序出错</target>
+</phrase>
+<phrase>
+    <source>go safepoint1</source>
+    <target>回固定点1</target>
+</phrase>
+<phrase>
+    <source>go safepoint2</source>
+    <target>回固定点2</target>
+</phrase>
+<phrase>
+    <source>file format is error or damage</source>
+    <target>文件格式不支持或文件已损坏</target>
+</phrase>
+<phrase>
+    <source>file detected fail</source>
+    <target>nc文件检测失败</target>
+</phrase>
+<phrase>
+    <source>Open file:%1</source>
+    <target>打开nc文件:%1</target>
+</phrase>
+<phrase>
+    <source>Set Spindle Override</source>
+    <target>设置主轴倍率</target>
+</phrase>
+<phrase>
+    <source>Set Feed Override</source>
+    <target>设置进给倍率</target>
+</phrase>
+<phrase>
+    <source>Files(*.*);;NC Files(*.nc *.ngc *.pim)</source>
+    <target>所有文件(*.*);;nc文件(*.nc *.ngc *.pim)</target>
+</phrase>
+<phrase>
+    <source>Cannot clear the offsets while not home!</source>
+    <target>未回零状态下不能进行工件清零!</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to set it?,If the coordinate not change to zero,please check the public offset</source>
+    <target>确定设置当前点为工件零点？如果设置完毕后不为0，请检查工件设置里面的公共偏置</target>
+</phrase>
+<phrase>
+    <source>Machine2 Some Commulication problems should be solved first</source>
+    <target>请先解决机械2异常问题</target>
+</phrase>
+<phrase>
+    <source>Machine2 On</source>
+    <target>机械2启动</target>
+</phrase>
+<phrase>
+    <source>Work Pieces set</source>
+    <target>修改工件计数</target>
+</phrase>
+<phrase>
+    <source>Modify Pieces</source>
+    <target>修改加工次数</target>
+</phrase>
+<phrase>
+    <source>ch2_speed_set</source>
+    <target>机械2进给设置</target>
+</phrase>
+<phrase>
+    <source>Set channel2 speed %1</source>
+    <target>机械臂进给设置为:%1</target>
+</phrase>
+<phrase>
+    <source>Modify Work Pieces</source>
+    <target>工件计数修改成功</target>
+</phrase>
+<phrase>
+    <source>repreat_times set</source>
+    <target>循环次数设置</target>
+</phrase>
+<phrase>
+    <source>times</source>
+    <target>循环次数</target>
+</phrase>
+<phrase>
+    <source>Go to Origin</source>
+    <target>回固定点</target>
+</phrase>
+<phrase>
+    <source>Now waiting for the robot finish</source>
+    <target>等待机械臂上下料完成</target>
+</phrase>
+<phrase>
+    <source>Robot arm occures error</source>
+    <target>上下料出错，系统停止运行</target>
+</phrase>
+<phrase>
+    <source>Now waiting for the robot run to safe station</source>
+    <target>等待机械臂返回安全位置</target>
+</phrase>
+<phrase>
+    <source>Now waiting for the robot LOADING</source>
+    <target>等待上料完成</target>
+</phrase>
+<phrase>
+    <source>T1 Work Pieces set</source>
+    <target>设置Z1轴工件片数</target>
+</phrase>
+<phrase>
+    <source>Modify  T1 Work Pieces %1</source>
+    <target>Z1轴工件片数修改为 %1</target>
+</phrase>
+<phrase>
+    <source>T2 Work Pieces set</source>
+    <target>设置Z2轴工件片数</target>
+</phrase>
+<phrase>
+    <source>Modify  T2 Work Pieces %1</source>
+    <target>Z2轴工件片数修改为 %1</target>
+</phrase>
+<phrase>
+    <source>Modify Work Pieces %1</source>
+    <target>工件计数修改为:%1</target>
+</phrase>
+<phrase>
+    <source>Go to Offset</source>
+    <target>回工件零点</target>
+</phrase>
+<phrase>
+    <source>AUTO</source>
+    <target>自动</target>
+</phrase>
+<phrase>
+    <source>MANUAL</source>
+    <target>手动</target>
+</phrase>
+<phrase>
+    <source>In home Dialog</source>
+    <target>进入回零页面</target>
+</phrase>
+<phrase>
+    <source>Set Feed Ratexx %1</source>
+    <target>设置主轴进给率为 %1</target>
+</phrase>
+<phrase>
+    <source>Some error occurred,Error code -101</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Some error occurred,Error code -102</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>NC Files(*.nc *.ngc *.pim);;Files(*.*)</source>
+    <target>nc文件(*.nc *.ngc *.pim);;所有文件(*.*)</target>
+</phrase>
+<phrase>
+    <source>Switch to Z1</source>
+    <target>切换到Z1轴</target>
+</phrase>
+<phrase>
+    <source>Switch to Z2</source>
+    <target>切换到Z2轴</target>
+</phrase>
+<phrase>
+    <source>Switch to Z1+Z2</source>
+    <target>切换到Z1+Z2轴</target>
+</phrase>
+<phrase>
+    <source>In the Offset Dialog</source>
+    <target>进入设置偏置页面</target>
+</phrase>
+<phrase>
+    <source>Set the offset from the current position</source>
+    <target>设置当前坐标为工件偏置</target>
+</phrase>
+<phrase>
+    <source>Do you realy want to set it?,If the coordinate do not change to zero,please check the public offset</source>
+    <target>确定设置当前点为工件坐标？如果确定设置之后工件坐标不为零，请检查坐标设置对公共偏移值</target>
+</phrase>
+<phrase>
+    <source>In the Parameter Dialog</source>
+    <target>进入参数页面</target>
+</phrase>
+<phrase>
+    <source>In the IO Dialog</source>
+    <target>进入IO页面</target>
+</phrase>
+<phrase>
+    <source>Some Commulication problems should be solved first</source>
+    <target>请先解决软件的异常问题</target>
+</phrase>
+<phrase>
+    <source>Triggle Reset</source>
+    <target>复位</target>
+</phrase>
+<phrase>
+    <source>Save Coor:%1</source>
+    <target>保存坐标:%1</target>
+</phrase>
+<phrase>
+    <source>Load Coor:%1</source>
+    <target>加载坐标:%1</target>
+</phrase>
+<phrase>
+    <source>Clear Work Pieces</source>
+    <target>清除工件计数</target>
+</phrase>
+<phrase>
+    <source>Clear MDI</source>
+    <target>清除MDI</target>
+</phrase>
+<phrase>
+    <source>Resume to Program</source>
+    <target>返回到程序</target>
+</phrase>
+<phrase>
+    <source>Change to Continue Mode</source>
+    <target>切换到连续模式</target>
+</phrase>
+<phrase>
+    <source>Change to Handle Mode</source>
+    <target>切换到手轮模式</target>
+</phrase>
+<phrase>
+    <source>Change to Increment Mode</source>
+    <target>切换到步进模式</target>
+</phrase>
+<phrase>
+    <source>start warm</source>
+    <target>执行暖机程序</target>
+</phrase>
+<phrase>
+    <source>File:%1</source>
+    <target>文件名称：%1</target>
+</phrase>
+<phrase>
+    <source>g0_length:  %1mm
+g1_length:  %2mm
+g2_length:  %3mm
+total_length:  %4mm
+total_rows:  %5
+</source>
+    <target>g0长度:  %1mm
+g1长度:  %2mm
+g2长度:  %3mm
+总长度:  %4mm
+总行数:..%5 </target>
+</phrase>
+<phrase>
+    <source>OFFSETCOOR</source>
+    <target>工件坐标</target>
+</phrase>
+<phrase>
+    <source>OFFSETCOOR(%1)</source>
+    <target>工件坐标(%1)</target>
+</phrase>
+<phrase>
+    <source>Get extern run signal</source>
+    <target>触发外部运行信号</target>
+</phrase>
+<phrase>
+    <source>Get extern abort signal</source>
+    <target>触发外部退出信号</target>
+</phrase>
+<phrase>
+    <source>Get extern pause signal</source>
+    <target>触发外部暂停信号</target>
+</phrase>
+<phrase>
+    <source>AUTO(REPEAT)</source>
+    <target>自动(循环)</target>
+</phrase>
+<phrase>
+    <source>WARNNING</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>MANUAL_MOVE</source>
+    <target>手动移动</target>
+</phrase>
+<phrase>
+    <source>HANDLE_GUIDE</source>
+    <target>手轮引导</target>
+</phrase>
+<phrase>
+    <source>HANDLE</source>
+    <target>手轮</target>
+</phrase>
+<phrase>
+    <source>INCREMENT</source>
+    <target>步进</target>
+</phrase>
+<phrase>
+    <source>ZERO_FEED</source>
+    <target>零进给</target>
+</phrase>
+<phrase>
+    <source>hardware is not compatible</source>
+    <target>硬件检测失败</target>
+</phrase>
+<phrase>
+    <source>EPP Communication is error</source>
+    <target>EPP通讯出错，请检查接线</target>
+</phrase>
+<phrase>
+    <source>Chip Communication is error</source>
+    <target>芯片通讯出错，请检查接线</target>
+</phrase>
+<phrase>
+    <source>IO Communication is error</source>
+    <target>IO板通讯出错，请检查接线</target>
+</phrase>
+<phrase>
+    <source>ExternIo Communication is error</source>
+    <target>扩展IO板通讯出错，请检查接线</target>
+</phrase>
+<phrase>
+    <source>registe time is timeout</source>
+    <target>注册时间已到</target>
+</phrase>
+<phrase>
+    <source>Now Spindle1 changing tool</source>
+    <target>主轴1换刀</target>
+</phrase>
+<phrase>
+    <source>Now Spindle2 changing tool</source>
+    <target>主轴2换刀</target>
+</phrase>
+<phrase>
+    <source>Lube On left time:%1 sec</source>
+    <target>润滑系统开启时间:%1秒</target>
+</phrase>
+<phrase>
+    <source>Package version match fail,Please check the version</source>
+    <target>更新版本出错,请检查更新包!</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Set Moving Speed</source>
+    <target>设置移动速度</target>
+</phrase>
+<phrase>
+    <source>Set Val</source>
+    <target>设置值</target>
+</phrase>
+<phrase>
+    <source>Set Scuker Near Speed</source>
+    <target>设置吸盘接近速度</target>
+</phrase>
+<phrase>
+    <source>Dust Blowing On</source>
+    <target>打开除尘吹气</target>
+</phrase>
+<phrase>
+    <source>Dust Blowing Off</source>
+    <target>关闭除尘吹气</target>
+</phrase>
+<phrase>
+    <source>Please take back the robot arm</source>
+    <target>请先将机械臂收回安全位置</target>
+</phrase>
+<phrase>
+    <source>Go to Safepoint 1</source>
+    <target>回固定点1</target>
+</phrase>
+<phrase>
+    <source>Go to Safepoint 2</source>
+    <target>回固定点2</target>
+</phrase>
+<phrase>
+    <source>Already on linkage config</source>
+    <target>已经处于联动配置</target>
+</phrase>
+<phrase>
+    <source>Pick config needs reboot,Ensure to Switch to Linkmode and shutdown?</source>
+    <target>重新选择配置需要重启，确定切换到联动配置并关闭软件?</target>
+</phrase>
+<phrase>
+    <source>Already on rotation config</source>
+    <target>已经处于轮动配置</target>
+</phrase>
+<phrase>
+    <source>Pick config needs reboot,Ensure to Switch to Rotation and shutdown?</source>
+    <target>重新选择配置需要重启，确定切换到轮动配置并关闭软件?</target>
+</phrase>
+<phrase>
+    <source>High Feed</source>
+    <target>高速</target>
+</phrase>
+<phrase>
+    <source>Start Z3FirstProbe</source>
+    <target>Z1+Z2模式下开始第一次对刀</target>
+</phrase>
+<phrase>
+    <source>Start Z3SecondProbe</source>
+    <target>Z1+Z2模式下开始第二次对刀</target>
+</phrase>
+<phrase>
+    <source>Default Feed</source>
+    <target>低速</target>
+</phrase>
+<phrase>
+    <source>Start FirstProbe</source>
+    <target>开始第一次对刀</target>
+</phrase>
+<phrase>
+    <source>Start SecondProbe</source>
+    <target>开始第二次对刀</target>
+</phrase>
+<phrase>
+    <source>Start floatingProbe</source>
+    <target>开始浮动对刀</target>
+</phrase>
+<phrase>
+    <source>(array)</source>
+    <target>(阵列)</target>
+</phrase>
+<phrase>
+    <source>(array)%1X%2</source>
+    <target>(阵列)%1X%2</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Array file is build in 
+%1</source>
+    <target>生成的阵列文件为 %1</target>
+</phrase>
+<phrase>
+    <source>Release the overlimit</source>
+    <target>触发超程释放</target>
+</phrase>
+<phrase>
+    <source>/home/ecnc/Desktop</source>
+    <target>/home/ecnc/桌面</target>
+</phrase>
+<phrase>
+    <source>Open Update File</source>
+    <target>打开软件升级文件</target>
+</phrase>
+<phrase>
+    <source>Update Files (*.ecnc)</source>
+    <target>更新文件 (*.ecnc)</target>
+</phrase>
+<phrase>
+    <source>system update</source>
+    <target>软件升级</target>
+</phrase>
+<phrase>
+    <source>This operation will shutdown the application,
+Do you want to update ?</source>
+    <target>软件升级会关闭软件，确定更新？</target>
+</phrase>
+<phrase>
+    <source>Some error occurred,Error code -103</source>
+    <target>软件升级出错，错误代码-103</target>
+</phrase>
+<phrase>
+    <source>Some error occurred,Error code -104</source>
+    <target>软件升级出错，错误代码-104</target>
+</phrase>
+<phrase>
+    <source>build installer</source>
+    <target>生成安装包</target>
+</phrase>
+<phrase>
+    <source>now build the installer...</source>
+    <target>正在生成...</target>
+</phrase>
+<phrase>
+    <source>now the new package is on Desktop</source>
+    <target>生成的安装包在桌面</target>
+</phrase>
+<phrase>
+    <source>WaterOut On</source>
+    <target>启动排水</target>
+</phrase>
+<phrase>
+    <source>WaterOut Off</source>
+    <target>关闭排水</target>
+</phrase>
+<phrase>
+    <source>Light On</source>
+    <target>打开工作灯</target>
+</phrase>
+<phrase>
+    <source>Light Off</source>
+    <target>关闭工作灯</target>
+</phrase>
+<phrase>
+    <source>Do you want to backupmastercam ?</source>
+    <target>确定备份Mastercam？</target>
+</phrase>
+<phrase>
+    <source>BackUpMastercam successful</source>
+    <target>Mastercam备份成功</target>
+</phrase>
+<phrase>
+    <source>BackUpMastercam successfull</source>
+    <target>Mastercam备份成功</target>
+</phrase>
+<phrase>
+    <source>Unload Current Program</source>
+    <target>已卸载当前程序</target>
+</phrase>
+<phrase>
+    <source>Start Program Verify</source>
+    <target>程序核对</target>
+</phrase>
+<phrase>
+    <source>Go to Origin Pos</source>
+    <target>回固定点</target>
+</phrase>
+<phrase>
+    <source>Go to Offset Pos</source>
+    <target>回工件零点</target>
+</phrase>
+<phrase>
+    <source>Start the Program Repeat Function</source>
+    <target>开启循环启动</target>
+</phrase>
+<phrase>
+    <source>Ensure to Exit?</source>
+    <target>确定退出软件?</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>PublicOffset</source>
+    <target>公共偏置</target>
+</phrase>
+<phrase>
+    <source>X:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Y:</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Z1:</source>
+    <target>Z1:</target>
+</phrase>
+<phrase>
+    <source>Z2:</source>
+    <target>Z2:</target>
+</phrase>
+<phrase>
+    <source>Raise/Fall</source>
+    <target>抬高/加深</target>
+</phrase>
+<phrase>
+    <source>+1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>DECENT:</source>
+    <target>加深:</target>
+</phrase>
+<phrase>
+    <source>-0.01mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-0.1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>RAISE:</source>
+    <target>抬高:</target>
+</phrase>
+<phrase>
+    <source>+0.01mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>+0.1mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>+0.001mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>-0.001mm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Setting</source>
+    <target>设置当前点</target>
+</phrase>
+<phrase>
+    <source>      Read the current machine coordinate and set  to the current offset.</source>
+    <target>读取当前对机械坐标并设为当前的工件偏置.</target>
+</phrase>
+<phrase>
+    <source>setx</source>
+    <target>设置X</target>
+</phrase>
+<phrase>
+    <source>sety</source>
+    <target>设置Y</target>
+</phrase>
+<phrase>
+    <source>CurrentSys</source>
+    <target>当前坐标系</target>
+</phrase>
+<phrase>
+    <source>G54</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>chotomy</source>
+    <target>分中</target>
+</phrase>
+<phrase>
+    <source>Record:  Record the current machine coordinate.
+Chotomy:  Take an average of the current machine coordinate value with the record value and set it.</source>
+    <target>记录:记录当前的机械坐标点.
+分中:取当前机械坐标和记录点坐标的平均值并设置到工件偏置.</target>
+</phrase>
+<phrase>
+    <source>record X</source>
+    <target>记录X</target>
+</phrase>
+<phrase>
+    <source>0.000</source>
+    <target>0.000</target>
+</phrase>
+<phrase>
+    <source>dichotomy_x</source>
+    <target>分中X</target>
+</phrase>
+<phrase>
+    <source>record Y</source>
+    <target>记录Y</target>
+</phrase>
+<phrase>
+    <source>dichotomy_y</source>
+    <target>分中Y</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Quit</source>
+    <target>退出</target>
+</phrase>
+<phrase>
+    <source>Piece Offset</source>
+    <target>工件偏置</target>
+</phrase>
+<phrase>
+    <source>G59</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>G55</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>G56</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>G57</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>G58</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Piece Coor</source>
+    <target>工件坐标</target>
+</phrase>
+<phrase>
+    <source>multioffset</source>
+    <target>多坐标系设置</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>The value has been modified.\nDo you realy want to exit?</source>
+    <target>数值有被改变，
+确定退出?</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>information</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>set offset complete</source>
+    <target>设置坐标完成</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>警告</target>
+</phrase>
+<phrase>
+    <source>set offset fail!!</source>
+    <target>设置坐标失败!!</target>
+</phrase>
+<phrase>
+    <source>Now Set G54 :X %1 Y: %2 Z %3</source>
+    <target>设置G54坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Now Set G55 :X %1 Y: %2 Z %3</source>
+    <target>设置G55坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Now Set G56 :X %1 Y: %2 Z %3</source>
+    <target>设置G56坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Now Set G57 :X %1 Y: %2 Z %3</source>
+    <target>设置G57坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Now Set G58 :X %1 Y: %2 Z %3</source>
+    <target>设置G58坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Now Set G59 :X %1 Y: %2 Z %3</source>
+    <target>设置G59坐标：X:%1 Y:%2 Z:%3</target>
+</phrase>
+<phrase>
+    <source>Find</source>
+    <target>查找</target>
+</phrase>
+<phrase>
+    <source>findNext</source>
+    <target>查找</target>
+</phrase>
+<phrase>
+    <source>Return</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>whole word</source>
+    <target>全词匹配</target>
+</phrase>
+<phrase>
+    <source>casesensitive</source>
+    <target>区分大小写</target>
+</phrase>
+<phrase>
+    <source>backward</source>
+    <target>向前查找</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Can not find %1</source>
+    <target>找不到字符 %1</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Replace</source>
+    <target>替换</target>
+</phrase>
+<phrase>
+    <source>replaceN</source>
+    <target>替换</target>
+</phrase>
+<phrase>
+    <source>replaceall</source>
+    <target>替换所有</target>
+</phrase>
+<phrase>
+    <source>jumpNext</source>
+    <target>查找</target>
+</phrase>
+<phrase>
+    <source>Return</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>whole word</source>
+    <target>全词匹配</target>
+</phrase>
+<phrase>
+    <source>casesensitive</source>
+    <target>区分大小写</target>
+</phrase>
+<phrase>
+    <source>backward</source>
+    <target>向前查找</target>
+</phrase>
+<phrase>
+    <source>warning</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Can not find %1</source>
+    <target>找不到字符 %1</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>tips</source>
+    <target>提示</target>
+</phrase>
+<phrase>
+    <source>Replace from %1 to %2 total %3 times</source>
+    <target>把字符串 %1 替换为 %2 次数为 %3</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Tool1now:</source>
+    <target>工位1计数</target>
+</phrase>
+<phrase>
+    <source>Tool2now:</source>
+    <target>工位2计数</target>
+</phrase>
+<phrase>
+    <source>Tool1num:</source>
+    <target>Z1刀具寿命</target>
+</phrase>
+<phrase>
+    <source>Tool2num</source>
+    <target>Z2刀具寿命</target>
+</phrase>
+<phrase>
+    <source>Note: If the max num is zero,that means this function is disable.</source>
+    <target>注意:如果提示片数为0,则工件片数管理功能无效，不会自动提示。</target>
+</phrase>
+<phrase>
+    <source>Use Comp manager</source>
+    <target>刀具磨损管理</target>
+</phrase>
+<phrase>
+    <source>Ensure</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Cancel</source>
+    <target>取消</target>
+</phrase>
+<phrase>
+    <source>Tool Length Manager</source>
+    <target>长度补偿</target>
+</phrase>
+<phrase>
+    <source>Info</source>
+    <target>信息</target>
+</phrase>
+<phrase>
+    <source>Now tool should be changed,Press Ok to change tool</source>
+    <target>当前需要更换刀具，点击确定停止运行并进行刀具更换</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>确定</target>
+</phrase>
+<phrase>
+    <source>Now tool1 should be changed,Press Ok to change tool</source>
+    <target>当前需要更换刀具1，点击确定停止运行并进行刀具更换</target>
+</phrase>
+<phrase>
+    <source>Now tool2 should be changed,Press Ok to change tool</source>
+    <target>当前需要更换刀具2，点击确定停止运行并进行刀具更换</target>
+</phrase>
+<phrase>
+    <source>Now clear the workstation1 pieces</source>
+    <target>清除Z1轴工件片数</target>
+</phrase>
+<phrase>
+    <source>Now clear the workstation2 pieces</source>
+    <target>清除Z2轴工件片数</target>
+</phrase>
+<phrase>
+    <source>T\Piece</source>
+    <target>刀具\片数</target>
+</phrase>
+<phrase>
+    <source>Input piece num</source>
+    <target>输入片数</target>
+</phrase>
+<phrase>
+    <source>Set piece</source>
+    <target>设置片数</target>
+</phrase>
+<phrase>
+    <source>Input  comp value</source>
+    <target>输入补偿值</target>
+</phrase>
+<phrase>
+    <source>Tool manager parameter save success!</source>
+    <target>保存成功！</target>
+</phrase>
+<phrase>
+    <source>Now Change the ToolLength as the Table Set</source>
+    <target>现在改变刀具长度为刀具磨损管理的数据</target>
+</phrase>
+<phrase>
+    <source>Now Clear the ToolLength offset</source>
+    <target>清除刀具长度偏置</target>
+</phrase>
+</QPH>

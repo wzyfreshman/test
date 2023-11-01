@@ -1,0 +1,4 @@
+Log file created at: 2021/01/22 17:40:57
+Running on machine: cnext
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0122 17:40:57.970183  7827 MVCAMAPI.cpp:310] CameraInit Failed, err:-13,Version:2.1.0.10,FriendlyName:camera_1,SN:050111220067

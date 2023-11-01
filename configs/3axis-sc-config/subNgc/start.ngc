@@ -1,0 +1,34 @@
+%
+O001 if[[#4400 EQ 0] and [#4407 EQ 0]]
+
+	g10 l2 p1 x[#4405] y[#4406]
+	/m64p9
+	m65p10
+	m65p11
+	(debug,slotting.............)
+
+O001 else if[[#4400 EQ 1] and [#4407 EQ 0]]
+
+	#<x_offset>=[#4405+#4403]
+	#<y_offset>=[#4406+#4404]
+	g10 l2 p1 x[#<x_offset>] y[#<y_offset>]
+	/m65p9
+	m65p10
+	m65p11
+       (debug,spray.............)
+
+O001 endif
+
+O005 if[#4407 EQ 1]
+
+
+	#4400 = 0
+
+	g10 l2 p1 x[#4405] y[#4406]
+	/m64p9
+	m65p10
+	m65p11
+	(debug,slotting and spray.............)
+
+O005 endif
+%

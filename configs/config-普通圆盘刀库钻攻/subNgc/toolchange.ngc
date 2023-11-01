@@ -1,0 +1,248 @@
+
+O<toolchange> sub
+
+M66P0L0
+
+M80
+
+#4303=0
+(注释：)
+(#4300 :    需要切换到的目标刀号)
+(#4301 :    当前刀号)
+/(debug,4300=#4300  4301=#4301)
+(##############################主轴处理###################################)
+#4296=0
+#5399=-1
+
+#4301=#4283 (设置当前刀)
+
+
+
+
+#<ORIGIN>=1
+#<INDEX>=#5220  
+#<OFFSET_X>=#[5201+#5220*20]    (当前X轴工件坐标)
+#<OFFSET_Y>=#[5202+#5220*20]    (当前Y轴工件坐标)
+#<OFFSET_Z1>=#[5203+#5220*20]    (当前Z轴工件坐标)
+#<OFFSET_Z2>=#[5204+#5220*20]    (当前Z轴工件坐标)
+
+
+#<CURRENT_XPOS> = #[4300+[#4301*5]] (当前刀在刀库上的X坐标)
+#<CURRENT_YPOS> = #[4301+[#4301*5]] (当前刀在刀库上的Y坐标)
+#<CURRENT_BPOS> = #[4701+[#4301*5]] (当前刀在刀库上的B坐标)
+#<CURRENT_CPOS> = #[4702+[#4301*5]] (当前刀在刀库上的C坐标)
+
+O501 if [#4000 EQ 1]
+#<CURRENT_ZPOS> = #[4700+[#4301*5]]   (当前刀在刀库上的Z2坐标)
+O501 else
+#<CURRENT_ZPOS> = #[4302+[#4301*5]]   (当前刀在刀库上的Z1坐标)
+O501 endif
+
+#<TARGET_XPOS> = #[4300+[#4300*5]]  (目标刀在刀库上的X坐标)
+#<TARGET_YPOS> = #[4301+[#4300*5]]  (目标刀在刀库上的Y坐标)
+#<TARGET_BPOS> = #[4701+[#4300*5]]  (目标刀在刀库上的B坐标)
+#<TARGET_CPOS> = #[4702+[#4300*5]]  (目标刀在刀库上的C坐标)
+
+O502 if [#4000 EQ 1]
+#<TARGET_ZPOS> = #[4700+[#4300*5]]    (目标刀在刀库上的Z2坐标)
+O502 else
+#<TARGET_ZPOS> = #[4302+[#4300*5]]    (目标刀在刀库上的Z1坐标)
+O502 endif
+
+#<CURRENT_DIFF> = [#<CURRENT_ZPOS>-#[4700+[#4301*5]]]
+#<TARGET_DIFF> = [#<TARGET_ZPOS>-#[4700+[#4300*5]]]
+
+/(debug,CURRENT_DIFF=#<OFFSET_Z1>  #<OFFSET_Z2>  #<CURRENT_LENGTH>  #<TARGET_LENGTH> #<SET_Z2_OFFSETZ>)
+/(debug,#<CURRENT_BPOS>,#<TARGET_BPOS> == #<CURRENT_CPOS>,#<TARGET_CPOS>)
+
+#<CURRENT_LENGTH>=#[4303+[#4301*5]] (当前刀长)
+#<TARGET_LENGTH>=#[4303+[#4300*5]]  (目标刀长)
+
+#<SET_Z1_OFFSETZ>=[#<OFFSET_Z1>-#<CURRENT_LENGTH>]
+#<SET_Z1_OFFSETZ>=[#<SET_Z1_OFFSETZ>+#<TARGET_LENGTH>]
+
+
+#<CURRENT_Z2_LENGTH>=#[4703+[#4301*5]] (当前Z2刀长)
+#<TARGET_Z2_LENGTH>=#[4703+[#4300*5]]  (目标Z2刀长)
+
+#<SET_Z2_OFFSETZ>=[#<OFFSET_Z2>-#<CURRENT_Z2_LENGTH>]
+#<SET_Z2_OFFSETZ>=[#<SET_Z2_OFFSETZ>+#<TARGET_Z2_LENGTH>]
+
+
+
+#<CURRENT_TOOL>=#4301		(当前刀号)
+#<TARGET_TOOL>=#4300		(需要切换到的目标刀号)	
+
+#<NOW_TOOLSIG>=[20+#4301]	(当前刀位信号)		
+#<END_TOOLSIG>=[20+#4300]	(目标刀位信号)
+
+#<B_STARTPOS>=#4706		(刀库门起始位置)
+#<B_ENDPOS>=#4711			(刀库门结束位置)
+#<B_SAFEPOS>=#4716			(刀库门安全位置)
+
+#1001=0
+(####################此段用于主轴无刀且当前刀与目标刀一致时的处理##########################)
+
+O001 if [ [#4301 EQ 0] OR [#4301 EQ #4300]]
+
+		(debug,已经处于当前刀，不需要换刀)
+		M66P0L0
+		#4303=2
+		#1001=1
+
+m80
+
+
+O001 else
+
+
+m66P7L0
+O333 if [#5399 eq 1]
+	(debug,关闭主轴)
+	m5
+	m9
+	G4p[#4072]
+	#4296=1
+(关冷却液)
+M9
+
+O333 endif
+
+(####################Z1开始换刀##########################)
+
+M80
+
+g53g0z0
+
+	(主轴定位)
+	M64P10
+	M66P10L1Q5
+O403 if[#5399 eq -1]
+    (debug,检测主轴定位信号超时)
+	M68E1Q0
+    M65P10
+	m72p3
+	m72p4
+    m30
+O403 endif
+	M65P10
+
+O100 if [#3815  NE 0]
+M70P39Q[#3815]
+G4p2
+O100 else
+M70P39Q0.1
+O100  endif
+
+
+
+O700 if [#4292 eq 0]
+		M66P[#<NOW_TOOLSIG>]L0
+		O002 if [#5399 NE 0]
+		(debug,WARN:当前刀槽有刀，不能进行换刀)
+		M66P0L0
+		#4303=2
+		M30
+		O002 endif
+O700 endif
+
+O701 if [#4292 eq 0]
+
+	M66P[#<END_TOOLSIG>]L0
+	O702 if [#5399 NE 1]
+		(debug,WARN:目标刀槽无刀，不能进行换刀)
+		M66P0L0
+		#4303=2
+		M30
+	O702 endif
+O701 endif
+
+
+g53g0x[#<CURRENT_XPOS>+50]Y[#<CURRENT_YPOS>]B[#<CURRENT_BPOS>]
+
+g53g0z[#<CURRENT_ZPOS>] (Z轴下降到换刀位)
+
+
+
+g53g1x[#<CURRENT_XPOS>]Y[#<CURRENT_YPOS>]F4000
+
+(#########主轴松刀##########)
+
+M64p3 
+   (Z1松刀)  
+g4p[#4302]  (换刀延时时间)
+
+O601 if [#4293 eq 0]
+	m66P13L3Q5  (检测Z1轴松刀信号)
+	O602 if [#5399 NE 1]
+		(debug,WARN:Z1轴未检测到松刀信号，退出换刀)
+		M66P0L0
+		#4303=2
+		M30
+	O602 endif
+O601 endif
+
+g53g0z0
+
+M66P0L0
+
+/M71p5 (主轴除尘输出)
+g53g0x#<TARGET_XPOS>y#<TARGET_YPOS>B[#<TARGET_BPOS>](移动到目标刀位)
+/M72p5 (关主轴除尘输出)
+g53g1z#<TARGET_ZPOS>f3000 (Z轴下降到目标换刀位)
+g4p0.1
+
+(###主轴夹刀###)
+M65p3    (Z1夹刀)  
+g4p[#4302] (换刀延时时间)
+
+
+O604 if [#4293 eq 0]
+	m66P15L3Q5  (检测Z1轴夹刀信号)
+	O605 if [#5399 NE 1]
+		(debug,WARN:Z1轴未检测到夹刀信号，退出换刀)
+		M66P0L0
+		#4288=#4300   (设置当前刀号为目标刀号)
+		#4283=#4300
+
+		O500 if [#4290 EQ 1]    (换刀后设置工件零点)
+			#300=[#[4800+#5220]+#<TARGET_LENGTH>]
+			G10 l2 p[#5220] Z[#300]
+		O500 endif
+
+		#4303=2
+		M30
+	O605 endif
+O604 endif
+
+#4288=#4300   (设置当前刀号为目标刀号)
+#4283=#4300
+
+O500 if [#4290 EQ 1]    (换刀后设置工件零点)
+	#300=[#[4800+#5220]+#<TARGET_LENGTH>]
+	G10 l2 p[#5220] Z[#300]
+O500 endif
+M80
+
+
+g53g1x[#<TARGET_XPOS>+50]y#<TARGET_YPOS>F4000(移动到目标刀位)
+
+g53G0Z0
+
+g53G0B0
+
+O001 endif
+
+
+O633 if [#4296 GT 0]
+M3
+(开冷却液)
+M8
+O633 endif
+
+#4303=1
+
+(换刀结束指令)
+M70P30
+
+O<toolchange> endsub

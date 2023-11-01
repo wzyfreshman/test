@@ -1,0 +1,207 @@
+2014.5.27
+1.主轴信号motion.spindle-forward该为motion.spindle-on
+2.主轴信号motion.spindle-reverse该为motion.spindle-on1
+3.将参数排序，分类：
+	TABLE_0:操作参数；
+	TABLE_1:进给参数；
+	TABLE_2:主轴参数；
+	TABLE_3:刀具参数；
+	TABLE_7:系统参数；
+以后需要添加参数就按照这个分类添加到相应的列表中去。
+
+2014.5.28
+1.epp_io.hal增加Z2轴手轮配置
+2.将Z1换刀报警信号连到motion.user-define-in.00上
+  将Z2换刀报警信号连到motion.user-define-in.01上
+3.增加系统参数PAR_TRAJ_STEPGEN_MODE，选择脉冲方式
+4.增加对到程序
+
+2014.5.29
+1.统一配置文件名字
+2.增加伺服报警信号
+3.将对刀对程序由之前的子程序形式（程序头o<>sub）改为直接调用（%）
+4.界面信号增加读取脆到报警信号,修改ecnc_io.hal文件
+5.将参数PAR_TRAJ_STEPGEN_MODE改为:loadrt hal_ppmc ab_pd_sel=[TRAJ]STEPGEN_MODE
+
+2014.5.30
+1.把所有的子程序都改为直接调用（程序头尾改为%）
+2.gui文件夹增加mdiHistory
+
+2014.6.5
+增加线程：addf sqpreprocseg-controller sqpreprocseg-thread
+
+2014.6.6
+1.增加参数：主轴启动延时[TASK]SPINDLE_DELAY
+2.增加参数：运行前是否开主轴[TASK]SPON_BEFORE_RUN
+3.增加参数：解释器配置的轴数[PAR_RS274NGC_AXES]
+4.整理INI文件，将YES_NO改为0_1
+
+2014.6.12
+1.ini增加操作参数
+2.修改subngc所有的程序
+
+2014.6.26
+1.增加了系统参数N7021
+
+2014.7.14
+1.修改了参数N2010、N2012的范围以及默认值
+2.修改了subNgc文件夹中的程序，坐标系问题
+
+2014.7.28
+1.ecnc_io.hal文件中所有的输入端口增加数字滤波
+2.subNgc文件中，修改了双Z轴回工件零点的程序
+3.螺距补偿文件清零
+
+2014.8.6
+1.删除了ecnc_io.hal中加密的一段
+
+2014.8.20
+1.增加参数N3010：切换Z轴结束后，是否自动停止主轴
+2.将螺距补偿文件独立出来，其他配置文件均为隐藏文件
+
+2014.08.21
+增加参数
+
+[PAR_OPERATOR_ARRAY_BUILDMODE]
+VALUE=0
+ID=N1007
+INFO=阵列生成模式
+RANGE=0_1
+REBOOT=0
+TABLE=0
+SHOW=1
+DETAIL="阵列生成模式，1:复制文件生成，0:文件循环执行（当文件比较大时可以使用这种方法）"
+X60=0
+
+2014.08.26
+1、将参数“主轴转速选择标志”改为重启生效
+2、修改子程序存放路径
+
+ecnc_io.hal文件增加以下内容：
+#hong-2014-08-29
+net fpgastatus motion.fpgastatus ppmc.0.fpgastatus
+
+2014.09.11
+新增参数
+[PAR_MOTO_SPINDLE_MODE]
+VALUE=1
+ID=N3010
+INFO=双Z轴模式两轴同时开启标志
+RANGE= 0_1
+REBOOT=1
+TABLE=2
+SHOW=0
+DETAIL="双Z轴模式两轴同时开启标志。0：只开启正在活动的主轴; 1：开启两个主轴"
+X60=0
+
+[PAR_TRAJ_HIGH_VELOCITY]
+VALUE = 150
+ID=N2015
+INFO=默认高速进给速度
+RANGE= 0~20000
+REBOOT=1
+TABLE=1
+SHOW=0
+DETAIL="手动移动时快速进给速度。单位 mm/min"
+X60=1
+
+2014-10-13  HONG
+add four parameters
+[PAR_TRAJ_ANGLE1]
+VALUE=165
+ID=N0031
+INFO=相邻两线段的夹角1
+RANGE=90~180
+REBOOT=1
+TABLE=1
+SHOW=2
+DETAIL="相邻两线段的夹角1,范围（90-180度）"
+X60=0
+
+[PAR_TRAJ_ANGLE2]
+VALUE=105
+ID=N0032
+INFO=相邻两线段的夹角2
+RANGE=90~180
+REBOOT=1
+TABLE=1
+SHOW=2
+DETAIL="相邻两线段的夹角2,范围（90-180度）,注意：该参数值不能比相邻两线段的夹角1大"
+X60=0
+
+[PAR_TRAJ_COEFF1]
+VALUE=1.0
+ID=N0033
+INFO=夹角1系数限制
+RANGE=0~1
+REBOOT=1
+TABLE=1
+SHOW=2
+DETAIL="夹角1系数限制，范围（0-1）"
+X60=0
+
+[PAR_TRAJ_COEFF2]
+VALUE=1.0
+ID=N0034
+INFO=夹角2系数限制
+RANGE=0~1
+REBOOT=1
+TABLE=1
+SHOW=2
+DETAIL="夹角2系数限制，范围（0-1）"
+X60=0
+
+2014-10-28
+1、将参数“N0031~N0034”改为“N2016~N2019”,将其显示在进给参数栏
+2、螺距补偿值文件格式修改
+
+2014-10-29
+1、参数“运行前是否抬刀”，参数改为由界面控制，start.ngc文件中删掉对改参数控制的程序（解决每次循环时都会抬到的问题）
+
+2014-12-16
+1.新增参数
+[PAR_TASK_OPTIONSTOP]
+VALUE = 0
+ID=N1036
+INFO=选择停止标志位
+RANGE=0_1
+REBOOT=0
+TABLE=0
+SHOW=0
+DETAIL="选择停止标志位，值为0时表示忽略M01，值为1时程序遇到M01暂停"
+X60=0
+
+2015-01-11
+新增参数
+[PAR_OPERATOR_FEED_CHOICE_MODE]
+VALUE = 0
+ID=N1037
+INFO=进给速度模式选择标志位
+RANGE=0_1
+REBOOT=0
+TABLE=0
+SHOW=0
+DETAIL="进给速度模式选择标志位，值为0时表示按nc速度进给，值为1时按默认进给速度进给，该进给可在界面设置"
+X60=0
+
+
+
+2015-02-05    HONG
+把自定义管脚都链接到信号上
+
+2015-02-26
+新增参数
+[PAR_RS274NGC_G4MODE]
+VALUE = 0
+ID=N1039
+INFO=G4模式选择
+RANGE=0_1
+REBOOT=0
+TABLE=0
+SHOW=0
+DETAIL="G4模式选择，值为0时单位为秒，值为1时单位为毫秒"
+X60=0
+
+2015-03-04
+删除参数：最小进给倍率
+

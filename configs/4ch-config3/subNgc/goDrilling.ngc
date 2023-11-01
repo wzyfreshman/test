@@ -1,0 +1,30 @@
+(锯排退刀)
+M72P25
+M72P27
+M71P24
+M71P26
+
+m66p2l3q10
+O002 if[#5399 EQ -1]
+O003 if[#3680 EQ 2]
+(debug,No signal of left saw blade lifting in place was detected.)
+O003 else
+(debug,未检测到左锯片升到位信号.)
+O003 endif
+#3941=1
+M30
+O002 endif
+
+m66p4l3q10
+O002 if[#5399 EQ -1]
+O003 if[#3680 EQ 2]
+(debug,No signal of right saw blade lifting in place was detected.)
+O003 else
+(debug,未检测到右锯片升到位信号.)
+O003 endif
+#3941=1
+M30
+O002 endif
+
+(完成标志)
+#3942=1

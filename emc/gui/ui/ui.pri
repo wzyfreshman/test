@@ -1,0 +1,7 @@
+include (../../usr_intf/usr_intf.pri)
+include(../../nml_intf/nml_intf.pri)
+include(../../../common.pri)
+include(../../motion/motion.pri)
+include(../../gcode/gcode.pri)
+include(../../rs274ngc/rs274ngc.pri)
+include(../../../libnml/libnml.pri)

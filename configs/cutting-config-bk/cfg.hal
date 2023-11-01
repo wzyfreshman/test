@@ -1,0 +1,126 @@
+# core HAL config file for simulation
+
+# first load all the RT modules that will be needed
+# kinematics
+loadrt trivkins
+
+# motion controller, get name and thread periods from ini file
+loadrt motmod traj_period_nsec=[EMCMOT]TRAJ_PERIOD num_joints=[TRAJ]AXES
+
+# EPP driver
+#loadrt hal_ppmc ab_pd_sel=[TRAJ]STEPGEN_MODE
+
+loadrt hal_ethercat config_axis_num=[EMCMOT]MOTOR_AXISNUM config_io_num=[EMCMOT]IO_NUMBER config_file_path="/home/.config" motor_chose=[EMCMOT]MOTOR_CHOSE board_type=[EMCIO]IOBOARD_TYPE link_type=[EMCMOT]LINK_TYPE
+
+
+# load 6 differentiators (for velocity and accel signals)
+loadrt ddt count=7
+# load additional blocks
+loadrt hypot count=2
+loadrt comp count=3
+loadrt or2 count=11
+loadrt and2 count=4
+loadrt not count=2
+loadrt conv_io count=2
+loadrt toolchange count=1
+loadrt lubepressure count=1
+loadrt pressure count=1
+
+# set up the realtime thread
+# read inputs first
+addf ethercat.00.exchange_data servo-thread
+
+# add motion controller functions to servo thread
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+addf sqpreprocseg-controller sqpreprocseg-thread
+# link the differentiator functions into the code
+addf ddt.0 servo-thread
+addf ddt.1 servo-thread
+addf ddt.2 servo-thread
+addf ddt.3 servo-thread
+addf ddt.4 servo-thread
+addf ddt.5 servo-thread
+addf ddt.6 servo-thread
+addf and2.0 servo-thread
+addf and2.1 servo-thread
+addf and2.2 servo-thread
+addf and2.3 servo-thread
+addf or2.0 servo-thread
+addf or2.1 servo-thread
+addf or2.2 servo-thread
+addf or2.3 servo-thread
+addf or2.4 servo-thread
+addf or2.5 servo-thread
+addf or2.6 servo-thread
+addf or2.7 servo-thread
+addf or2.8 servo-thread
+addf or2.9 servo-thread
+addf or2.10 servo-thread
+addf not.0 servo-thread
+addf not.1 servo-thread
+addf toolchange.0 servo-thread
+addf hypot.0 servo-thread
+addf hypot.1 servo-thread
+addf conv-io.0 servo-thread
+addf conv-io.1 servo-thread
+addf lubepressure.0 servo-thread
+addf pressure.0 servo-thread
+
+# create HAL signals for position commands from motion module
+# loop position commands back to motion module feedback
+
+net Xpos axis.0.motor-pos-cmd <= ddt.0.in ethercat.mt.00.velocity  ethercat.io.00.pulse_0
+net Ypos axis.1.motor-pos-cmd <= ddt.2.in  ethercat.mt.01.velocity ethercat.io.00.pulse_1
+net Zpos axis.2.motor-pos-cmd <= ddt.4.in ethercat.mt.02.velocity ethercat.io.00.pulse_2
+net Apos axis.3.motor-pos-cmd <= ethercat.mt.03.velocity  ethercat.io.00.pulse_3
+net Bpos axis.4.motor-pos-cmd <= ethercat.mt.04.velocity  ethercat.io.00.pulse_4
+net Cpos axis.5.motor-pos-cmd <= ethercat.mt.05.velocity  ethercat.io.00.pulse_5
+
+setp ethercat.io.00.pulsescale_0 [AXIS_0_OUTPUT]SCALE
+setp ethercat.io.00.pulsescale_1 [AXIS_1_OUTPUT]SCALE
+setp ethercat.io.00.pulsescale_2 [AXIS_2_OUTPUT]SCALE
+setp ethercat.io.00.pulsescale_3 [AXIS_3_OUTPUT]SCALE
+setp ethercat.io.00.pulsescale_4 [AXIS_4_OUTPUT]SCALE
+setp ethercat.io.00.pulsescale_5 [AXIS_5_OUTPUT]SCALE
+
+setp ethercat.io.00.posscaledir_0 [AXIS_0_OUTPUT]SCALEDIR
+setp ethercat.io.00.posscaledir_1 [AXIS_1_OUTPUT]SCALEDIR
+setp ethercat.io.00.posscaledir_2 [AXIS_2_OUTPUT]SCALEDIR
+setp ethercat.io.00.posscaledir_3 [AXIS_3_OUTPUT]SCALEDIR
+setp ethercat.io.00.posscaledir_4 [AXIS_4_OUTPUT]SCALEDIR
+setp ethercat.io.00.posscaledir_5 [AXIS_5_OUTPUT]SCALEDIR
+
+
+setp ethercat.io.00.fbscaledir_0 [AXIS_0_INPUT]SCALEDIR
+setp ethercat.io.00.fbscaledir_1 [AXIS_1_INPUT]SCALEDIR
+setp ethercat.io.00.fbscaledir_2 [AXIS_2_INPUT]SCALEDIR
+setp ethercat.io.00.fbscaledir_3 [AXIS_3_INPUT]SCALEDIR
+setp ethercat.io.00.fbscaledir_4 [AXIS_4_INPUT]SCALEDIR
+setp ethercat.io.00.fbscaledir_5 [AXIS_5_INPUT]SCALEDIR
+
+net xfbsig axis.0.motor-pos-fb  ethercat.io.00.fbpulse_0
+net yfbsig axis.1.motor-pos-fb  ethercat.io.00.fbpulse_1
+net zfbsig axis.2.motor-pos-fb  ethercat.io.00.fbpulse_2
+net afbsig axis.3.motor-pos-fb  ethercat.io.00.fbpulse_3
+net bfbsig axis.4.motor-pos-fb  ethercat.io.00.fbpulse_4
+net cfbsig axis.5.motor-pos-fb  ethercat.io.00.fbpulse_5
+
+
+# send the position commands thru differentiators to
+# generate velocity and accel signals
+net Xvel ddt.0.out => ddt.1.in hypot.0.in0
+net Xacc ddt.1.out 
+net Yvel ddt.2.out => ddt.3.in hypot.0.in1
+net Yacc ddt.3.out 
+net Zvel ddt.4.out => ddt.5.in hypot.1.in0
+net Zacc ddt.5.out 
+
+# Cartesian 2- and 3-axis velocities
+net XYvel hypot.0.out => hypot.1.in1
+net XYZvel <= hypot.1.out
+
+# create signals for tool loading loopback
+net tool-prep-loop iocontrol.0.tool-prepare iocontrol.0.tool-prepared
+net tool-change-loop iocontrol.0.tool-change iocontrol.0.tool-changed
+

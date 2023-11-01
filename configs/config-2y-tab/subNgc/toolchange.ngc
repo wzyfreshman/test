@@ -1,0 +1,326 @@
+
+O<toolchange> sub
+
+
+O004 if[#4127 GT 0]
+
+    #<TARGET_LENGTH>=#[3660+[#4300-1]]  (目标刀长)
+
+    G10 L2 P1 Z[#3613+#3720 + #<TARGET_LENGTH>]
+ 
+    G10 L2 P2 Z[#3614+#3721+ #<TARGET_LENGTH>]
+
+    G10 L2 P3 Z[#3722+ #<TARGET_LENGTH>]
+ 
+    G10 L2 P4 Z[#3613+#3723 + #<TARGET_LENGTH>]
+
+    G10 L2 P5 Z[#3614+#3724+ #<TARGET_LENGTH>]
+ 
+    G10 L2 P6 Z[#3725+ #<TARGET_LENGTH>]
+
+O004 else
+
+
+    #4278=0
+    #4279=-50
+
+    M66P0L0
+
+    M80
+
+    #4303=0
+    (注释：)
+    (#4300 :    需要切换到的目标刀号)
+    (#4301 :    当前刀号)
+    /(debug,4300=#4300  4301=#4301)
+    (##############################主轴处理###################################)
+    /#4296=0
+    #5399=-1
+	
+	g53g0z0
+
+	    #4301=#4283 (设置当前刀)
+	    m66P7L0
+	    O333 if [#5399 eq 1]
+
+    	    O610 if[#3680 EQ 1]
+            (debug,关闭主轴)
+            O610 else if[#3680 EQ 2] 
+            (debug,turn off the spindle)
+            O610 endif
+
+		    m5
+		    m9
+		    G4p[#4072]
+		    /#4296=1
+
+	    O333 endif
+
+    (关冷却液)
+    M9
+
+    #<ORIGIN>=1
+    #<INDEX>=#5220  
+    #<OFFSET_X>=#[5201+#5220*20]    (当前X轴工件坐标)
+    #<OFFSET_Y>=#[5202+#5220*20]    (当前Y轴工件坐标)
+    #<OFFSET_Z1>=#[5203+#5220*20]    (当前Z轴工件坐标)
+
+
+    #<CURRENT_XPOS> = #[4300+[#4301*5]] (当前刀在刀库上的X坐标)
+    #<CURRENT_YPOS> = #[4301+[#4301*5]] (当前刀在刀库上的Y坐标)
+    #<CURRENT_ZPOS> = #[4302+[#4301*5]]   (当前刀在刀库上的Z坐标)
+
+    #<TARGET_XPOS> = #[4300+[#4300*5]]  (目标刀在刀库上的X坐标)
+    #<TARGET_YPOS> = #[4301+[#4300*5]]  (目标刀在刀库上的Y坐标)
+    #<TARGET_ZPOS> = #[4302+[#4300*5]]    (目标刀在刀库上的Z坐标)
+
+    #<CURRENT_LENGTH>=#[3660+[#4301-1]] (当前刀长)
+    #<TARGET_LENGTH>=#[3660+[#4300-1]]  (目标刀长)
+    /(debug,==#<CURRENT_LENGTH>,==#<TARGET_LENGTH>)
+
+    #<CURRENT_TOOL>=#4301		(当前刀号)
+    #<TARGET_TOOL>=#4300		(需要切换到的目标刀号)	
+
+    #<LENGTH>=#3612       (型材长度)
+    #<WIDTH>=#3613       (型材宽度)
+    #<HEIFHT>=#3615       (型材高度)
+
+    /#4302=2    (主轴刀库换刀延时)
+
+
+    #1001=0
+    (####################此段用于主轴无刀且当前刀与目标刀一致时的处理##########################)
+
+    O001 if [ [#4301 EQ 0] OR [#4301 EQ #4300]]
+	
+	
+	    O680 if [#4293 eq 0]
+		    M66P13L0    (检测Z1轴夹刀信号)
+		    O011 if [#5399 EQ 1]
+
+        	    O610 if[#3680 EQ 1]
+		        (debug,已经处于当前刀，不需要换刀)
+                O610 else if[#3680 EQ 2] 
+                (debug,Already in the current tool, no need to change the tool.)
+                O610 endif
+
+			    M66P0L0
+			    #4303=2
+			    #1001=1
+		    O011 endif
+	
+	    m80
+	
+	    O691 if [#1001 eq 0]
+		
+	        G53G1z0f[#3804]
+            g53g1y0f[#3802]
+		    g53g1x[#<TARGET_XPOS>]f[#3802]    (Xy轴移动到目标刀位)
+            g53g1y[#<TARGET_YPOS>]f[#3802]
+
+            M65P4
+		    M64P3 (Z1松刀)
+
+            g53g1z[#3801]f[#3804]	
+		    g53g1z[#<TARGET_ZPOS>]f[#3805](Z1轴目标刀目标位)
+
+		    g4p0.1
+		    M65p3   (Z1主轴夹刀)
+            M64P4 
+
+		    g4p[#4302]
+		
+		
+		    O651 if [#4293 eq 0]
+			    m66p13l3q1  (获取主轴夹刀信号)
+			    O634 if [#5399 NE 1]
+
+            	    O610 if[#3680 EQ 1]
+				    (debug,WARN:检测不到主轴夹刀信号，退出换刀)
+                    O610 else if[#3680 EQ 2] 
+                    (debug,Can't detect the signal of spindle clamping tool, withdraw from changing tool.)
+                    O610 endif
+
+				    g53g0z0
+				    M66p3l0
+				    #4288=#4300   (设置当前刀号为目标刀号)
+				    #4283=#4300
+		
+                    G10 L2 P1 Z[#3613+#3720 + #<TARGET_LENGTH>]
+                 
+                    G10 L2 P2 Z[#3614+#3721+ #<TARGET_LENGTH>]
+               
+                    G10 L2 P3 Z[#3722+ #<TARGET_LENGTH>]
+                 
+                    G10 L2 P4 Z[#3613+#3723 + #<TARGET_LENGTH>]
+               
+                    G10 L2 P5 Z[#3614+#3724+ #<TARGET_LENGTH>]
+                 
+                    G10 L2 P6 Z[#3725+ #<TARGET_LENGTH>]
+                 
+
+				    #4303=2
+				    M30
+			    O634 endif
+		    O651 endif
+		
+		    #4288=#4300   (设置当前刀号为目标刀号)
+		    #4283=#4300
+
+            G10 L2 P1 Z[#3613+#3720 + #<TARGET_LENGTH>]
+
+            G10 L2 P2 Z[#3614+#3721+ #<TARGET_LENGTH>]
+       
+            G10 L2 P3 Z[#3722+ #<TARGET_LENGTH>]
+        
+            G10 L2 P4 Z[#3613+#3723 + #<TARGET_LENGTH>]
+          
+            G10 L2 P5 Z[#3614+#3724+ #<TARGET_LENGTH>]
+         
+            G10 L2 P6 Z[#3725+ #<TARGET_LENGTH>]
+
+		    M80
+		
+		    (换刀退出)
+		    g53g1X[#3800]f[#3803]
+		    g53g1z0f[#3804]
+            g53g1y0f[#3802]
+
+		
+		    M66P0L0
+		    #4303=1
+	
+	    O691 endif
+	
+
+	    O680 endif
+
+
+    O001 else
+
+	
+	    (####################Z1开始换刀##########################)
+
+	    M80
+	
+	    g53g1z0f[#3804]
+        g53g1y0f[#3802]
+	    g53g1x[#3800]f[#3802]
+        g53g1Y[#<CURRENT_YPOS>] f[#3802]
+	
+	    g53g1z[#<CURRENT_ZPOS>]f[#3804] (Z轴下降到换刀位)
+	    g53g1x[#<CURRENT_XPOS>] F[#3803]
+	    (x轴移动到换刀位)
+	    g4p0.1
+	
+	    (#########主轴松刀##########)
+        M65p4
+	    M64p3 
+	       (Z1松刀)  
+	    g4p[#4302]  (换刀延时时间)
+	
+	    O601 if [#4293 eq 0]
+		    m66P15L3Q5  (检测Z1轴松刀信号)
+		    O602 if [#5399 NE 1]
+
+        	    O610 if[#3680 EQ 1]
+			    (debug,WARN:Z1轴未检测到松刀信号，退出换刀)
+                O610 else if[#3680 EQ 2] 
+                (debug,Can't detect the signal of spindle loosening tool, withdraw from changing tool.)
+                O610 endif
+
+			    M66P0L0
+			    #4303=2
+			    M30
+		    O602 endif
+	    O601 endif
+	
+	    g53g1z0f[#3804]
+	    M66P0L0
+	
+	    g53g1x[#<TARGET_XPOS>]y[#<TARGET_YPOS>]f[#3802](X\Y轴移动到目标刀位)
+	    g53g1z[#3801]f[#3804]
+	    g53g1z[#<TARGET_ZPOS>]f[#3805] (Z轴下降到目标换刀位)
+	    g4p0.1
+	
+	    (###主轴夹刀###)
+	    M65p3    (Z1夹刀) 
+        M64P4 
+	    g4p[#4302] (换刀延时时间)
+	
+	
+	    O604 if [#4293 eq 0]
+		    m66P13L3Q1   (检测Z1轴夹刀信号)
+		    O605 if [#5399 NE 1]
+
+        	    O610 if[#3680 EQ 1]
+			    (debug,WARN:检测不到主轴夹刀信号，退出换刀)
+                O610 else if[#3680 EQ 2] 
+                (debug,Can't detect the signal of spindle clamping tool, withdraw from changing tool.)
+                O610 endif
+
+			    M66P0L0
+			    #4288=#4300   (设置当前刀号为目标刀号)
+			    #4283=#4300
+
+                G10 L2 P1 Z[#3613+#3720 + #<TARGET_LENGTH>]
+
+                G10 L2 P2 Z[#3614+#3721+ #<TARGET_LENGTH>]
+           
+                G10 L2 P3 Z[#3722+ #<TARGET_LENGTH>]
+            
+                G10 L2 P4 Z[#3613+#3723 + #<TARGET_LENGTH>]
+              
+                G10 L2 P5 Z[#3614+#3724+ #<TARGET_LENGTH>]
+             
+                G10 L2 P6 Z[#3725+ #<TARGET_LENGTH>]
+	
+			    #4303=2
+			    M30
+		    O605 endif
+	    O604 endif
+	
+	    #4288=#4300   (设置当前刀号为目标刀号)
+	    #4283=#4300
+	
+	    (换刀后设置工件零点)
+
+        G10 L2 P1 Z[#3613+#3720 + #<TARGET_LENGTH>]
+
+        G10 L2 P2 Z[#3614+#3721+ #<TARGET_LENGTH>]
+
+        G10 L2 P3 Z[#3722+ #<TARGET_LENGTH>]
+
+        G10 L2 P4 Z[#3613+#3723 + #<TARGET_LENGTH>]
+      
+        G10 L2 P5 Z[#3614+#3724+ #<TARGET_LENGTH>]
+     
+        G10 L2 P6 Z[#3725+ #<TARGET_LENGTH>]
+
+	    M80
+	
+	    g53g1X[#3800]f[#3803]
+	    g53g1z0f[#3804]
+        g53g1y0f[#3802]
+	
+
+
+
+    O001 endif
+
+    O633 if [#4296 GT 0]
+	    (开冷却液)
+	    M8
+    O633 endif
+
+    #4303=1
+
+    (换刀结束指令)
+    M70P30
+
+
+O004 endif
+
+
+
+O<toolchange> endsub

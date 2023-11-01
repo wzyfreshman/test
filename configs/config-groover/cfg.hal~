@@ -1,0 +1,169 @@
+# core HAL config file for simulation
+
+# first load all the RT modules that will be needed
+# kinematics
+loadrt trivkins
+
+# motion controller, get name and thread periods from ini file
+loadrt motmod0 traj_period_nsec=[EMCMOT]TRAJ_PERIOD num_joints=3 key=100 ModId=0
+#loadrt motmod1 traj_period_nsec=[EMCMOT]TRAJ_PERIOD num_joints=3 key=101 ModId=1
+
+# EPP driver
+#loadrt hal_ppmc ab_pd_sel=[TRAJ]STEPGEN_MODE
+
+loadrt minimotor
+loadrt hal_ethercat config_axis_num=[EMCMOT]MOTOR_AXISNUM config_io_num=[EMCMOT]IO_NUMBER config_file_path="/home/.config" motor_chose=[EMCMOT]MOTOR_CHOSE board_type=[EMCIO]IOBOARD_TYPE link_type=[EMCMOT]LINK_TYPE
+
+
+
+# load 6 differentiators (for velocity and accel signals)
+
+loadrt ddt count=7
+loadrt hypot count=2
+loadrt comp count=3
+loadrt or2 count=19
+loadrt orIn4 count=2
+loadrt and2 count=10
+loadrt not count=5
+loadrt conv_io count=2
+loadrt lubepressure count=1
+loadrt handlecontrol count=1
+loadrt multispindle count=1
+
+addf minitorcontrol servo-thread
+addf ethercat.00.exchange_data servo-thread
+# add motion controller functions to servo thread
+addf motion-command-handler0 servo-thread
+addf motion-controller0 servo-thread
+addf sqpreprocseg-controller0 sqpreprocseg-thread
+
+#addf motion-command-handler1 servo-thread
+#addf motion-controller1 servo-thread
+#addf sqpreprocseg-controller1 sqpreprocseg-thread
+
+
+
+# link the differentiator functions into the code
+addf ddt.0 servo-thread
+addf ddt.1 servo-thread
+addf ddt.2 servo-thread
+addf ddt.3 servo-thread
+addf ddt.4 servo-thread
+addf ddt.5 servo-thread
+addf ddt.6 servo-thread
+addf and2.0 servo-thread
+addf and2.1 servo-thread
+addf and2.2 servo-thread
+addf and2.3 servo-thread
+addf and2.4 servo-thread
+addf and2.5 servo-thread
+addf and2.6 servo-thread
+addf and2.7 servo-thread
+addf and2.8 servo-thread
+addf and2.9 servo-thread
+addf or2.0 servo-thread
+addf or2.1 servo-thread
+addf or2.2 servo-thread
+addf or2.3 servo-thread
+addf or2.4 servo-thread
+addf or2.5 servo-thread
+addf or2.6 servo-thread
+addf or2.7 servo-thread
+addf or2.8 servo-thread
+addf or2.9 servo-thread
+addf or2.10 servo-thread
+addf or2.11 servo-thread
+addf or2.12 servo-thread
+addf or2.13 servo-thread
+addf or2.14 servo-thread
+addf or2.15 servo-thread
+addf or2.16 servo-thread
+addf or2.17 servo-thread
+addf or2.18 servo-thread
+addf orIn4.0 servo-thread
+addf orIn4.1 servo-thread
+addf not.0 servo-thread
+addf not.1 servo-thread
+addf not.2 servo-thread
+addf not.3 servo-thread
+addf not.4 servo-thread
+addf hypot.0 servo-thread
+addf hypot.1 servo-thread
+addf conv-io.0 servo-thread
+addf conv-io.1 servo-thread
+addf lubepressure.0 servo-thread
+addf handlecontrol.0 servo-thread
+addf multispindle.0 servo-thread
+
+# create HAL signals for position commands from motion module
+# loop position commands back to motion module feedback
+
+net X1pos axis.0.0.motor-pos-cmd <= ethercat.mt.00.velocity ddt.0.in 
+net Y1pos axis.0.1.motor-pos-cmd <= ethercat.mt.01.velocity  ddt.2.in 
+net Z1pos axis.0.2.motor-pos-cmd <= ethercat.mt.02.velocity  ddt.4.in 
+#net X2pos axis.1.0.motor-pos-cmd <= ethercat.mt.03.velocity 
+#net Y2pos axis.1.1.motor-pos-cmd <= ethercat.mt.04.velocity 
+#net Z2pos axis.1.2.motor-pos-cmd <= ethercat.mt.05.velocity 
+
+
+net X1pos-fb axis.0.0.motor-pos-fb <= ethercat.mt.00.fbposition
+net Y1pos-fb axis.0.1.motor-pos-fb <= ethercat.mt.01.fbposition
+net Z1pos-fb axis.0.2.motor-pos-fb <= ethercat.mt.02.fbposition
+#net X2pos-fb axis.1.0.motor-pos-fb <= ethercat.mt.03.fbposition
+#net Y2pos-fb axis.1.1.motor-pos-fb <= ethercat.mt.04.fbposition
+#net Z2pos-fb axis.1.2.motor-pos-fb <= ethercat.mt.05.fbposition
+
+
+
+#net alarmX0 axis.0.0.amp-fault-in ethercat.mt.03.alarm motion.0.user-define-warn.00
+
+
+net X1errorcode axis.0.0.jog_errorcode ethercat.mt.00.errorcode
+net Y1errorcode axis.0.1.jog_errorcode ethercat.mt.01.errorcode 
+net Z1errorcode axis.0.2.jog_errorcode ethercat.mt.02.errorcode 
+#net X2errorcode axis.1.0.jog_errorcode ethercat.mt.03.errorcode 
+#net Y2errorcode axis.1.1.jog_errorcode ethercat.mt.04.errorcode
+#net Z2errorcode axis.1.2.jog_errorcode ethercat.mt.05.errorcode
+
+
+
+setp ethercat.mt.00.scale [AXIS_0_OUTPUT]SCALE
+setp ethercat.mt.01.scale [AXIS_1_OUTPUT]SCALE
+setp ethercat.mt.02.scale [AXIS_2_OUTPUT]SCALE
+#setp ethercat.mt.03.scale [AXIS_3_OUTPUT]SCALE
+#setp ethercat.mt.04.scale [AXIS_4_OUTPUT]SCALE
+#setp ethercat.mt.05.scale [AXIS_5_OUTPUT]SCALE
+
+
+
+
+setp ethercat.mt.00.scaledir [AXIS_0_OUTPUT]SCALEDIR
+setp ethercat.mt.01.scaledir [AXIS_1_OUTPUT]SCALEDIR
+setp ethercat.mt.02.scaledir [AXIS_2_OUTPUT]SCALEDIR
+#setp ethercat.mt.03.scaledir [AXIS_3_OUTPUT]SCALEDIR
+#setp ethercat.mt.04.scaledir [AXIS_4_OUTPUT]SCALEDIR
+#setp ethercat.mt.05.scaledir [AXIS_5_OUTPUT]SCALEDIR
+
+
+
+# send the position commands thru differentiators to
+# generate velocity and accel signals
+net Xvel ddt.0.out => ddt.1.in hypot.0.in0
+net Xacc ddt.1.out 
+net Yvel ddt.2.out => ddt.3.in hypot.0.in1
+net Yacc ddt.3.out 
+net Zvel ddt.4.out => ddt.5.in hypot.1.in0
+net Zacc ddt.5.out 
+
+# Cartesian 2- and 3-axis velocities
+net XYvel hypot.0.out => hypot.1.in1
+net XYZvel <= hypot.1.out
+
+#net mxtime ethercat.master.maxtime motion.0.ethercat.maxtime
+
+# create signals for tool loading loopback
+net tool-prep-loop iocontrol.0.0.tool-prepare iocontrol.0.0.tool-prepared
+net tool-change-loop iocontrol.0.0.tool-change iocontrol.0.0.tool-changed
+#net tool-prep-loop1 iocontrol.1.0.tool-prepare iocontrol.1.0.tool-prepared
+#net tool-change-loop1 iocontrol.1.0.tool-change iocontrol.1.0.tool-changed
+

@@ -1,0 +1,6 @@
+INCLUDEPATH +=$$PWD
+DEPENDPATH += $$PWD
+
+
+INCLUDEPATH +=$$PWD/../ini
+DEPENDPATH += $$PWD/../ini
