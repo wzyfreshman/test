@@ -1,0 +1,13 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib/aarch64-linux-gnu
+includedir=${prefix}/include/aarch64-linux-gnu/qt5
+
+
+Name: Qt5 XmlPatterns
+Description: Qt XmlPatterns module
+Version: 5.11.3
+Libs: -lQt5XmlPatterns 
+Cflags: -DQT_XMLPATTERNS_LIB -I${includedir}/QtXmlPatterns -I${includedir}
+Requires: Qt5Core Qt5Network
+

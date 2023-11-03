@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib/aarch64-linux-gnu
+
+Name: libdvbv5
+Description: DVBv5 utility library
+Version: 1.16.3
+Requires.private: libudev
+Libs: -L${libdir} -ldvbv5
+Cflags: -I${includedir}

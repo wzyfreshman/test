@@ -1,0 +1,7 @@
+
+Name: Qt5WebKit
+Description: Qt WebKit module
+Version: 5.212.0
+Libs: -L/usr/lib/aarch64-linux-gnu -lQt5WebKit
+Cflags: -I/usr/include/aarch64-linux-gnu/qt5/QtWebKit 
+Requires: Qt5Core Qt5Gui Qt5Network

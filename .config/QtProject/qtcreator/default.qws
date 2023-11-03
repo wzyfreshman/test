@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QtCreatorSession>
+<!-- Written by QtCreator 4.8.2, 2023-11-02T06:31:32. -->
+<qtcreator>
+ <data>
+  <variable>CascadeSetActive</variable>
+  <value type="bool">false</value>
+ </data>
+ <data>
+  <variable>Color</variable>
+  <value type="QString">#666666</value>
+ </data>
+ <data>
+  <variable>EditorSettings</variable>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNAAAAAMAAAA8AC8AdQBzAHIALwBpAG4AYwBsAHUAZABlAC8AZwB0AGsALQAyAC4AMAAvAGcAdABrAC8AZwB0AGsALgBoAAAADAAAAAAcAAAAAQAAAJsAAAAAAAAAKAAAAA8AAAABAAAAAAAAAGIALwBoAG8AbQBlAC8AbABpAG4AYQByAG8ALwBxAHQAdwBrAHAAbAAvAGMAbgBjAC8AcgBlAGEAbAB0AGkAbQBlAC8AaABhAGwAbQBlAHQAZQByAC8AbQBlAHQAZQByAC4AYwAAAAwAAAAAHAAAAAEAAAAfAAAAAAAAAEEAAAARAAAAAQAAAAAAAABsAC8AaABvAG0AZQAvAGwAaQBuAGEAcgBvAC8AcQB0AHcAawBwAGwALwBjAG4AYwAvAHIAZQBhAGwAdABpAG0AZQAvAGgAYQBsAG0AZQB0AGUAcgAvAGgAYQBsAG0AZQB0AGUAcgAuAHAAcgBvAAAADAAAAAAYAAAAAQAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAwAAADwALwB1AHMAcgAvAGkAbgBjAGwAdQBkAGUALwBnAHQAawAtADIALgAwAC8AZwB0AGsALwBnAHQAawAuAGgAAAAKAGcAdABrAC4AaAAAABNDcHBFZGl0b3IuQysrRWRpdG9yAAAAbAAvAGgAbwBtAGUALwBsAGkAbgBhAHIAbwAvAHEAdAB3AGsAcABsAC8AYwBuAGMALwByAGUAYQBsAHQAaQBtAGUALwBoAGEAbABtAGUAdABlAHIALwBoAGEAbABtAGUAdABlAHIALgBwAHIAbwAAABgAaABhAGwAbQBlAHQAZQByAC4AcAByAG8AAAARUXQ0LnByb0ZpbGVFZGl0b3IAAABiAC8AaABvAG0AZQAvAGwAaQBuAGEAcgBvAC8AcQB0AHcAawBwAGwALwBjAG4AYwAvAHIAZQBhAGwAdABpAG0AZQAvAGgAYQBsAG0AZQB0AGUAcgAvAG0AZQB0AGUAcgAuAGMAAAAOAG0AZQB0AGUAcgAuAGMAAAATQ3BwRWRpdG9yLkMrK0VkaXRvcgAAAMEAAAANY3VycmVudGVkaXRvcgAAAGIALwBoAG8AbQBlAC8AbABpAG4AYQByAG8ALwBxAHQAdwBrAHAAbAAvAGMAbgBjAC8AcgBlAGEAbAB0AGkAbQBlAC8AaABhAGwAbQBlAHQAZQByAC8AbQBlAHQAZQByAC4AYwAAACYAQwBwAHAARQBkAGkAdABvAHIALgBDACsAKwBFAGQAaQB0AG8AcgAAABwAAAABAAAAHwAAAAAAAABBAAAAEQAAAAEAAAAAAAAAAA==</value>
+ </data>
+ <data>
+  <variable>ProjectDependencies</variable>
+  <valuemap type="QVariantMap"/>
+ </data>
+ <data>
+  <variable>ProjectList</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">/home/linaro/qtwkpl/cnc/cnext-cnc.pro</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>StartupProject</variable>
+  <value type="QString">/home/linaro/qtwkpl/cnc/cnext-cnc.pro</value>
+ </data>
+ <data>
+  <variable>value-ActiveMode</variable>
+  <value type="QString">Edit</value>
+ </data>
+ <data>
+  <variable>value-Breakpoints</variable>
+  <valuelist type="QVariantList"/>
+ </data>
+ <data>
+  <variable>value-ProjectTree.ExpandData</variable>
+  <valuelist type="QVariantList">
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc/realtime/halmeter</value>
+    <value type="QString">Sources</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc/realtime/realtime.pro</value>
+    <value type="QString">realtime</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc/realtime/halmeter/halmeter.pro</value>
+    <value type="QString">halmeter</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc</value>
+    <value type="QString">cnext-cnc [master]</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc/emc/emc.pro</value>
+    <value type="QString">emc</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/linaro/qtwkpl/cnc/common.pri</value>
+    <value type="QString">common</value>
+   </valuelist>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-TaskWindow.Categories</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">Task.Category.QmlAnalysis</value>
+  </valuelist>
+ </data>
+ <data>
+  <variable>value-TaskWindow.IncludeWarnings</variable>
+  <value type="bool">true</value>
+ </data>
+ <data>
+  <variable>valueKeys</variable>
+  <valuelist type="QVariantList">
+   <value type="QString">ActiveMode</value>
+   <value type="QString">Breakpoints</value>
+   <value type="QString">ProjectTree.ExpandData</value>
+   <value type="QString">TaskWindow.Categories</value>
+   <value type="QString">TaskWindow.IncludeWarnings</value>
+  </valuelist>
+ </data>
+</qtcreator>
